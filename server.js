@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 /*
 app.get('/', function(req, res) {
-    res.redirect(301, '/home');
+    res.redirect(304, '/home');
     console.log("Root");
 });
 
