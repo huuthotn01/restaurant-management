@@ -8,12 +8,11 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-/*
-app.get('/', function(req, res) {
-    res.redirect(304, '/home');
-    console.log("Root");
-});
 
+app.get('*', function(req, res) {
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+});
+/*
 app.get('/home', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
