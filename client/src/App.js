@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LoginWindow from './components/LoginWindow';
+import LoginWindow from './login/LoginWindow';
 import {Button} from 'react-bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
