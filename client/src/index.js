@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container} from 'reactstrap';
-import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
+import App from './App';
+import './index.css';
+import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import {Container} from 'reactstrap';
+// import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
 
+/*
 class FromHome extends React.Component {
     render() {
         return (
@@ -38,8 +42,10 @@ class First extends React.Component {
         );
     }
 }
+*/
 
 ReactDOM.render(
-    <First />,
+    // <First />,
+    <App />,
     document.getElementById('root')
 );
