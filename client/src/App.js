@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import LoginWindow from './login/LoginWindow';
-import {Button} from 'react-bootstrap';
+// import {Button} from 'react-bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
+import { LoginButton } from './login/LoginButton';
 import './App.css';
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Button onClick={this.loginPopup}>HELLO HIHI YELLOW BEE</Button>
+				<LoginButton onClick={this.loginPopup} />
 				{this.state.loginPopup && <LoginWindow />}
 			</div>
 		);

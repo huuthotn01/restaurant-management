@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../App.css';
-import { MdAccountCircle, MdAddCircle } from 'react-icons/md';
+import { MdAddCircle } from 'react-icons/md';
+import {GoSignIn} from 'react-icons/go';
 
 const Sign = (props) => {
 
 	let icon = null;
 
 	if (props.type === 'signIn') {
-		icon = <MdAccountCircle className='icons'/>
+		icon = <GoSignIn className='icons'/>
 	} else {
 		icon = <MdAddCircle className='icons'/>
 	}
