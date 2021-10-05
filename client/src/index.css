@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+html {
+    font-family: "Roboto Condensed", sans-serif;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}  
+    background-image: url('./yellow_bee.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #3E363F;
+    font-family: "Roboto Condensed", sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}

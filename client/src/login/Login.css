@@ -1,20 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
-html {
-  font-family: "Roboto Condensed", sans-serif;
-}
-body {
-  background-image: url('./yellow_bee.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #3E363F;
-  font-family: "Roboto Condensed", sans-serif;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.App {
+.Transitioning {
   align-items: center;
   display: flex;
   height: 100vh;
@@ -24,7 +10,7 @@ body {
   top: 0;
   left: 0;
 }
-.App_test {
+.LoginWindow {
   display: flex;
   flex-direction: row-reverse;
   box-shadow: 0 6px 10px 0px rgba(0, 0, 0, 0.5);
@@ -52,7 +38,9 @@ body {
 }
 .back {
   flex: 2;
+  cursor: pointer;
 }
+
 .dots {
   display: flex;
   flex: 5;
@@ -61,16 +49,7 @@ body {
   justify-content: center;
   height: 100%;
 }
-.dot {
-  font-size: 5px;
-  color: rgba(64, 70, 86, 0.5);
-  padding-top: 15px;
-}
-.dotSelected {
-  font-size: 5px;
-  color: rgba(64, 70, 86, 1);
-  padding-top: 15px;
-}
+
 .signIn {
   background-color: rgba(151, 105, 245, 0.98);
   color: rgb(218, 231, 241);
@@ -253,6 +232,7 @@ body {
   margin-right: 30px;
   opacity: 0.8;
   cursor: pointer;
+  height: 100%;
 }
 .socialNetsIcon:hover {
   opacity: 1;

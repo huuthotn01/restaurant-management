@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import '../App.css';
 import Sign from './Sign';
 import SignExpanded from './SignExpanded';
 import SignCollapsed from './SignCollapsed';
 
 class Modal extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -32,7 +30,7 @@ class Modal extends Component {
 	}
 
 	onClickRight = () => {
-		this.setState({wasClickedRight: !this.state.wasClickedRight}, function(){
+		this.setState({wasClickedRight: !this.state.wasClickedRight}, function() {
 			if (this.state.wasClickedRight === true && this.state.wasClickedLeft === true) {
 				this.setState({wasClickedLeft: false});
 			};

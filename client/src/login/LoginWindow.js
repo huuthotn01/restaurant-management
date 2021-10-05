@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import '../App.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // import {Motion, spring} from 'react-motion';
 import NavigationPanel from './NavigationPanel.js';
@@ -16,11 +15,6 @@ class LoginWindow extends Component {
 	componentDidMount() {
 		this.setState({ mounted: true });
 	}
-	
-	handleSubmit = (e) => {
-		this.setState({ mounted: false });
-		e.preventDefault();
-	}
 
 	render() {
 		const {mounted} = this.state;
@@ -30,15 +24,15 @@ class LoginWindow extends Component {
 
 		if (mounted) {
 			child = (
-				<div className="App_test">
-					<NavigationPanel></NavigationPanel>
-					<Modal onSubmit={this.handleSubmit}/>
+				<div className="LoginWindow">
+					<NavigationPanel onClick={this.props.onClick}></NavigationPanel>
+					<Modal />
 				</div>
 			);
 		}
 		
 		return (
-			<div className="App">
+			<div className="Transitioning">
 				<TransitionGroup>
 					<CSSTransition
 						unmountOnExit
@@ -56,4 +50,4 @@ class LoginWindow extends Component {
 	}
 }
 
-export default LoginWindow;
+export {LoginWindow};

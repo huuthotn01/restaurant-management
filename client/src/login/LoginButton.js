@@ -1,10 +1,14 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import { MdAccountCircle } from 'react-icons/md';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const LoginButton = (props) => {
+function LoginButton(props) {
     return (
-        <Button onClick={props.onClick}>HELLO HIHI YELLOW BEE</Button>
+        <div className='NavigationPanel'>
+            <div className='dots' onClick={props.onClick}>
+                <MdAccountCircle style={{cursor: 'pointer'}} />
+            </div>
+        </div>
     );
 }
 

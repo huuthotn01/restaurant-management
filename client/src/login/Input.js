@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../App.css';
 import {MdVisibility, MdVisibilityOff} from 'react-icons/md';
 import $ from 'jquery';
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../App.css';
-import { MdAccountCircle, MdAddCircle } from 'react-icons/md';
+import { ImUserPlus } from 'react-icons/im';
+import {GoSignIn} from 'react-icons/go';
 
 const SignCollapsed = (props) => {
 	let icon = null;
 	
 	if (props.type === 'signIn') {
-		icon = <MdAccountCircle className='iconsCollapsed'/>
+		icon = <GoSignIn className='iconsCollapsed'/>
 	} else {
-		icon = <MdAddCircle className='iconsCollapsed'/>
+		icon = <ImUserPlus className='iconsCollapsed'/>
 	}
 	
 	return (

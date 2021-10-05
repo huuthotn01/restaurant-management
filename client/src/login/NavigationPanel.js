@@ -1,12 +1,10 @@
 import React from 'react';
-import '../App.css';
 import { MdArrowBack, MdAccountCircle } from 'react-icons/md';
 
 const NavigationPanel = (props) => {
-
 	return (
 		<div className='NavigationPanel'>
-			<MdArrowBack onClick={props.initialState} className='back'/>
+			<MdArrowBack onClick={props.onClick} className='back' />
 			<div className='dots'>
 				<MdAccountCircle />
 			</div>
@@ -14,7 +12,5 @@ const NavigationPanel = (props) => {
 		</div>
 	);
 }
-
-
 
 export default NavigationPanel;

@@ -1,6 +1,5 @@
 import React , {Component} from 'react';
 import PropTypes from 'prop-types';
-import '../App.css';
 import {Motion, spring} from 'react-motion';
 import Input from './Input';
 import SubmitButton from './SubmitButton';
@@ -12,6 +11,7 @@ class SignExpanded extends Component {
 			flexState: false,
 			animIsFinished: false
 		};
+		this.formSubmit = this.formSubmit.bind(this);
 	}
 
 	componentDidMount () {
@@ -21,6 +21,10 @@ class SignExpanded extends Component {
 
 	isFinished = () => {
 		this.setState({animIsFinished: true});
+	}
+
+	formSubmit(e) {
+		e.preventDefault();
 	}
 
 	render () {
@@ -54,7 +58,6 @@ class SignExpanded extends Component {
 			</div>
 		);
 
-
 		return (
 			<Motion style={{
 				flexVal: spring(this.state.flexState ? 8 : 1)
@@ -68,7 +71,9 @@ class SignExpanded extends Component {
 					y: spring(this.state.flexState ? 0 : 50, {stiffness: 100, damping: 17})
 				 }} >
 						{({opacity, y}) =>
-						<form className='logForm' style={{
+						<form 
+							onSubmit={this.formSubmit} 
+							className='logForm' style={{
 							WebkitTransform: `translate3d(0, ${y}px, 0)`,
 							transform: `translate3d(0, ${y}px, 0)`,
 							opacity: `${opacity}`
