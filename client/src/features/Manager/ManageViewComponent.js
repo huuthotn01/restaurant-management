@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Card, CardBody, CardTitle} from 'reactstrap';
+import './manager.css';
 
 class ManageView extends Component{
     render(){
@@ -23,7 +24,7 @@ class ManageView extends Component{
                         </a>
                     </Col>
                     <Col md="6">    
-                        <a className="cat-manager-item-link">
+                        <a className="cat-manager-item-link" href='/'>
                         <Card className="cat-manager-item-left">
                             <img className="cat-manager-img" width="90px" height="90px" src="/assets/images/manage_customer.jpg" alt = "Mua thuốc online"></img>
                             <CardBody>

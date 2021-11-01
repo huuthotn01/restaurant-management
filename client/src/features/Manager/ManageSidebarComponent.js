@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarContent, SidebarFooter, SidebarHeader } from 'react-pro-sidebar';
-import { FaGem, FaHeart, FaGithub } from 'react-icons/fa';
+import { FaHeart, FaGithub } from 'react-icons/fa';
 
 class ManageSideBar extends Component {
     render(){
@@ -20,7 +20,7 @@ class ManageSideBar extends Component {
                             color: 'black'
                         }}
                         >
-                        <img style={{'margin-right': '5px', 'margin-top': '-5px'}} height="52px" width="80px" src="/assets/images/MainLogo.png" /> 
+                        <img style={{'margin-right': '5px', 'margin-top': '-5px'}} height="52px" width="80px" src="/assets/images/MainLogo.png" alt="Sub Logo"/> 
                         <span> Quản lý </span>
                     </div>
                 </SidebarHeader>

@@ -3,8 +3,8 @@ import { Switch, Route, Redirect} from 'react-router-dom';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
-import ManageView from './Manager/ManageViewComponent'
-import ManageOrderView from './Manager/ManageOrderView';
+import ManageView from '../Manager/ManageViewComponent'
+import ManageOrderView from '../Manager/ManageOrderView';
 
 class Main extends Component {
 	render(){

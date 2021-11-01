@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import ManageSideBar from './ManageSidebarComponent'
+import ManageSideBar from './ManageSidebarComponent';
+import './manager.css';
 
 class ManageOrderView extends Component {
     render() {

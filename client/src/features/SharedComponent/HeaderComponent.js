@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
 import { FaShoppingCart, FaSignInAlt, FaBookOpen, FaTable } from 'react-icons/fa';
+import { Login } from '../login/Login';
 
 class Header extends Component{
     render() {
@@ -8,7 +9,7 @@ class Header extends Component{
             <div>
                 <Navbar className="navbar-header" color="light"  expand="md"  light container>
                     <NavbarBrand href="/">
-                    <img width="120px" height="41px" src='assets/images/brand.png'></img>
+                    <img width="120px" height="41px" src='assets/images/brand.png' alt="Logo"></img>
                     </NavbarBrand>
                     <NavbarToggler />
                     <Collapse navbar>
@@ -32,7 +33,7 @@ class Header extends Component{
                         </NavItem>
                         <NavItem>
                         <NavLink href="/">
-                            <FaSignInAlt /> Đăng kí / Đăng nhập
+                            <FaSignInAlt /> <Login />
                         </NavLink>
                         </NavItem>
                     </Nav>
