@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
-import { FaShoppingCart, FaSignInAlt, FaBookOpen, FaTable } from 'react-icons/fa';
+import { FaShoppingCart, FaBookOpen, FaTable } from 'react-icons/fa';
 import { Login } from '../login/Login';
 
 class Header extends Component{
@@ -16,25 +16,24 @@ class Header extends Component{
                     <Nav className="me-auto nav-header"  navbar>
                         <NavItem>
                         <NavLink className="nav-text" href="/">
-                            <FaTable /> Đặt bàn
+                            <FaTable className="header-icon"/> Đặt bàn
                         </NavLink>
                         </NavItem>
                         <NavItem>
                         <NavLink href="/">
-                            <FaBookOpen /> Đặt món ăn
+                            <FaBookOpen className="header-icon"/> Đặt món ăn
                         </NavLink>
                         </NavItem>
                     </Nav>
                     <Nav className="ms-auto" navbar>
                     <NavItem>
                         <NavLink href="/">
-                            <FaShoppingCart /> Giỏ hàng
+                            <FaShoppingCart className="header-icon" /> Giỏ hàng
                         </NavLink>
                         </NavItem>
                         <NavItem>
-                        <NavLink href="/">
-                            <FaSignInAlt /> <Login />
-                        </NavLink>
+                            <Login />
+                            {/*<span style={{fontSize: '14px', color: 'black'}}> Đăng kí/Đăng nhập</span>*/}
                         </NavItem>
                     </Nav>
                     </Collapse>

@@ -15,12 +15,18 @@ body {
 }
 
 .navbar-light .navbar-nav .nav-link {
-    font-size: 14px;
+    font-size: 15px;
     color: black
 }
 
 .navbar-light .navbar-brand {
     font-size: 25px;
+}
+
+.header-icon {
+  margin-top: -3px;
+  font-size: 15px;
+  margin-right: 2px;
 }
 
 .footer {
@@ -37,66 +43,4 @@ body {
 .footer-content {
   color: lightslategray;
   font-size: 15px;
-}
-
-.cat-manager-header {
-  font-size: 30px;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 10px;
-}
-  
-.cat-manager-item-left {
-  width: 250px;
-  height: 250px;
-  margin-right: auto;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  background-color: #FBF6F3;
-}
-
-.cat-manager-item-right {
-  width: 250px;
-  height: 250px;
-  margin-left: auto;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  background-color: #FBF6F3;
-}
-  
-.cat-manager-img {
-  margin: auto;
-  margin-top: 50px
-}
-  
-.cat-manager-text {
-  text-align: center;
-  margin-top: 10px;
-}
-  
-.cat-manager-item-link {
-  text-decoration: none;
-  color: black;
-}
-  
-.cat-manager-item-link:hover {
-  text-decoration: none;
-  color: black;
-}
-
-.pro-sidebar > .pro-sidebar-inner, .pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper,
-.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
-  background-color: #FFFFFF;
-}
-
-.pro-sidebar, .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:hover {
-  color: black;
-}
-
-.pro-sidebar {
-  float: left;
-}
-
-.pro-item-content:not(:hover), .pro-icon-wrapper:not(:hover) {
-  color: black;
 }
