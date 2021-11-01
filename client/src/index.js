@@ -14,6 +14,6 @@ ReactDOM.render(
             <MainComponent />
         </div>
     </BrowserRouter>,*/
-    <Loginnnnnnn />,
+    <Login />,
     document.getElementById('root')
 );
