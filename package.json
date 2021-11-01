@@ -14,8 +14,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "google-auth-library": "^7.9.2",
-    "google-oauth-jwt": "^0.2.0",
-    "react-helmet": "^6.1.0"
+    "google-oauth-jwt": "^0.2.0"
   },
   "engines": {
     "node": "16.3.0"
