@@ -8,7 +8,7 @@ class Header extends Component{
             <div>
                 <Navbar className="navbar-header" color="light"  expand="md"  light container>
                     <NavbarBrand href="/">
-                    Aprycot
+                    <img width="120px" height="41px" src='assets/images/brand.png'></img>
                     </NavbarBrand>
                     <NavbarToggler />
                     <Collapse navbar>

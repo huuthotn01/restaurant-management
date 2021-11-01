@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background-color: #FBF6F3;
+    background-color: #FFFAF7;
 }
 
 .navbar-header {
@@ -30,12 +30,12 @@ body {
 
 .footer-header {
   font-size: 15px;
-  color: black;
+  color: lightslategray;
   font-weight: bold;
 }
   
 .footer-content {
-  color: black;
+  color: lightslategray;
   font-size: 15px;
 }
 
