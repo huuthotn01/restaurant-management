@@ -5,15 +5,12 @@ import './index.css';
 import MainComponent from './components/MainComponent';
 import {BrowserRouter} from 'react-router-dom';
 import {Login } from './login/Login';
-import './login/Login.css';
 
 ReactDOM.render(
-    /*
     <BrowserRouter>
         <div className='App'>
             <MainComponent />
         </div>
-    </BrowserRouter>,*/
-    <Login />,
+    </BrowserRouter>,
     document.getElementById('root')
 );
