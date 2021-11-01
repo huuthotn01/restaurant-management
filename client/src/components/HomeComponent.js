@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import { NavLink } from 'react-router-dom'
 
 class Home extends Component {
     render(){
         return(   
-            <div className="container">
-                <div className="row">
-                    <Breadcrumb>
-                        <BreadcrumbItem active>Home</BreadcrumbItem>
-                    </Breadcrumb>
-                </div>
-            </div>
+            <Container>
+                <Row>
+                    <img src='/assets/images/jumbotron.png' alt="Ảnh" />
+                </Row>
+                <Row>
+                    <Col><NavLink to='/manage'>Giao diện quản lý</NavLink></Col>
+                </Row>
+            </Container>
         );
     }
 }

@@ -1,58 +1,44 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-import { LoginButton } from '../login/LoginButton';
-import {LoginWindow} from '../login/LoginWindow';
-import { FaHome } from 'react-icons/fa';
-import '../login/Login.css';
+import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
+import { FaShoppingCart, FaSignInAlt, FaBookOpen, FaTable } from 'react-icons/fa';
 
 class Header extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            loginPopup: false,
-            isNavOpen: false
-        }
-        this.loginPopup = this.loginPopup.bind(this);
-        this.toggleNav = this.toggleNav.bind(this);
-    }
-
-    toggleNav() {
-        this.setState({
-          isNavOpen: !this.state.isNavOpen
-        });
-      }
-
-    loginPopup() {
-        this.setState({loginPopup: !this.state.loginPopup});
-    }
-    
     render() {
         return (
-            <>
-                <Navbar dark expand="md">
-                    <div className="container">
-                        <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand className="mr-auto" href="/"><img src='/images/yellow_bee.jpg' height="30" width="41" alt='Restaurant' /></NavbarBrand>
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
-                            <NavItem>
-                                <NavLink className="nav-link"  to='/home'><FaHome /> Home</NavLink>
-                            </NavItem>
-                            </Nav>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <LoginButton onClick={this.loginPopup} />
-                                    {this.state.loginPopup && <LoginWindow />}
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
-                    </div>
-                </Navbar>             
             <div>
-                
+                <Navbar className="navbar-header" color="light"  expand="md"  light container>
+                    <NavbarBrand href="/">
+                    Aprycot
+                    </NavbarBrand>
+                    <NavbarToggler />
+                    <Collapse navbar>
+                    <Nav className="me-auto nav-header"  navbar>
+                        <NavItem>
+                        <NavLink className="nav-text" href="/">
+                            <FaTable /> Đặt bàn
+                        </NavLink>
+                        </NavItem>
+                        <NavItem>
+                        <NavLink href="/">
+                            <FaBookOpen /> Đặt món ăn
+                        </NavLink>
+                        </NavItem>
+                    </Nav>
+                    <Nav className="ms-auto" navbar>
+                    <NavItem>
+                        <NavLink href="/">
+                            <FaShoppingCart /> Giỏ hàng
+                        </NavLink>
+                        </NavItem>
+                        <NavItem>
+                        <NavLink href="/">
+                            <FaSignInAlt /> Đăng kí / Đăng nhập
+                        </NavLink>
+                        </NavItem>
+                    </Nav>
+                    </Collapse>
+                </Navbar>
             </div>
-            </>
         );
     }
 }
