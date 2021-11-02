@@ -59,3 +59,39 @@
   .pro-item-content:not(:hover), .pro-icon-wrapper:not(:hover) {
     color: black;
   }
+
+  .manage-order-heading {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .manage-order-header {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    padding-top: 5px;
+    margin-left: 15px;
+  }
+
+  .search-bar {
+    width: 200px;
+    
+  }
+
+  .search-box {
+    border-radius: 0px;
+  }
+
+  .search-button, .search-button:hover, .search-button:not(:hover) {
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    background-color: #EA6E12;
+    color: white;
+    font-size: 15px;
+    width: 100px;
+    height: 37.5px;
+    border: 1px solid #EA6E12;
+    text-transform: capitalize;
+    padding: 6px 0px 6px 0px;
+    margin-left: -12px;
+    border-radius: 0px;
+    box-shadow: none;
+  }

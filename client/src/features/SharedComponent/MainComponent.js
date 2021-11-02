@@ -4,7 +4,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import ManageView from '../Manager/ManageViewComponent'
-import ManageOrderView from '../Manager/ManageOrderView';
+import ManageOrderController from '../Manager/ManageOrder/ManageOrderController';
 
 class Main extends Component {
 	render(){
@@ -20,7 +20,7 @@ class Main extends Component {
                     <Switch>
                         <Route path='/home' component={HomePage} />
                         <Route path='/manage' component={ManageView} />
-                        <Route path='/manage_order' component={ManageOrderView} />
+                        <Route path='/manage_order' component={ManageOrderController} />
                         <Redirect to="/home" />
                     </Switch>
                 </div>
