@@ -9,7 +9,7 @@ class Header extends Component{
             <div>
                 <Navbar className="navbar-header" color="light"  expand="md"  light container>
                     <NavbarBrand href="/">
-                    <img width="120px" height="41px" src='assets/images/brand.png' alt="Logo"></img>
+                    <img width="120px" height="41px" src='/assets/images/brand.png' alt="Logo"></img>
                     </NavbarBrand>
                     <NavbarToggler />
                     <Collapse navbar>
