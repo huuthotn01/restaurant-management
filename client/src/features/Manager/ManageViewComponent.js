@@ -24,14 +24,12 @@ class ManageView extends Component{
                         </a>
                     </Col>
                     <Col md="6">    
-                        <a className="cat-manager-item-link" href='/'>
                         <Card className="cat-manager-item-left">
                             <img className="cat-manager-img" width="90px" height="90px" src="/assets/images/manage_customer.jpg" alt = "Mua thuốc online"></img>
                             <CardBody>
                             <CardTitle tag="h5" className="cat-manager-text">Quản lý khách hàng</CardTitle>
                             </CardBody>
                         </Card>
-                        </a>
                     </Col>
                     <Col md="6">
                         <Card className="cat-manager-item-right">

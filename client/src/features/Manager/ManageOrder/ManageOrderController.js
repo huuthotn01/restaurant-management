@@ -7,55 +7,61 @@ const ManageOrderController = () => {
 
     const getOrders = (orderID) => {
         const orders = model.getOrdersbyID(orderID);
-        setModel(prevModel => ({
-            ...prevModel,
+        const newModel = {
+            ...model,
             orders_search: orders
-        }))
+        }
+        setModel(newModel);
     };
 
-    const getOrder = (orderID) => {
-        const order = model.getDetailbyOrderID(orderID);
-
-    }
-
     const getOrderList = (startTime, endTime) => {
-        const OrderList = model.getOrderbyTime(startTime, endTime);
+        const value = model.getOrderbyTime(startTime, endTime);
+        const newModel = {
+            ...model,
+            orders_statistic: value.list,
+            Data_Statistic: value.data
+        }
+        setModel(newModel);
     }
 
-    const onToggleModal = () => {
-        setModel(prevModel => ({
-            ...prevModel,
-            isModalOpen: !model.isModalOpen
-        }))
+    const onToggleModal = (orderID, flag) => {
+        if (flag === true) {
+            const order = model.getOrderbyID(orderID);
+            const details = model.getDetailbyOrderID(orderID);
+            const newModel = {
+                ...model,
+                isModalOpen: !model.isModalOpen,
+                orderDetailsOpen: details,
+                orderOpen: order
+            }
+            setModel(newModel);
+        } else {
+            const newModel = {
+                ...model,
+                isModalOpen: !model.isModalOpen
+            }
+            setModel(newModel);
+        }
     } 
 
-    const onChangeOrderOpen = (orderID) => {
-        const order = model.getOrderbyID(orderID);
-        const details = model.getDetailbyOrderID(orderID);
-        setModel(prevModel => ({
-            ...prevModel,
-            orderDetailsOpen: details,
-            orderOpen: order
-        }))
-    }
-
     const onPageChange = (pageNumber) => {
-        setModel(prevModel => ({
-            ...prevModel,
+        const newModel = {
+            ...model,
             activePage: pageNumber
-        }))
+        }
+        setModel(newModel);
     }
 
     const changeView = (options) => {
-        setModel(prevModel => ({
-            ...prevModel,
+        const newModel = {
+            ...model,
             option: options
-        })) 
+        }
+        setModel(newModel); 
     }
     
     return  <ManageOrderView model = {model} getOrders = {getOrders} 
-    getOrder = {getOrder} getOrderList = {getOrderList}
-    onToggleModal = {onToggleModal} onChangeOrderOpen = {onChangeOrderOpen}
+    getOrderList = {getOrderList} onToggleModal = {onToggleModal} 
     onPageChange = {onPageChange} changeView={changeView}/>
 
 }

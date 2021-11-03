@@ -9,17 +9,17 @@ class OrderDetail {
         this.#quantity = quantity;
         this.#productPrice = productPrice;
     }
-    changeDate = (d) => {
-        var d1 = d.split(" ");
+    changeDate = () => {
+        var d1 = this.#orderDate.split(" ");
         var date = d1[0].split("/");
         var time = d1[1].split(":");
         var dd = date[0];
-        var mm = date[1]-1;
+        var mm = date[1];
         var yy = date[2];
         var hh = time[0];
         var min = time[1];
         var ss = '00';
-        return new Date("20" + yy, mm - 1, dd, hh, min, ss);
+        return new Date(yy, mm - 1, dd, hh, min, ss);
     }
 
     total() {

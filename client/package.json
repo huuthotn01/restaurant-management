@@ -22,6 +22,7 @@
     "react-to-print": "^2.14.0",
     "react-transition-group": "^4.4.2",
     "reactstrap": "^9.0.0",
+    "recharts": "^2.1.6",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

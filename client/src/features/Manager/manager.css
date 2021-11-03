@@ -167,3 +167,41 @@
   box-shadow: none;
   margin: 20px auto 20px 0px;
 }
+
+.statistic-order-heading {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.statistic-order-header {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  padding-top: 5px;
+  padding-left: 20px;
+}
+
+.search-statistic-button, .search-statistic-button:hover, .search-statistic-button:not(:hover) {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  background-color: #EA6E12;
+  color: white;
+  font-size: 15px;
+  width: 100px;
+  height: 37.5px;
+  border: 1px solid #EA6E12;
+  text-transform: capitalize;
+  padding: 6px 0px 6px 0px;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+.total-money {
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.total-money-chart {
+  padding-left: 5%;
+}

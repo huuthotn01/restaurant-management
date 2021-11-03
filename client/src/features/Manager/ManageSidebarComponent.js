@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ProSidebar, Menu, MenuItem, SubMenu, SidebarContent, SidebarFooter, SidebarHeader } from 'react-pro-sidebar';
+import { ProSidebar, Menu, MenuItem, SidebarContent, SidebarFooter, SidebarHeader } from 'react-pro-sidebar';
 import { FaHeart, FaGithub } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 class ManageSideBar extends Component {
     render(){
@@ -26,23 +27,19 @@ class ManageSideBar extends Component {
                 </SidebarHeader>
                 <SidebarContent>
                     <Menu iconShape="square">
-                        <SubMenu title="Quản lý đơn hàng" icon={<FaHeart />}>
-                            <MenuItem>Xem thông tin</MenuItem>
-                            <MenuItem>Thống kê đơn hàng</MenuItem>
-                        </SubMenu>
-                        <SubMenu title="Quản lý khách hàng" icon={<FaHeart />}>
-                            <MenuItem>Xem thông tin</MenuItem>
-                            <MenuItem>Xác thực tài khoản</MenuItem>
-                        </SubMenu>
-                        <SubMenu title="Quản lý nhân viên" icon={<FaHeart />}>
-                            <MenuItem>Cấp tài khoản</MenuItem>
-                            <MenuItem>Xem thông tin</MenuItem>
-                        </SubMenu>
-                        <SubMenu title="Quản lý menu" icon={<FaHeart />}>
-                            <MenuItem>Thêm món ăn</MenuItem>
-                            <MenuItem>Sửa thông tin </MenuItem>
-                            <MenuItem>Xóa món ăn </MenuItem>
-                        </SubMenu>
+                        <MenuItem icon={<FaHeart />}>
+                        Quản lý đơn hàng
+                        <Link to="/manage_order" />
+                        </MenuItem>
+                        <MenuItem icon={<FaHeart />}>
+                        Quản lý khách hàng
+                        </MenuItem>
+                        <MenuItem icon={<FaHeart />}>
+                        Quản lý nhân viên
+                        </MenuItem>
+                        <MenuItem icon={<FaHeart />}>
+                        Quản lý menu
+                        </MenuItem>
                     </Menu>
                 </SidebarContent>
                 <SidebarFooter>
