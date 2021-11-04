@@ -1,10 +1,11 @@
 import React from 'react';
-import { MdArrowBack, MdAccountCircle } from 'react-icons/md';
+import { MdAccountCircle } from 'react-icons/md';
+import { ImCancelCircle } from 'react-icons/im';
 
 const NavigationPanel = (props) => {
 	return (
 		<div className='NavigationPanel'>
-			<MdArrowBack onClick={props.onClick} className='back' />
+			<ImCancelCircle onClick={props.onClick} className='back' />
 			<div className='dots'>
 				<MdAccountCircle />
 			</div>

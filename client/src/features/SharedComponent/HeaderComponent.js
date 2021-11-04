@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
-import { FaShoppingCart, FaSignInAlt, FaBookOpen, FaTable } from 'react-icons/fa';
+import { FaShoppingCart, FaBookOpen, FaTable } from 'react-icons/fa';
 import { Login } from '../login/Login';
 
 class Header extends Component{
@@ -13,30 +13,26 @@ class Header extends Component{
                     </NavbarBrand>
                     <NavbarToggler />
                     <Collapse navbar>
-                    <Nav className="me-auto nav-header"  navbar>
-                        <NavItem>
-                        <NavLink className="nav-text" href="/">
-                            <FaTable /> Đặt bàn
-                        </NavLink>
-                        </NavItem>
-                        <NavItem>
-                        <NavLink href="/">
-                            <FaBookOpen /> Đặt món ăn
-                        </NavLink>
-                        </NavItem>
-                    </Nav>
-                    <Nav className="ms-auto" navbar>
-                    <NavItem>
-                        <NavLink href="/">
-                            <FaShoppingCart /> Giỏ hàng
-                        </NavLink>
-                        </NavItem>
-                        <NavItem>
-                        <NavLink href="/">
-                            <FaSignInAlt /> <Login />
-                        </NavLink>
-                        </NavItem>
-                    </Nav>
+                        <Nav className="nav-header flex-container" style={{width: "100%"}} navbar>
+                            <NavItem className="flex-item" style={{flexGrow: "3"}}>
+                            <NavLink className="nav-text" href="/">
+                                <FaTable /> Đặt bàn
+                            </NavLink>
+                            </NavItem>
+                            <NavItem className="flex-item" style={{flexGrow: "3"}}>
+                            <NavLink href="/">
+                                <FaBookOpen /> Đặt món ăn
+                            </NavLink>
+                            </NavItem>
+                            <NavItem className="flex-item" style={{flexGrow: "3"}}>
+                                <NavLink href="/">
+                                    <FaShoppingCart /> Giỏ hàng
+                                </NavLink>
+                            </NavItem>
+                            <NavItem className="flex-item" style={{flexGrow: "4"}}>
+                                <Login />
+                            </NavItem>
+                        </Nav>
                     </Collapse>
                 </Navbar>
             </div>

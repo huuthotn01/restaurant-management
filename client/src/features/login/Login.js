@@ -7,12 +7,14 @@ import {In} from './In';
 class Login extends Component {
 	constructor(props) {
 		super(props);
-		this.updateContext = (isin, fname, url) => {
+		this.updateContext = (isin, fname, lname, email, url) => {
 			this.setState(state => ({
 				loginPopup: false,
 				loginInfo: {
 					isIn: isin,
 					fName: fname,
+					lName: lname,
+					email: email,
 					avatarURL: url,
 					updateContext: this.state.loginInfo.updateContext
 				}
@@ -23,6 +25,8 @@ class Login extends Component {
 			loginInfo: {
 				isIn: loginInfo.isIn,
 				fName: loginInfo.fName,
+				lName: loginInfo.lName,
+				email: loginInfo.email,
 				avatarURL: loginInfo.avatarURL,
 				updateContext: this.updateContext,
 			}
@@ -36,17 +40,16 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div>
+			<>
 				<LoginContext.Provider value={this.state.loginInfo}>
 					<LoginContext.Consumer>
-						{(loginInfo) => 
-							(loginInfo.isIn ? 
-								<In avatar={loginInfo.avatarURL} context={loginInfo} /> : 
-								<NotIn loginPopup={this.state.loginPopup} onClick={this.loginWindowToggle} />
-							)}
+						{(loginInfo) => (loginInfo.isIn ? 
+							<In avatar={loginInfo.avatarURL} context={loginInfo} /> : 
+							<NotIn loginPopup={this.state.loginPopup} onClick={this.loginWindowToggle} />
+						)}
 					</LoginContext.Consumer>
 				</LoginContext.Provider>
-			</div>
+			</>
 		);
 	}
 }

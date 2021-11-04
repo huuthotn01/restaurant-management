@@ -5,6 +5,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import ManageView from '../Manager/ManageViewComponent'
 import ManageOrderView from '../Manager/ManageOrderView';
+import { ChangeInfo } from '../login/ChangeInfo';
 
 class Main extends Component {
 	render(){
@@ -21,6 +22,7 @@ class Main extends Component {
                         <Route path='/home' component={HomePage} />
                         <Route path='/manage' component={ManageView} />
                         <Route path='/manage_order' component={ManageOrderView} />
+                        <Route path='/change-info' component={ChangeInfo} />
                         <Redirect to="/home" />
                     </Switch>
                 </div>

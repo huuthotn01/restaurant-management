@@ -1,13 +1,12 @@
 import React from 'react';
-import { MdAccountCircle } from 'react-icons/md';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaSignInAlt } from 'react-icons/fa';
 
 function LoginButton(props) {
     return (
-        <div className='NavigationPanel'>
-            <div className='dots' onClick={props.onClick}>
-                <MdAccountCircle style={{cursor: 'pointer'}} />
-            </div>
+        <div className='NavigationPanel' style={{width: "100%"}}>
+            <span className='nav-link' onClick={props.onClick}>
+                <FaSignInAlt /> Đăng nhập / Đăng kí
+            </span>
         </div>
     );
 }

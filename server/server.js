@@ -16,6 +16,11 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.post('/change-info', (req, res) => {
+    console.log("Change Info: ", req.body);
+    res.end();
+});
+
 app.post('/gg_auth', (req, res) => {
     const gg_auth = require('./google_auth');
     console.log("Token: ", req.body.tokenId);
@@ -45,8 +50,8 @@ app.get('*', function(req, res) {
 app.get('/home', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
+*/
 
 app.use(function(req, res, next) {
     res.status(404).send('<h1>Nothing found</h1>');
 });
-*/
