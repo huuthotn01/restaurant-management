@@ -1,8 +1,7 @@
 class Order {
-    #orderIdx = ''; #orderID = ''; #customerName = '';
-    #orderDate = ''; #totalProduct = ''; #totalPrice = '';
-    constructor(orderIdx, orderID, customerName, createdDate, totalProduct, totalPrice) {
-        this.#orderIdx = orderIdx;
+    #orderID = ''; #customerName = '';  #orderDate = ''; 
+    #totalProduct = ''; #totalPrice = '';
+    constructor(orderID, customerName, createdDate, totalProduct, totalPrice) {
         this.#orderID = orderID;
         this.#customerName = customerName;
         this.#orderDate = createdDate;
@@ -21,7 +20,7 @@ class Order {
         let ss = '00';
         return new Date(yy, mm - 1, dd, hh, min, ss);
     } 
-    get orderIdx() { return this.#orderIdx; }
+    
     get orderID() { return this.#orderID; }
     get customerName() { return this.#customerName; }
     get orderDate() { return this.#orderDate; }

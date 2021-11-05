@@ -1,8 +1,8 @@
 class OrderDetail {
-    #detailIdx = '';#orderID = ''; #orderDate = ''; 
-    #itemName = ''; #quantity = ''; #productPrice = '';
-    constructor(detailIdx, orderID, createdDate, itemName, quantity, productPrice) {
-        this.#detailIdx = detailIdx;
+    #orderID = ''; #orderDate = '';  #itemName = ''; 
+    #quantity = ''; #productPrice = '';
+
+    constructor(orderID, createdDate, itemName, quantity, productPrice) {
         this.#orderID = orderID;
         this.#orderDate = createdDate;
         this.#itemName = itemName;
@@ -25,17 +25,12 @@ class OrderDetail {
     total() {
         return this.#productPrice * this.#quantity;
     }
-    
-    get detailIdx() { return this.#detailIdx; }
+
     get orderID() { return this.#orderID; }
     get orderDate() { return this.#orderDate; }
     get itemName() { return this.#itemName; }
     get quantity() { return this.#quantity; }
     get productPrice() { return this.#productPrice; }
-
-    set detailIdx(detailIdx) {
-        this.#detailIdx = detailIdx;
-    }
 }
 
 export default OrderDetail;

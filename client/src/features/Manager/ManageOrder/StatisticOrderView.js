@@ -22,7 +22,7 @@ class StatisticOrder extends Component {
             return (
                 <tr>
                 <th scope="row">
-                    {order.orderIdx}
+                    {this.props.model.orders_statistic.indexOf(order) + 1}
                 </th>
                 <td>
                     Nguyễn Khoa Gia Cát
@@ -65,7 +65,7 @@ class StatisticOrder extends Component {
                             </Col>
                             <Col md="4">
                                 <Button className="search-statistic-button" style={{marginTop: '0px'}} onClick={this.onInputTime}>
-                                    <FaSearch /> Tìm kiếm
+                                    <FaSearch /> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span>
                                 </Button>
                             </Col>
                         </Row>

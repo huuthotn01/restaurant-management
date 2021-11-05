@@ -34,7 +34,7 @@ class ViewOrder extends Component {
             return (
                 <tr>
                 <th scope="row">
-                    {order.orderIdx}
+                    {this.props.model.orders_search.indexOf(order) + 1}
                 </th>
                 <td>
                     Nguyễn Khoa Gia Cát
@@ -68,7 +68,7 @@ class ViewOrder extends Component {
             return (
                 <tr>
                 <th scope="row" style={{textAlign: 'center'}}>
-                    {detail.detailIdx}
+                    {this.props.model.orderDetailsOpen.indexOf(detail) + 1}
                 </th>
                 <td>
                     {detail.itemName}
@@ -120,7 +120,7 @@ class ViewOrder extends Component {
                                 </FormGroup>
                             </Form> 
                             <Button className="search-button" onClick={this.onInputOrderID}>
-                                <FaSearch /> Tìm kiếm
+                                <FaSearch /> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span>
                             </Button>
                         </Row>
                         </Col>

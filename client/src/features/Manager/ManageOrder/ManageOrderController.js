@@ -1,69 +1,74 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import ManageOrderView from './ManageOrderView';
 import ManageOrderModel from './ManageOrderModel';
 
-const ManageOrderController = () => {   
-    const [model, setModel] = useState(ManageOrderModel);
-
-    const getOrders = (orderID) => {
-        const orders = model.getOrdersbyID(orderID);
-        const newModel = {
-            ...model,
-            orders_search: orders
+class ManageOrderController extends Component { 
+    constructor(props) {
+        super(props);
+        this.state = {
+            model: new ManageOrderModel()
         }
-        setModel(newModel);
+        this.getOrders = this.getOrders.bind(this);
+        this.getOrderList = this.getOrderList.bind(this);
+        this.onToggleModal = this.onToggleModal.bind(this);
+        this.onPageChange = this.onPageChange.bind(this);
+        this.changeView = this.changeView.bind(this);
+    }  
+
+    getOrders(orderID) {
+        const newModel = this.state.model;
+        
+        newModel.orders_search = this.state.model.getOrdersbyID(orderID);
+
+        this.setState({model: newModel});
     };
 
-    const getOrderList = (startTime, endTime) => {
-        const value = model.getOrderbyTime(startTime, endTime);
-        const newModel = {
-            ...model,
-            orders_statistic: value.list,
-            Data_Statistic: value.data
-        }
-        setModel(newModel);
+    getOrderList(startTime, endTime) {
+        const newModel = this.state.model;
+        const value = this.state.model.getOrderbyTime(startTime, endTime);
+
+        newModel.orders_statistic = value.list;
+        newModel.Data_Statistic = value.data;
+
+        this.setState({model: newModel});
     }
 
-    const onToggleModal = (orderID, flag) => {
+    onToggleModal(orderID, flag) {
+        const newModel = this.state.model;
         if (flag === true) {
-            const order = model.getOrderbyID(orderID);
-            const details = model.getDetailbyOrderID(orderID);
-            const newModel = {
-                ...model,
-                isModalOpen: !model.isModalOpen,
-                orderDetailsOpen: details,
-                orderOpen: order
-            }
-            setModel(newModel);
+            newModel.isModalOpen = !this.state.model.isModalOpen;
+            newModel.orderOpen = this.state.model.getOrderbyID(orderID);
+            newModel.orderDetailsOpen = this.state.model.getDetailbyOrderID(orderID);
+
+            this.setState({model: newModel});
         } else {
-            const newModel = {
-                ...model,
-                isModalOpen: !model.isModalOpen
-            }
-            setModel(newModel);
+            newModel.isModalOpen = !this.state.model.isModalOpen;
+
+            this.setState({model: newModel});
         }
     } 
 
-    const onPageChange = (pageNumber) => {
-        const newModel = {
-            ...model,
-            activePage: pageNumber
-        }
-        setModel(newModel);
+    onPageChange(pageNumber) {
+        const newModel = this.state.model;
+
+        newModel.activePage = pageNumber;
+
+        this.setState({model: newModel});
     }
 
-    const changeView = (options) => {
-        const newModel = {
-            ...model,
-            option: options
-        }
-        setModel(newModel); 
+    changeView(options) {
+        const newModel = this.state.model;
+
+        newModel.option = options;
+
+        this.setState({model: newModel});
     }
     
-    return  <ManageOrderView model = {model} getOrders = {getOrders} 
-    getOrderList = {getOrderList} onToggleModal = {onToggleModal} 
-    onPageChange = {onPageChange} changeView={changeView}/>
-
+    render() {
+        return  <ManageOrderView model = {this.state.model} getOrders = {this.getOrders} 
+        getOrderList = {this.getOrderList} onToggleModal = {this.onToggleModal} 
+        onPageChange = {this.onPageChange} changeView={this.changeView}/>
+    }
 }
 
 export default ManageOrderController;

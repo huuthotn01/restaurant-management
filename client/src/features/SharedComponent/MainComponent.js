@@ -8,17 +8,12 @@ import ManageOrderController from '../Manager/ManageOrder/ManageOrderController'
 
 class Main extends Component {
 	render(){
-        const HomePage = () => {
-            return(
-            <Home />
-            );
-        }
         return (
             <div>
                 <Header />
                 <div>
                     <Switch>
-                        <Route path='/home' component={HomePage} />
+                        <Route path='/home' component={Home} />
                         <Route path='/manage' component={ManageView} />
                         <Route path='/manage_order' component={ManageOrderController} />
                         <Redirect to="/home" />
