@@ -1,0 +1,12 @@
+.form-control{
+    border-color: #EA6A12;
+}
+
+.form-select{
+    border-color: #EA6A12;
+}
+
+.form-control::placeholder { 
+    color: #EA6A12;
+    opacity: 1; 
+}

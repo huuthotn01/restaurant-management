@@ -6,6 +6,7 @@ import Home from './HomeComponent';
 import ManagePage from '../Manager/ManagePageComponent'
 import ManageOrderController from '../Manager/ManageOrder/ManageOrderController';
 import ManageCustomerController from '../Manager/ManageCustomer/ManageCustomerController';
+import ReservationPage from '../TableReservation/ReservationPage'
 
 class Main extends Component {
 	render(){
@@ -16,6 +17,8 @@ class Main extends Component {
                     <Switch>
                         <Route path='/home' component={Home} />
                         <Route path='/manage' component={ManagePage} />
+                        <Route path='/reservation' component={ReservationPage}/>
+                        <Route path='/manage' component={ManageView} />
                         <Route path='/manage_order' component={ManageOrderController} />
                         <Route path='/manage_customer' component={ManageCustomerController} />
                         <Redirect to="/home" />
