@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import App from './login/App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-pro-sidebar/dist/css/styles.css';
 import './index.css';
-import MainComponent from './components/MainComponent';
+import MainComponent from './features/SharedComponent/MainComponent';
 import {BrowserRouter} from 'react-router-dom';
-import {Login } from './login/Login';
-import './login/Login.css';
 
 ReactDOM.render(
-    /*
     <BrowserRouter>
         <div className='App'>
             <MainComponent />
         </div>
-    </BrowserRouter>,*/
-    <Login />,
+    </BrowserRouter>,
     document.getElementById('root')
 );

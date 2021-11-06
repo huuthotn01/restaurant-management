@@ -5,12 +5,42 @@ html {
 }
 
 body {
-    background-image: url('./yellow_bee.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #3E363F;
-    font-family: "Roboto Condensed", sans-serif;
-    height: 100vh;
-    overflow: hidden;
+    background-color: #FFFAF7;
+}
+
+.navbar-header {
+    background-color: #FBF9F0;
+    font-size: 20px;
+    color: black;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-size: 15px;
+    color: black
+}
+
+.navbar-light .navbar-brand {
+    font-size: 25px;
+}
+
+.header-icon {
+  margin-top: -3px;
+  font-size: 15px;
+  margin-right: 2px;
+}
+
+.footer {
+  background-color: #FBF9F0;
+  clear: both;
+}
+
+.footer-header {
+  font-size: 15px;
+  color: lightslategray;
+  font-weight: bold;
+}
+  
+.footer-content {
+  color: lightslategray;
+  font-size: 15px;
 }

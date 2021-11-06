@@ -1,0 +1,202 @@
+[
+    {
+        "fname":"An",
+        "lname":"Nguyen Van",
+        "username":"annguyen",
+        "password":"annguyenbk",
+        "phone":"0257894578",
+        "email":"annguyen01@gmail.com",
+        "role":"3",
+        "Authenticate": true
+    },
+    {
+        "fname":"Huu Tho",
+        "lname":"Tran Nguyen",
+        "username":"huutho",
+        "password":"huuthobk",
+        "phone":"0256894578",
+        "email":"huuthotn01@gmail.com",
+        "role":"1",
+        "Authenticate": false
+    },
+    {
+        "fname":"Gia Cat",
+        "lname":"Nguyen Khoa",
+        "username":"giacat",
+        "password":"giacatbk",
+        "phone":"0521485963",
+        "email":"giacat@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"Ha Bac",
+        "lname":"Ngo Thi",
+        "username":"habac",
+        "password":"habacbk",
+        "phone":"0264785413",
+        "email":"habac@gmail.com",
+        "role":"1",
+        "Authenticate": true
+    },
+    {
+        "fname":"Xuan Vu",
+        "lname":"Nguyen Van",
+        "username":"xuanvu",
+        "password":"xuanvubk",
+        "phone":"0264845317",
+        "email":"xuanvu@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"Thanh Mai",
+        "lname":"Cao Thi",
+        "username":"thanhmai",
+        "password":"thanhmaibk",
+        "phone":"0254135981",
+        "email":"thanhmai@gmail.com",
+        "role":"1",
+        "Authenticate": false
+    },
+    {
+        "fname":"Huy Phuoc",
+        "lname":"Le",
+        "username":"huyphuoc",
+        "password":"huyphuocbk",
+        "phone":"0256412589",
+        "email":"huyphuoc@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"Hai",
+        "lname":"Nguyen",
+        "username":"quanghai",
+        "password":"quanghaibk",
+        "phone":"0125786598",
+        "email":"quanghai@gmail.com",
+        "role":"1",
+        "Authenticate": true
+    },
+    {
+        "fname":"Phuong",
+        "lname":"Nguyen",
+        "username":"congphuong",
+        "password":"congphuongbk",
+        "phone":"0256314523",
+        "email":"congphuong@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"GC",
+        "lname":"Abyss",
+        "username":"jacac",
+        "password":"jacacbk",
+        "phone":"0265413559",
+        "email":"jacac@gmail.com",
+        "role":"1",
+        "Authenticate": false
+    },
+    {
+        "fname":"TDS",
+        "lname":"Raum",
+        "username":"raum",
+        "password":"raumbk",
+        "phone":"0245125896",
+        "email":"raum@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"TDS",
+        "lname":"Ducky",
+        "username":"ducky",
+        "password":"duckyiu",
+        "phone":"0237267277",
+        "email":"ducky@gmail.com",
+        "role":"1",
+        "Authenticate": true
+    },
+    {
+        "fname":"KuMoew",
+        "lname":"Dang",
+        "username":"kumoew",
+        "password":"kumeowbk",
+        "phone":"0245632158",
+        "email":"kumoew@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"Sarah",
+        "lname":"Hall",
+        "username":"sarah",
+        "password":"sarahbuv",
+        "phone":"0251103104",
+        "email":"sarah@gmail.com",
+        "role":"1",
+        "Authenticate": false
+    },
+    {
+        "fname":"Tai",
+        "lname":"Nguyen",
+        "username":"tantai",
+        "password":"tantaibk",
+        "phone":"0212321232",
+        "email":"tantai@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"Minh",
+        "lname":"Nguyen",
+        "username":"nhatminh",
+        "password":"nhatminhbk",
+        "phone":"0256214798",
+        "email":"nhatminh@gmail.com",
+        "role":"1",
+        "Authenticate": true
+    },
+    {
+        "fname":"Kungfu",
+        "lname":"Nguyen",
+        "username":"kungfu",
+        "password":"kungfuit",
+        "phone":"0256123564",
+        "email":"kungfu@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"Xuan Truong",
+        "lname":"Luong",
+        "username":"xuantruong",
+        "password":"xuantruongbk",
+        "phone":"0231564897",
+        "email":"xuantruong@gmail.com",
+        "role":"1",
+        "Authenticate": false
+    },
+    {
+        "fname":"Poo",
+        "lname":"Tree",
+        "username":"treepoo",
+        "password":"treepoobk",
+        "phone":"0245612487",
+        "email":"treepoo@gmail.com",
+        "role":"2"
+    },
+    {
+        "fname":"Kil",
+        "lname":"Groth",
+        "username":"kilgroth",
+        "password":"kilgrothaov",
+        "phone":"0214523651",
+        "email":"kilgroth@gmail.com",
+        "role":"1",
+        "Authenticate": true
+    },
+    {
+        "fname":"Florentino",
+        "lname":"Fennik",
+        "username":"fennik",
+        "password":"fennikaov",
+        "phone":"0215423651",
+        "email":"fennik@gmail.com",
+        "role":"2"
+    }
+]

@@ -2,6 +2,14 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const path = require('path');
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'NKGC@24.11.2001',
+    database: 'pharmacy'
+  });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -17,6 +25,14 @@ app.post('/gg_auth', (req, res) => {
         // res.write(JSON.stringify({body: 'Hello'}));
         // res.end(JSON.stringify({body: 'Hello'}));
         res.send({info: response});
+    });
+});
+
+app.get('/api/news', (req, res) => {
+    var sql = "SELECT * FROM doctor";
+    connection.query(sql, function(err, results) {
+      if (err) throw err;
+      res.json({news: results});
     });
 });
 
