@@ -9,9 +9,6 @@ class Home extends Component {
                 <Row>
                     <img src='/assets/images/jumbotron.png' alt="Ảnh" />
                 </Row>
-                <Row>
-                    <Col><NavLink to='/manage'>Giao diện quản lý</NavLink></Col>
-                </Row>
             </Container>
         );
     }

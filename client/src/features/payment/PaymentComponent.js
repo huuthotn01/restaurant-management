@@ -14,10 +14,11 @@ class Payment extends Component {
              <ul type="circle" id='text3'>
                  <li><a id="huhu1" href="https://momo.vn/">Ví điện tử Momo (Momo wallet) &ensp;</a><img className="imag" border-radius="50px" width="20px" height="20px" src='/images/momo.jpg' alt=""></img></li>
                  <li><a href="https://www.ocb.com.vn/vi/">Thẻ ngân hàng (Bank card)</a><img width="40px" height="30px" src='/images/bankcard.png' alt=""></img></li>
+                 <li><a href="#">Tiền mặt</a>&ensp;<img width="40px" height="30px" src='/images/cash.jpg' alt=""></img></li>
              </ul>
              
             </Container>
-            <button type="button" class="btn btn-success btn-sm" id="card"><a href="https://www.youtube.com/watch?v=iik25wqIuFo">Xem lại giỏ hàng</a></button>
+            <button type="button" class="button-phuoc btn btn-success btn-sm" id="card"><a href="/food_ordering">Quay lại</a></button>
             </div> 
              <div className='space2'id="bill">
              <Container >

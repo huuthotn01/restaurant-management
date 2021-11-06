@@ -57,7 +57,7 @@ const Drinks = () => {
       key={meal.id}
       id={meal.id}
       name={meal.name}
-      price={meal.price}
+      price={meal.price*23000}
       image={meal.image}
     />
   ));

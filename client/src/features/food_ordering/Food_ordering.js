@@ -5,7 +5,7 @@ import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
 
-function App() {
+function Food_Ordering() {
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default Food_Ordering;

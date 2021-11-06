@@ -11,6 +11,7 @@ import Payment from '../payment/PaymentComponent';
 import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
 import { ChangeInfo } from '../login/ChangeInfoView';
 import { ForgotPass } from '../login/LoginController/ForgotPass';
+import Food_Ordering  from '../food_ordering/Food_ordering'
 
 class Main extends Component {
 	render(){
@@ -28,6 +29,7 @@ class Main extends Component {
                         <Route path='/cancel_reservation' component={CancelTablePage} />
                         <Route path='/change-info' component={ChangeInfo} />
                         <Route path='/forgot-pass' component={ForgotPass} />
+                        <Route path='/food_ordering' component={Food_Ordering} />
                         <Redirect to="/home" />
                     </Switch>
                 </div>

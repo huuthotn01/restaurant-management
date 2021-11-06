@@ -1,4 +1,5 @@
 .send{
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     width: fit-content;
     background-color: #f09a61;
     border-radius: 10px;
@@ -8,7 +9,8 @@
 }
 
 .unsent{
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     width: fit-content;
-    background-color: #a19c99;
+    background-color: #a19c99 !important;
     border-radius: 10px;
 }

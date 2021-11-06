@@ -70,3 +70,7 @@ button a:hover {
 #huhu {
   padding-left: 120px;
 }
+
+.button-phuoc {
+    border: 1px orange;
+}

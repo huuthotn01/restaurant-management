@@ -10,6 +10,16 @@
   align-items: center;
   border-radius: 25px;
   font-weight: bold;
+  text-transform: none;
+  margin-top: -5px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  position: relative;
+  padding: 1rem;
 }
 
 .button:hover,

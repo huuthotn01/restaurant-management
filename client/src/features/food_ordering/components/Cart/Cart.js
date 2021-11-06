@@ -49,7 +49,7 @@ const Cart = (props) => {
         <button className={classes['button--alt']} onClick={props.onClose}>
           Quay lại menu
         </button>
-        {hasItems && <button className={classes.button}>Tiến hành thanh toán</button>}
+        {hasItems && <a href='/payment'> <button className={classes.button}>Tiến hành thanh toán</button></a>}
       </div>
     </Modal>
   );

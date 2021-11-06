@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button, NavLink } from "react-bootstrap";
-import './Popup_Success.css'
+import './Popup_Success.css';
+import { useHistory } from 'react-router-dom';
 
 export default function InfoModal() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const history = useHistory();
+  const handleClick = () => history.push('/payment');
   return (
     <>
       <button type="button" class="btn send text-white" onClick={handleShow}>
@@ -25,7 +28,7 @@ export default function InfoModal() {
           <button type="button" class="btn unsent text-white" onClick={handleClose}>
             Hủy yêu cầu
           </button>
-          <button type="button" class="btn send text-white" onClick={handleClose}>
+          <button type="button" class="btn send text-white" onClick={handleClick}>
             Thanh toán
           </button>
         </Modal.Footer>

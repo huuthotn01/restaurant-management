@@ -14,9 +14,11 @@ body {
 }
 
 .navbar-header {
-    background-color: #FBF9F0;
+    background-color: #FFFAF7 !important;
     font-size: 20px;
     color: black;
+    z-index: 10;
+    width: 100%;
 }
 
 .navbar-light .navbar-nav .nav-link {

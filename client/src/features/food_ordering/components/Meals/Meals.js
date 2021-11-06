@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import Banner from './Banner';
 import Food from './Food';
 import Drink from './Drink';
+import Header from '../Layout/Header';
 
 import classes from './Menu.module.css';
 
