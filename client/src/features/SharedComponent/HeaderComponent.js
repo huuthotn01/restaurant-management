@@ -15,7 +15,7 @@ class Header extends Component{
                     <Collapse navbar>
                     <Nav className="me-auto nav-header"  navbar>
                         <NavItem>
-                        <NavLink className="nav-text" href="/">
+                        <NavLink className="nav-text" href="/reservation">
                             <FaTable className="header-icon"/> Đặt bàn
                         </NavLink>
                         </NavItem>
