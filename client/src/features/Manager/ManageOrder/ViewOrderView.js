@@ -265,8 +265,6 @@ class ViewOrder extends Component {
                                 </Col>
                             </Row>
                         </Container>
-                    </ModalBody>
-                    <ModalFooter>
                         <Container>
                             <Row>
                                 <Col md="3" className='ms-auto'>
@@ -277,7 +275,7 @@ class ViewOrder extends Component {
                                 </Col>
                             </Row>
                         </Container>
-                    </ModalFooter>
+                    </ModalBody>
                 </Modal>
                 </Container> 
         )

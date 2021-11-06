@@ -17,7 +17,7 @@ class Header extends Component{
                     <NavbarToggler />
                     <Collapse navbar>
                         <Nav className="nav-header flex-container" style={{width: "100%"}} navbar>
-                            <NavItem className="flex-item" style={{flexGrow: "3"}}>
+                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
                             <NavLink className="nav-text">
                                 <Dropdown as={ButtonGroup}>
                                     <Dropdown.Toggle variant='success' style={{marginLeft: "5px", paddingTop: "0px", marginTop: "0px", paddingBottom: "0px", backgroundColor: "transparent", color: "black", borderColor: "transparent"}} >
@@ -26,12 +26,12 @@ class Header extends Component{
                                         </span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
-                                        <LinkContainer to='/manage' >
+                                        <LinkContainer to='/reservation' >
                                             <Dropdown.Item eventKey="1">
                                                 <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >Đặt bàn</span>
                                             </Dropdown.Item>
                                         </LinkContainer>
-                                        <LinkContainer to='/change-info' >
+                                        <LinkContainer to='/cancel_reservation' >
                                             <Dropdown.Item eventKey="2" >
                                                 <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >Hủy đặt bàn</span>
                                             </Dropdown.Item>
@@ -40,17 +40,12 @@ class Header extends Component{
                                 </Dropdown>
                             </NavLink>
                             </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "3"}}>
-                            <NavLink href="/">
+                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
+                            <NavLink href="/food_ordering">
                                 <FaBookOpen /> Đặt món ăn
                             </NavLink>
                             </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "3"}}>
-                                <NavLink href="/">
-                                    <FaShoppingCart /> Giỏ hàng
-                                </NavLink>
-                            </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "4"}}>
+                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
                                 <LoginView />
                             </NavItem>
                         </Nav>

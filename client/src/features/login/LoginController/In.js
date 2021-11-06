@@ -2,7 +2,7 @@ import React from 'react';
 import {Logout} from './Google';
 import { FaEdit } from 'react-icons/fa';
 import { GrUserManager } from 'react-icons/gr';
-import { Nav, NavBar, MenuItem, Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Image from 'react-bootstrap/Image';
 import { ButtonGroup } from 'reactstrap';
@@ -26,9 +26,11 @@ class In extends React.Component {
         return (
             <div className='NavigationPanel' style={{width: "100%"}}>
                 <span className='nav-link' style={{padding: "0px"}}>
-                    <Image style={{height: "36.8px", width: "36.8px"}} src={this.props.avatar} roundedCircle /> <b>{this.props.context.fName}</b>
                     <Dropdown as={ButtonGroup}>
-                        <Dropdown.Toggle split variant='success' style={{marginLeft: "5px", paddingTop: "0px", marginTop: "0px", paddingBottom: "0px", backgroundColor: "transparent", color: "black", borderColor: "transparent"}} />
+                        <Dropdown.Toggle split variant='success' style={{marginLeft: "5px", paddingTop: "0px", marginTop: "0px", paddingBottom: "0px", backgroundColor: "transparent", color: "black", borderColor: "transparent"}} >
+                            <><Image style={{height: "36.8px", width: "36.8px"}} src={this.props.avatar} roundedCircle />
+                            <b style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px", marginLeft: '5px'}}>{this.props.context.fName}</b></>
+                        </Dropdown.Toggle>
                         <Dropdown.Menu>
                             <LinkContainer to='/manage' >
                                 <Dropdown.Item eventKey="1">
