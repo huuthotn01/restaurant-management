@@ -9,7 +9,7 @@ const Cart = (props) => {
   const cartCtx = useContext(CartContext);
 
   // gia tong cong
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const totalAmount = `${cartCtx.totalAmount.toFixed(0)} VND`;
   const hasItems = cartCtx.items.length > 0;
 
   // xoa bot mon an
