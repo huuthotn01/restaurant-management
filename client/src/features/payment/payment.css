@@ -1,0 +1,72 @@
+.space1 {
+  width: 60%;
+  height: 450px;
+  padding-top: 70px;
+  padding-left: 150px;
+  float: left;
+}
+.space2 {
+  width: auto;
+  height: 450px;
+  float: left;
+}
+.text {
+  color:  black;
+  position: absolute;
+  top: 171px;
+  left: 250px;
+  font-size: 15px;
+  font-weight: bold;
+  }
+
+#text2 {
+  color:  black;
+  position: absolute;
+  top: 230px;
+  left:300px;
+  font-size: 15px;
+  font-weight: bold;
+}
+#text3 {
+  color:  black;
+  position: absolute;
+  top: 270px;
+  left:330px;
+  font-size: 14px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+button a {
+  color: white;
+}
+button a:hover {
+  color: white;
+}
+
+.imag{
+  border-radius: 4px;
+}
+#bill {
+  border: 5px solid orange;
+  border-style: double;
+}
+#card{
+  position: absolute;
+  top: 450px;
+  left: 150px;
+}
+#row {
+  padding-left: 20px;
+}
+.COL {
+  color:black;
+  padding: 20px;
+}
+#pad {
+  padding-left: 95px;
+}
+#huhu {
+  padding-left: 120px;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
 import { FaShoppingCart, FaBookOpen, FaTable } from 'react-icons/fa';
-import { Login } from '../login/Login';
+import { LoginView } from '../login/LoginView';
 
 class Header extends Component{
     render() {
@@ -32,7 +32,7 @@ class Header extends Component{
                         </NavLink>
                         </NavItem>
                         <NavItem>
-                            <Login />
+                            <LoginView />
                             {/*<span style={{fontSize: '14px', color: 'black'}}> Đăng kí/Đăng nhập</span>*/}
                         </NavItem>
                     </Nav>

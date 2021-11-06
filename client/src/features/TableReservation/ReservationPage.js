@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { ReservationForm } from "./ReservationForm";
-import "./ReservationPage.css";
 
 class ReservationPage extends Component {
   render() {
