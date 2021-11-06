@@ -7,11 +7,11 @@
 }
 
 .btn {
-    background-color: #EA6A12;
+    background-color: #f09a61;
     border-radius: 10px;
 }
 .btn:hover{
-    background-color: #f09a61;
+    background-color: #EA6A12;
 }
 .btn:active{
     background-color: #EA6A12;
