@@ -92,12 +92,12 @@
 
 .search-button, .search-button:hover, .search-button:not(:hover) {
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  background-color: #EA6E12;
+  background-color: #F09A61;
   color: white;
   font-size: 15px;
   width: 100px;
   height: 37.5px;
-  border: 1px solid #EA6E12;
+  border: 1px solid #F09A61;
   text-transform: capitalize;
   padding: 6px 0px 6px 0px;
   margin-left: -12px;
@@ -107,7 +107,7 @@
 
 .order-button, .order-button:hover, .order-button:not(:hover)  {
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  background-color: #EA6E12;
+  background-color: #F09A61;
   color: white;
   font-size: 15px;
   text-transform: capitalize;
@@ -118,6 +118,7 @@
   text-align: center;
   margin-left: 18px;
   margin-top: -5px;
+  border: 1px solid #F09A61;
 }
 
 .out-bill-button, .out-bill-button:hover, .out-bill-button:not(:hover)   {
@@ -133,7 +134,7 @@
 
 .print-bill-button, .print-bill-button:hover, .print-bill-button:not(:hover) {
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  background-color: #EA6E12;
+  background-color: #F09A61;
   color: white;
   border: 0px;
   font-size: 12px;
@@ -141,6 +142,7 @@
   margin-top: 8px;
   float: right;
   width: 100px;
+  border: 1px solid #F09A61;
 }
 
 .aprycot-pagination-button {
@@ -154,14 +156,14 @@
   padding-top: 5px;
 }
 
-.manage-order-button, .manage-order-button:hover, .manage-order-button:not(:hover) {
+.manage-button, .manage-button:hover, .manage-button:not(:hover) {
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  background-color: #EA6E12;
+  background-color: #F09A61;
   color: white;
   font-size: 15px;
   width: 250px;
   height: 37.5px;
-  border: 1px solid #EA6E12;
+  border: 1px solid #F09A61;
   text-transform: capitalize;
   font-weight: bold;
   box-shadow: none;
@@ -183,12 +185,12 @@
 
 .search-statistic-button, .search-statistic-button:hover, .search-statistic-button:not(:hover) {
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  background-color: #EA6E12;
+  background-color: #F09A61;
   color: white;
   font-size: 15px;
   width: 100px;
   height: 37.5px;
-  border: 1px solid #EA6E12;
+  border: 1px solid #F09A61;
   text-transform: capitalize;
   padding: 6px 0px 6px 0px;
   border-radius: 0px;
@@ -204,4 +206,51 @@
 
 .total-money-chart {
   padding-left: 5%;
+}
+
+.customer-button, .customer-button:hover, .customer-button:not(:hover)  {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  background-color: #F09A61;
+  color: white;
+  font-size: 15px;
+  text-transform: capitalize;
+  border: 1px solid #F09A61;
+  width: 150px;
+  box-shadow: none;
+  margin: auto;
+  padding: 2px 0% 2px 0%;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.auth-button, .auth-button:hover, .auth-button:not(:hover)  {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  background-color: #F09A61;
+  color: white;
+  font-size: 15px;
+  text-transform: capitalize;
+  border: 1px solid #F09A61;
+  width: 120px;
+  height: 40px;
+  box-shadow: none;
+  margin: auto;
+  padding: 2px 0% 2px 0%;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.auth-view-button, .auth-view-button:hover, .auth-view-button:not(:hover)  {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  background-color: #F09A61;
+  color: white;
+  font-size: 15px;
+  text-transform: capitalize;
+  border: 1px solid #F09A61;
+  width: 100px;
+  height: 30px;
+  box-shadow: none;
+  margin: auto;
+  padding: 2px 0% 2px 0%;
+  text-align: center;
+  margin-top: -5px;
 }

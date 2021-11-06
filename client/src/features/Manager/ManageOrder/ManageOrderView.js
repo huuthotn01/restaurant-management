@@ -29,17 +29,17 @@ class ManageOrderView extends Component {
         const Statistic = <StatisticOrder model = {this.props.model}
                                           getOrderList={this.props.getOrderList}/>; 
         return(
-            <div>
+            <>
                 <ManageSideBar />
                 <Container>
                     <Row>
                         <Col md="6" style={{paddingLeft: '20px'}}> 
-                            <Button onClick={this.onClickView} className="manage-order-button"> 
+                            <Button onClick={this.onClickView} className="manage-button"> 
                                 Xem <span style={{textTransform: 'lowercase'}}> thông tin đơn hàng </span> 
                             </Button> 
                         </Col>
                         <Col md="6"> 
-                            <Button onClick={this.onClickStatistic} className="manage-order-button"> 
+                            <Button onClick={this.onClickStatistic} className="manage-button"> 
                                 Thống <span style={{textTransform: 'lowercase'}}> kê đơn hàng </span> 
                             </Button>
                         </Col>
@@ -47,7 +47,7 @@ class ManageOrderView extends Component {
                     {(this.props.model.option === 0) && View}
                     {(this.props.model.option === 1) && Statistic}
                 </Container>
-            </div>
+            </>
         );
     }
 }

@@ -33,6 +33,7 @@ class ManageSideBar extends Component {
                         </MenuItem>
                         <MenuItem icon={<FaHeart />}>
                         Quản lý khách hàng
+                        <Link to="/manage_customer" />
                         </MenuItem>
                         <MenuItem icon={<FaHeart />}>
                         Quản lý nhân viên

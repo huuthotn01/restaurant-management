@@ -182,7 +182,7 @@ class ViewOrder extends Component {
                             return (
                             <div className="aprycot-pagination-button"
                                 key={index}
-                                style={{ ...itemStyle, backgroundColor: isCurrentPage ? "#EA6E12" : "white" }}
+                                style={{ ...itemStyle, backgroundColor: isCurrentPage ? "#F09A61" : "white" }}
                                 onClick={() => {
                                 console.log(`Navigating from page ${currentPage} to page ${page}`);
                                 setPage({ page });

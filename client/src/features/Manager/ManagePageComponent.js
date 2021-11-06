@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Card, CardBody, CardTitle} from 'reactstrap';
 import './manager.css';
 
-class ManageView extends Component{
+class ManagePage extends Component{
     render(){
         return(
             <Container>
@@ -23,13 +23,15 @@ class ManageView extends Component{
                         </Card>
                         </a>
                     </Col>
-                    <Col md="6">    
+                    <Col md="6">  
+                        <a className="cat-manager-item-link" href='/manage_customer'>  
                         <Card className="cat-manager-item-left">
                             <img className="cat-manager-img" width="90px" height="90px" src="/assets/images/manage_customer.jpg" alt = "Quản lý khách hàng"></img>
                             <CardBody>
                             <CardTitle tag="h5" className="cat-manager-text">Quản lý khách hàng</CardTitle>
                             </CardBody>
                         </Card>
+                        </a>
                     </Col>
                     <Col md="6">
                         <Card className="cat-manager-item-right">
@@ -52,4 +54,4 @@ class ManageView extends Component{
         )
     }
 }
-export default ManageView;
+export default ManagePage;

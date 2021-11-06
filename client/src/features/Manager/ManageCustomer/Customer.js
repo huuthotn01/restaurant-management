@@ -2,17 +2,16 @@ class Customer {
     #firstname = ''; #lastname = ''; #username = ''; #password = ''; 
     #phone = ''; #email = ''; #is_authenticate = undefined; 
 
-    constructor(firstname, lastname, username, password, phone, email){
+    constructor(firstname, lastname, username, password, phone, email, is_authenticate){
         this.#firstname = firstname;
         this.#lastname = lastname;
         this.#username = username;
         this.#password = password;
         this.#phone = phone;
         this.#email = email;
-        this.#is_authenticate = false;
+        this.#is_authenticate = is_authenticate;
     }
 
-    get customerIdx() { return this.#customerIdx; }
     get firstname() { return this.#firstname; }
     get lastname() { return this.#lastname; }
     get username() { return this.#username; }
