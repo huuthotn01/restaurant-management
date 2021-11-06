@@ -1,0 +1,14 @@
+.send{
+    width: fit-content;
+    background-color: #f09a61;
+    border-radius: 10px;
+}
+.send:hover{
+    background-color: #EA6A12;
+}
+
+.unsent{
+    width: fit-content;
+    background-color: #a19c99;
+    border-radius: 10px;
+}

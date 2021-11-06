@@ -1,4 +1,5 @@
 import "./ReservationForm.css";
+import PopupSuccess from './Popup_Success'
 export function ReservationForm() {
   return (
       <form class="row g-3" style={{
@@ -6,7 +7,7 @@ export function ReservationForm() {
         justifyContent: "center",
         alignItems: "center",
       }}>
-        <h3 style={{textAlign: "center", lineHeight:'5px', color: "#EA6A12", marginTop: '150px'}}>Thông tin đặt bàn</h3>
+        <h3 style={{textAlign: "center", lineHeight:'5px', color: "#EA6A12", marginTop: '100px'}}>Thông tin đặt bàn</h3>
         <div class="col-12">
           <label for="exampleText1" class="form-label">Họ và tên</label>
           <input type="text" class="form-control" id="exampleText1"/>
@@ -78,8 +79,9 @@ export function ReservationForm() {
           <label for="exampleText" class="form-label">Ghi chú</label>
           <input type="textarea" class="form-control" id="exampleText"/>
         </div>
-        <div class="col-12 text-center">
-          <button type="submit" class="btn btn-primary text-white">Đặt bàn ngay</button>
+        <div class="text-center pt-0">
+          {/* <button type="submit" class="btn btn-primary text-white">Đặt bàn ngay</button> */}
+          <PopupSuccess/>
         </div>
       </form>
   );

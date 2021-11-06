@@ -6,18 +6,6 @@
     border-color: #EA6A12;
 }
 
-.btn {
-    width: fit-content;
-    background-color: #EA6A12;
-    border-radius: 10px;
-}
-.btn:hover{
-    background-color: #f09a61;
-}
-.btn:active{
-    background-color: #EA6A12;
-}
-
 .form-control::placeholder { 
     color: #EA6A12;
     opacity: 1; 
