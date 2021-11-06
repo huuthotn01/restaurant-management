@@ -1,19 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import App from './login/App';
+import './bootstrap.min.css';
+//import 'react-pro-sidebar/dist/css/styles.css';
 import './index.css';
-import MainComponent from './components/MainComponent';
+import HomeComponent from './HomeComponent';
+import FooterComponent from './FooterComponent';
+import HeaderComponent from './HeaderComponent';
+
 import {BrowserRouter} from 'react-router-dom';
-import {Login } from './login/Login';
-import './login/Login.css';
 
 ReactDOM.render(
-    /*
     <BrowserRouter>
         <div className='App'>
-            <MainComponent />
+            <HeaderComponent />
+            <HomeComponent />
+            <FooterComponent />
         </div>
-    </BrowserRouter>,*/
-    <Login />,
+    </BrowserRouter>,
     document.getElementById('root')
 );
