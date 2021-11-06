@@ -1,7 +1,5 @@
 import "./CancelForm.css";
-import React, { useState } from "react";
-
-import { Modal } from "./Modal";
+import React from "react";
 export function CancelForm() {
   return (
     <form
@@ -35,7 +33,7 @@ export function CancelForm() {
         <input type="textarea" class="form-control" id="exampleText" />
       </div>
 
-      <div class="col-12 pt-3 text-center">
+      <div class="col-12 text-center">
         <button type="submit" class="btn btn-primary text-white">
           Hủy đặt bàn
         </button>

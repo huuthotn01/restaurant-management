@@ -30,3 +30,6 @@
     color: white;
     cursor: pointer;
   }
+.btn{
+    width: fit-content;
+}
