@@ -21,6 +21,10 @@ body {
     width: 100%;
 }
 
+.dropdown-toggle::after {
+  display: none;
+}
+
 .navbar-light .navbar-nav .nav-link {
     font-size: 15px;
     color: black
