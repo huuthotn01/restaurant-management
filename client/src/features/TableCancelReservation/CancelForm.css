@@ -1,0 +1,35 @@
+.form-control{
+    border-color: #EA6A12;
+}
+
+.form-select{
+    border-color: #EA6A12;
+}
+
+.btn {
+    background-color: #f09a61;
+    border-radius: 10px;
+}
+.btn:hover{
+    background-color: #EA6A12;
+}
+.btn:active{
+    background-color: #EA6A12;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #EA6A12;
+    opacity: 1; /* Firefox */
+}
+.App .openModalBtn {
+    width: 20px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: cornflowerblue;
+    color: white;
+    cursor: pointer;
+  }
+.btn{
+    width: fit-content;
+}

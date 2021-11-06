@@ -1,0 +1,123 @@
+[
+    {
+        "Code": "A001",
+        "Type": 2
+    },
+    {
+        "Code": "A002",
+        "Type": 2
+    },
+    {
+        "Code": "A003",
+        "Type": 2
+    },
+    {
+        "Code": "A004",
+        "Type": 2
+    },
+    {
+        "Code": "A005",
+        "Type": 2
+    },
+    {
+        "Code": "A006",
+        "Type": 2
+    },
+    {
+        "Code": "A007",
+        "Type": 2
+    },
+    {
+        "Code": "A008",
+        "Type": 2
+    },
+    {
+        "Code": "A009",
+        "Type": 2
+    },
+    {
+        "Code": "A010",
+        "Type": 2
+    },
+    {
+        "Code": "B001",
+        "Type": 4
+    },
+    {
+        "Code": "B002",
+        "Type": 4
+    },
+    {
+        "Code": "B003",
+        "Type": 4
+    },
+    {
+        "Code": "B004",
+        "Type": 4
+    },
+    {
+        "Code": "B005",
+        "Type": 4
+    },
+    {
+        "Code": "B006",
+        "Type": 4
+    },
+    {
+        "Code": "B007",
+        "Type": 4
+    },
+    {
+        "Code": "B008",
+        "Type": 4
+    },
+    {
+        "Code": "B009",
+        "Type": 4
+    },
+    {
+        "Code": "B010",
+        "Type": 4
+    },
+    {
+        "Code": "C001",
+        "Type": 8
+    },
+    {
+        "Code": "C002",
+        "Type": 8
+    },
+    {
+        "Code": "C003",
+        "Type": 8
+    },
+    {
+        "Code": "C004",
+        "Type": 8
+    },
+    {
+        "Code": "C005",
+        "Type": 8
+    },
+    {
+        "Code": "C006",
+        "Type": 8
+    },
+    {
+        "Code": "D001",
+        "Type": 12
+    },
+    {
+        "Code": "D002",
+        "Type": 12
+    },
+    {
+        "Code": "D003",
+        "Type": 12
+    },
+    {
+        "Code": "D004",
+        "Type": 12
+    }
+
+]
