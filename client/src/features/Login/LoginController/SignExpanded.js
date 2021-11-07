@@ -31,8 +31,8 @@ class SignExpanded extends Component {
 		e.preventDefault();
 		let username = $("#username").val();
 		// let pass = $("#password").val();
-		if (username === '1') this.setState({role: 1});
-		else this.setState({role: 2});
+		if (username === 'admin') this.setState({role: 2});
+		else this.setState({role: 1});
 	}
 
 	render () {

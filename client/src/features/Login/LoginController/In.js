@@ -32,11 +32,6 @@ class In extends React.Component {
                             <b style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px", marginLeft: '5px'}}>{this.props.context.fName}</b></>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <LinkContainer to='/manage' >
-                                <Dropdown.Item eventKey="1">
-                                    <GrUserManager className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >Quản lý</span>
-                                </Dropdown.Item>
-                            </LinkContainer>
                             <LinkContainer to='/change-info' >
                             <Dropdown.Item eventKey="2" >
                                 <FaEdit className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >Chỉnh sửa thông tin</span>
