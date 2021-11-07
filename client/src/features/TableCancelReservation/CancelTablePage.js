@@ -1,16 +1,14 @@
-import { CancelForm } from './CancelForm';
+import  CancelForm   from './CancelForm';
 import './CancelTablePage.css'
+
 export function CancelTablePage() {
     return (
         <div class="row ps-5 pe-5">
         <div class="pt-5"></div>
         <div class="col-auto ps-5 pe-5">
-            
             <div class = "row g-3 ps-2 ">
                 
                         <CancelForm/>
-               
-                
             </div>
         </div>
         
@@ -27,13 +25,12 @@ export function CancelTablePage() {
               src="/assets/images/forReservationPage.png"
               alt=""
             />
-
             </div>
             
             <div class="col">
                 <div class="row pt-5">
                 <div class="row pt-5">
-                <div class="row pt-3"></div>
+                <div class="row pt-5"></div>
                 <h6 style={{color: "#EA6A12"}}>Nhà hàng chúng tôi luôn hân hoan chào đón quý khách.</h6>
                 
                 </div>
