@@ -12,14 +12,14 @@
   font-weight: bold;
   text-transform: none;
   margin-top: -5px;
-  width: max-content;
+  width: 250px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   margin: auto;
   position: relative;
-  padding: 1rem;
 }
 
 .button:hover,
