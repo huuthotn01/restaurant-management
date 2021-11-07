@@ -11,6 +11,7 @@ const Meals = () => {
   return (
     <Fragment>
       <Banner />
+      <br></br>
       <div className={classes.category}><p>Đồ ăn</p></div>
       <Food />
       <div className={classes.category}><p>Thức uống</p></div>
