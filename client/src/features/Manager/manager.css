@@ -33,16 +33,6 @@
   margin-top: 10px;
 }
   
-.cat-manager-item-link {
-  text-decoration: none;
-  color: black;
-}
-    
-.cat-manager-item-link:hover {
-  text-decoration: none;
-  color: black;
-}
-  
 .pro-sidebar > .pro-sidebar-inner, .pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper,
 .pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
   background-color: #FFFFFF;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Card, CardBody, CardTitle} from 'reactstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import './manager.css';
 
 class ManagePage extends Component{
@@ -14,24 +15,24 @@ class ManagePage extends Component{
                 <hr />
                 <Row>
                     <Col md="6">
-                        <a className="cat-manager-item-link" href='/manage_order'>
+                        <LinkContainer to='/manage_order' style={{cursor: 'pointer'}}>
                         <Card className="cat-manager-item-right">
                             <img className="cat-manager-img" width="91.98px" height="90px" src="/assets/images/manage_order.png" alt = "Quản lý đơn hàng"></img>
                             <CardBody>
                             <CardTitle tag="h5" className="cat-manager-text">Quản lý đơn hàng</CardTitle>
                             </CardBody>
                         </Card>
-                        </a>
+                        </LinkContainer >
                     </Col>
                     <Col md="6">  
-                        <a className="cat-manager-item-link" href='/manage_customer'>  
+                        <LinkContainer to='/manage_customer' style={{cursor: 'pointer'}}>
                         <Card className="cat-manager-item-left">
                             <img className="cat-manager-img" width="90px" height="90px" src="/assets/images/manage_customer.jpg" alt = "Quản lý khách hàng"></img>
                             <CardBody>
                             <CardTitle tag="h5" className="cat-manager-text">Quản lý khách hàng</CardTitle>
                             </CardBody>
                         </Card>
-                        </a>
+                        </LinkContainer>
                     </Col>
                     <Col md="6">
                         <Card className="cat-manager-item-right">

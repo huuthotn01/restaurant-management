@@ -40,12 +40,14 @@ class Header extends Component{
                                 </Dropdown>
                             </NavLink>
                             </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
-                            <NavLink href="/food_ordering">
+                            <LinkContainer to='/food_ordering' style={{cursor: 'pointer'}}>
+                            <NavItem className="flex-item" style={{flexGrow: "9"}}>
+                            <NavLink>
                                 <FaBookOpen /> Đặt món ăn
                             </NavLink>
                             </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
+                            </LinkContainer>
+                            <NavItem className="flex-item" style={{flexGrow: "8", cursor: 'pointer'}}>
                                 <LoginView />
                             </NavItem>
                         </Nav>
