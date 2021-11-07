@@ -90,7 +90,7 @@ class SignExpanded extends Component {
 			return (
 				<LoginContext.Consumer>
 				{(loginInfo) => {
-				loginInfo.updateContext(true, 'Hữu Thọ', 'Trần Nguyễn', 'huutho', 'https://lh3.googleusercontent.com/a/AATXAJyzvcODwUXiz9gs9ynIj4U1o02fF9fAnBsqcNlp=s96-c');
+				loginInfo.updateContext(true, 'Huu Tho', 'Tran Nguyen', 'huutho', 'https://lh3.googleusercontent.com/a/AATXAJxsingek8quu1NT_TwOz5qAfcmFcguY6BKQJFmr=s96-c');
 				}}
 				</LoginContext.Consumer>
 			);

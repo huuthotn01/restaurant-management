@@ -37,7 +37,7 @@ class ChangeInfoPass extends React.Component {
                     </span>
                 </Button>
             </Form>
-            <Alert id='pass-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đổi mật khẩu thành công</Alert>
+            <Alert id='pass-alert' variant='info' style={{display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đổi mật khẩu thành công</Alert>
         </>
         );
     }
