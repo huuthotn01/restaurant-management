@@ -41,8 +41,6 @@ body {
 }
 
 .footer {
-  position: static;
-  bottom: 0;
   background-color: #FBF9F0;
   clear: both;
 }
