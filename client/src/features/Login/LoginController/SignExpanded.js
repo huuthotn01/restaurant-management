@@ -6,6 +6,7 @@ import Input from './Input';
 import SubmitButton from './SubmitButton';
 import $ from 'jquery';
 import {loginInfo, LoginContext} from './LoginContext';
+import { Alert } from 'react-bootstrap';
 
 class SignExpanded extends Component {
 	constructor(props) {
@@ -29,10 +30,18 @@ class SignExpanded extends Component {
 
 	formSubmit(e) {
 		e.preventDefault();
-		let username = $("#username").val();
-		// let pass = $("#password").val();
-		if (username === '1') this.setState({role: 1});
-		else this.setState({role: 2});
+		if (this.props.type === 'signIn') {
+			let username = $("#username").val();
+			// let pass = $("#password").val();
+			if (username === 'admin') this.setState({role: 2});
+			else this.setState({role: 1});
+		} else {
+			let fullname = $("#name").val();
+			let email = $("#name").val();
+			let password = $("#name").val();
+			$("#signup-alert").css("display", "block");
+			$("#login-form").trigger("reset");
+		}
 	}
 
 	render () {
@@ -41,11 +50,11 @@ class SignExpanded extends Component {
 				<Input
 					id="username"
 					type="text"
-					placeholder="USERNAME, EMAIL OR PHONE NUMBER" />
+					placeholder="USERNAME, EMAIL HOẶC SỐ ĐIỆN THOẠI" />
 				<Input
 					id="password"
 					type="password"
-					placeholder="PASSWORD" />
+					placeholder="MẬT KHẨU" />
 			</div>
 		);
 
@@ -54,7 +63,7 @@ class SignExpanded extends Component {
 				<Input
 					id="name"
 					type="text"
-					placeholder="FULL NAME" />
+					placeholder="HỌ VÀ TÊN" />
 				<Input
 					id="email"
 					type="email"
@@ -62,7 +71,7 @@ class SignExpanded extends Component {
 				<Input
 					id="password"
 					type="password"
-					placeholder="PASSWORD" />
+					placeholder="MẬT KHẨU" />
 			</div>
 		);
 		if (this.state.role === 2) {
@@ -74,6 +83,14 @@ class SignExpanded extends Component {
 					<Switch>
 						<Redirect to='/manage' />
 					</Switch>);
+				}}
+				</LoginContext.Consumer>
+			);
+		} else if (this.state.role === 1) {
+			return (
+				<LoginContext.Consumer>
+				{(loginInfo) => {
+				loginInfo.updateContext(true, 'Hữu Thọ', 'Trần Nguyễn', 'huutho', 'https://lh3.googleusercontent.com/a/AATXAJyzvcODwUXiz9gs9ynIj4U1o02fF9fAnBsqcNlp=s96-c');
 				}}
 				</LoginContext.Consumer>
 			);
@@ -93,17 +110,21 @@ class SignExpanded extends Component {
 				 }} >
 						{({opacity, y}) =>
 						<form 
+							id='login-form'
 							onSubmit={this.formSubmit} 
 							className='logForm' style={{
 							WebkitTransform: `translate3d(0, ${y}px, 0)`,
 							transform: `translate3d(0, ${y}px, 0)`,
 							opacity: `${opacity}`
 						}}>
-							<h2>{this.props.type === 'signIn' ? 'SIGN IN' : 'SIGN UP'}</h2>
+							<h2 style={{marginBottom: '50px'}}>{this.props.type === 'signIn' ? 'ĐĂNG NHẬP' : 'ĐĂNG KÝ'}</h2>
 							{this.props.type === 'signIn' ? signin : signup}
 							<SubmitButton type={this.props.type}></SubmitButton>
 							{(this.props.type === 'signIn') &&  
-							<a href="/forgot-pass" className='forgotPass'> Forgot Password?</a>
+							<a href="/forgot-pass" className='forgotPass'>Quên mật khẩu?</a>
+							}
+							{(this.props.type === 'signUp') &&  
+							<Alert id='signup-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng kí thành công</Alert>
 							}
 						</form>
 						}
