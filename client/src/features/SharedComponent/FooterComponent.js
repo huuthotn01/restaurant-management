@@ -30,12 +30,12 @@ class Footer extends Component {
                             Nguyễn Văn Xuân Vũ                        
                             </Col> </Col>
                             <Col md="2" className="footer-content"> <Col>
-                            191xxxx <br />
+                            1912700 <br />
                             1912749 <br />
-                            191xxxx  <br />
-                            191xxxx  <br />
-                            191xxxx  <br />
-                            191xxxx <br />
+                            1911565  <br />
+                            1914763  <br />
+                            1915347  <br />
+                            1915982 <br />
                             </Col> </Col>
                         </Row>
                     </Col>
