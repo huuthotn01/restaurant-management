@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Welcome to Aprycot Restaurant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, you can run:
+To use this project, run the following commands:
 
-### `npm start`
+#### `git clone https://github.com/huuthotn01/restaurant-management.git`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clone the project to your machine. The default branch `master` will be cloned. For cloning all existing branches, continue with command: `git fetch --all`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### `cd restaurant-management`
 
-### `npm test`
+Navigate to the cloned directory.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### `npm install`
 
-### `npm run build`
+Install neccessary packages listed in [package.json](package.json) for server side.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### `cd client && npm install`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Navigate to `client` folder and install neccessary packages listed in [package.json](client/package.json) for client side.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Development build:
 
-### `npm run eject`
+If you want to run in development mode, run the following commands (assume you are in `client` folder after the previous command):
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### `npm start`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Start the project. A new browser tab for the project will be opened at `localhost`. Port number is platform-specific, default value is 3000. Development mode provide `hot reloading` - any change in code now will be automatically updated to your website.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The project contains server-side works. To run the project with server, open a new terminal in the project root directory and run the following command:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### `cd server && node server.js`
 
-## Learn More
+The command navigates into `server` folder and start the NodeJS server with default port 5000. The connection from React client side to Node server side is defined with `proxy` key in [client/package.json](client/package.json).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Production build:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You may want to run the project in production build. To do this, navigate to the root directory and run the following commands:
 
-### Code Splitting
+#### `npm run build`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This command will build the project into uglified and minimized files which is run on client's machines.\
+The build process is defined in [script field](package.json), involving install neccessary packages and build the React code.
 
-### Analyzing the Bundle Size
+#### `npm run start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Run the project after building. Now your app will be in production mode. There is no hot reloading, and any changes in code have to be built again. The port number of the website will be shown on terminal (default value is 5000), access `localhost` with given port number to use the project.
 
-### Making a Progressive Web App
+## Available Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The project contains the following features:
 
-### Advanced Configuration
+    - Login: including sign in, sign up and modify account infomation. 
+    - Table services: including table reservation and table cancellation.
+    - Food ordering.
+    - Payment: after ordering food.
+    - Management: for admin/manager only. This feature includes order management, customer management, staff managemenet and menu management.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For detailed flows and usages of available features, refer to [User Manual](/document/UserManual/UserManual.pdf)

@@ -59,7 +59,9 @@ class Main extends Component {
                         <Route path='/change-info' component={ChangeInfo} />
                         <Route path='/forgot-pass' component={ForgotPass} />
                         <Route path='/food_ordering' component={FoodOrdering} />
-                        <Redirect to="/home" />
+                        <LoginContext.Consumer>
+							{value => ((value.role === 3) ? <Redirect to="/manage" /> : <Redirect to="/home" />)}
+						</LoginContext.Consumer>
                     </Switch>
                 </div>
                 <Footer />

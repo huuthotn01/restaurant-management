@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import $ from 'jquery';
 import { Alert } from 'react-bootstrap';
+import { Switch, Redirect } from 'react-router-dom';
+import { LoginContext } from '../../SharedComponent/LoginContext';
 
 class ForgotPass extends React.Component {
     constructor(props) {
@@ -16,6 +18,11 @@ class ForgotPass extends React.Component {
     }
 
     render() {
+        if (this.context.isIn) return (
+            <Switch>
+                <Redirect to='/home' />
+            </Switch>
+        );
         return (
             <Container style={{marginTop: "30px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Form id='forgot-pass-form' style={{width: '50%'}} onSubmit={this.onSubmit}>
@@ -34,5 +41,7 @@ class ForgotPass extends React.Component {
         );
     }
 }
+
+ForgotPass.contextTypes = LoginContext;
 
 export { ForgotPass };
