@@ -2,25 +2,27 @@ import React from 'react';
 import { ChangeInfoForm } from './ChangeInfoController/ChangeInfoForm';
 import { ChangeInfoPass } from './ChangeInfoController/ChangeInfoPass';
 import { Nav, Tab, Container, Row, Col, Image } from 'react-bootstrap';
-import {loginInfo, LoginContext} from './LoginController/LoginContext';
+import { LoginContext } from '../SharedComponent/LoginContext';
 import { AiFillLock } from 'react-icons/ai';
 import { FaInfoCircle } from 'react-icons/fa';
+import { Switch, Redirect } from 'react-router-dom';
 
 class ChangeInfo extends React.Component {
     render() {
+        if (!this.context.isIn) return (
+            <Switch>
+                <Redirect to='/home' />
+            </Switch>
+        );
         return (
             <Container style={{marginTop: "30px"}}>
             <Tab.Container defaultActiveKey='change-info'>
             <Row>
             <Col xs={3}>
-                <LoginContext.Consumer>
-                {(loginInfo) => (
-                    <div style={{display: "flex", "flexDirection": "column", alignItems: "center"}}> 
-                        <Image style={{height: "50%", width: "50%"}} src={'https://lh3.googleusercontent.com/a/AATXAJxsingek8quu1NT_TwOz5qAfcmFcguY6BKQJFmr=s96-c'} roundedCircle /> 
-                        <br /> <b>{'Huu Tho Tran Nguyen'}</b> 
-                    </div>
-                )}
-                </LoginContext.Consumer>
+                <div style={{display: "flex", "flexDirection": "column", alignItems: "center"}}> 
+                    <Image style={{height: "50%", width: "50%"}} src={this.context.avatarURL} roundedCircle /> 
+                    <br /> <b>{this.context.fName + ' ' + this.context.lName}</b> 
+                </div>
                 <hr />
                 <div style={{display: "flex", "flexDirection": "column", alignItems: "center"}}>
                 <Nav variant='tabs' className='flex-column' style={{width: "100%"}} >
@@ -55,5 +57,7 @@ class ChangeInfo extends React.Component {
         );
     }
 }
+
+ChangeInfo.contextType = LoginContext;
 
 export { ChangeInfo };

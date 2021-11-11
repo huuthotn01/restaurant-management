@@ -11,12 +11,41 @@ import Payment from '../Payment/PaymentComponent';
 import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
 import { ChangeInfo } from '../Login/ChangeInfoView';
 import { ForgotPass } from '../Login/LoginController/ForgotPass';
-import FoodOrdering  from '../FoodOrdering/FoodOrdering'
+import FoodOrdering  from '../FoodOrdering/FoodOrdering';
+import { loginInfo, LoginContext } from './LoginContext';
 
 class Main extends Component {
+    constructor(props) {
+		super(props);
+		this.updateContext = (isin, fname, lname, email, role, url) => {
+			this.setState(state => ({
+				loginInfo: {
+					isIn: isin,
+					fName: fname,
+					lName: lname,
+					email: email,
+					role: role,
+					avatarURL: url,
+					updateContext: this.state.loginInfo.updateContext
+				}
+			}));
+		};
+		this.state = {
+			loginInfo: {
+				isIn: loginInfo.isIn,
+				fName: loginInfo.fName,
+				lName: loginInfo.lName,
+				email: loginInfo.email,
+				role: loginInfo.role,
+				avatarURL: loginInfo.avatarURL,
+				updateContext: this.updateContext,
+			}
+		};
+	}
+
 	render(){
         return (
-            <div>
+            <LoginContext.Provider value={this.state.loginInfo} >
                 <Header />
                 <div>
                     <Switch>
@@ -34,7 +63,7 @@ class Main extends Component {
                     </Switch>
                 </div>
                 <Footer />
-            </div>
+            </LoginContext.Provider>
         );
     }
 }

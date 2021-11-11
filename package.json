@@ -16,6 +16,7 @@
     "google-auth-library": "^7.9.2",
     "google-oauth-jwt": "^0.2.0",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.7.0",
     "react-helmet": "^6.1.0"
   },
   "engines": {

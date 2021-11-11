@@ -5,6 +5,7 @@ export const loginInfo = {
 	fName: '',
 	lName: '',
 	email: '',
+	role: '',
 	avatarURL: ''
 };
   
@@ -13,6 +14,7 @@ export const LoginContext = React.createContext({
 	fName: loginInfo.fName,
 	lName: loginInfo.lName,
 	email: loginInfo.email,
+	role: '',
 	avatarURL: loginInfo.avatarURL,
 	updateContext: () => {},
 });

@@ -5,7 +5,7 @@ import {Motion, spring} from 'react-motion';
 import Input from './Input';
 import SubmitButton from './SubmitButton';
 import $ from 'jquery';
-import {loginInfo, LoginContext} from './LoginContext';
+import { LoginContext } from '../../SharedComponent/LoginContext';
 import { Alert } from 'react-bootstrap';
 
 class SignExpanded extends Component {
@@ -33,7 +33,7 @@ class SignExpanded extends Component {
 		if (this.props.type === 'signIn') {
 			let username = $("#username").val();
 			// let pass = $("#password").val();
-			if (username === 'admin') this.setState({role: 2});
+			if (username === 'admin') this.setState({role: 3});
 			else this.setState({role: 1});
 		} else {
 			let fullname = $("#name").val();
@@ -74,11 +74,11 @@ class SignExpanded extends Component {
 					placeholder="MẬT KHẨU" />
 			</div>
 		);
-		if (this.state.role === 2) {
+		if (this.state.role === 3) {
 			return (
 				<LoginContext.Consumer>
-				{(loginInfo) => {
-				loginInfo.updateContext(true, 'Gia Cat', 'Nguyen Khoa', 'giacat', '');
+				{value => {
+				value.updateContext(true, 'Gia Cat', 'Nguyen Khoa', 'giacat', 3, '');
 				return (
 					<Switch>
 						<Redirect to='/manage' />
@@ -89,8 +89,8 @@ class SignExpanded extends Component {
 		} else if (this.state.role === 1) {
 			return (
 				<LoginContext.Consumer>
-				{(loginInfo) => {
-				loginInfo.updateContext(true, 'Huu Tho', 'Tran Nguyen', 'huutho', 'https://lh3.googleusercontent.com/a/AATXAJxsingek8quu1NT_TwOz5qAfcmFcguY6BKQJFmr=s96-c');
+				{value => {
+				value.updateContext(true, 'Huu Tho', 'Tran Nguyen', 'huutho', 1, 'https://lh3.googleusercontent.com/a/AATXAJxsingek8quu1NT_TwOz5qAfcmFcguY6BKQJFmr=s96-c');
 				}}
 				</LoginContext.Consumer>
 			);
