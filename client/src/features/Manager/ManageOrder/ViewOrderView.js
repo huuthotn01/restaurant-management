@@ -113,9 +113,9 @@ class ViewOrder extends Component {
                         <Col className='manage-order-header'> Danh sách đơn hàng </Col>
                         <Col> 
                         <Row>
-                            <Form className="search-bar" onSubmit={e => {e.preventDefault();}}>
+                            <Form className="search-bar" onSubmit={e => {e.preventDefault(); this.onInputOrderID()}}>
                                 <FormGroup>
-                                    <Input className="search-box" id="search" name="search-drugs" placeholder="Nhập đơn hàng"
+                                    <Input autoComplete="off" className="search-box" id="search" name="search-drugs" placeholder="Nhập đơn hàng"
                                     innerRef={(input) => this.search_item = input} />
                                 </FormGroup>
                             </Form> 

@@ -18,23 +18,18 @@ class StatisticOrder extends Component {
     }
 
     render() {
-        const orders_statistic = this.props.model.orders_statistic.map((order) => {
+        console.log(this.props.model.Data_Statistic);
+        const orders_statistic = this.props.model.Data_Statistic.map((day) => {
             return (
                 <tr>
                 <th scope="row">
-                    {this.props.model.orders_statistic.indexOf(order) + 1}
+                    {this.props.model.Data_Statistic.indexOf(day) + 1}
                 </th>
-                <td>
-                    Nguyễn Khoa Gia Cát
+                <td style={{textAlign: 'center'}}>
+                    {day.Day}
                 </td>
-                <td>
-                    {order.orderID}
-                </td>
-                <td>
-                    {order.orderDate}
-                </td>
-                <td>
-                    {(order.totalPrice*23000).toLocaleString('vi-VN')}đ
+                <td style={{textAlign: 'center'}}>
+                    {(day.Total).toLocaleString('vi-VN')}đ
                 </td>
                 </tr>
         )}); 
@@ -95,17 +90,11 @@ class StatisticOrder extends Component {
                                 <th>
                                     #
                                 </th>
-                                <th>
-                                    Tên khách hàng
+                                <th style={{textAlign: 'center'}}>
+                                    Ngày
                                 </th>
-                                <th>
-                                    Mã đơn hàng
-                                </th>
-                                <th>
-                                    Ngày tạo đơn
-                                </th>
-                                <th>
-                                    Tổng tiền
+                                <th style={{textAlign: 'center'}}>
+                                    Tổng doanh thu
                                 </th>
                                 </tr>
                             </thead>

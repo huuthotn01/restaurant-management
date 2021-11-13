@@ -17,10 +17,10 @@ class AuthenticateCustomerView extends Component {
 
     onChooseCusAuth(phone) {
         this.toggleModal('',false);
+        this.props.authCus(phone);
     }
 
     render() {
-        if (this.props.model.customers_not_auth.length === 0) this.props.getNotAuthCustomerList();
         const customer_not_auth = this.props.model.customers_not_auth.map(customer => {
             return (
                 <tr>
@@ -113,7 +113,7 @@ class AuthenticateCustomerView extends Component {
                         </Container>
                     </ModalBody>
                     <ModalFooter>
-                        <Button className='auth-button ms-auto' onClick={this.onChooseCusAuth}>
+                        <Button className='auth-button ms-auto' onClick={() => {this.onChooseCusAuth(this.props.model.customerOpenAuth.phone)}}>
                             Hợp lệ
                         </Button>    
                     </ModalFooter>

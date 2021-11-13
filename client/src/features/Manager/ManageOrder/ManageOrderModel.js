@@ -9,7 +9,7 @@ class ManageOrderModel {
     //------------------------------ATTRIBUTE------------------------------------
 
     #order_details = []; #orders = []; #orders_search = [];
-    #orders_statistic = []; #Data_Statistic = []; #isModalOpen = undefined;
+    #Data_Statistic = []; #isModalOpen = undefined;
     #orderDetailsOpen = []; #orderOpen = undefined; #activePage = undefined;
     #option = undefined;
 
@@ -29,7 +29,6 @@ class ManageOrderModel {
         return new Order(order['Order Number'], order['Customer Name'], 
                         order['Order Date'], order['Total Products'], order['Total Price']);
         });
-    this.#orders_statistic = [];
     this.#Data_Statistic = [];
     this.#isModalOpen = false;
     this.#orderDetailsOpen = [new OrderDetail('','','','','')];
@@ -43,7 +42,6 @@ class ManageOrderModel {
     get order_details() { return this.#order_details }; 
     get orders() { return this.#orders }; 
     get orders_search() { return this.#orders_search }; 
-    get orders_statistic() { return this.#orders_statistic };  
     get Data_Statistic() { return this.#Data_Statistic }; 
     get isModalOpen() { return this.#isModalOpen }; 
     get orderDetailsOpen() { return this.#orderDetailsOpen };  
@@ -54,7 +52,6 @@ class ManageOrderModel {
     //-------------------------------------SETTER-----------------------------------------
 
     set orders_search(orders_search) { this.#orders_search = orders_search; }
-    set orders_statistic(orders_statistic) { this.#orders_statistic = orders_statistic; }
     set Data_Statistic(Data_Statistic) { this.#Data_Statistic = Data_Statistic; }
     set isModalOpen(isModalOpen) { this.#isModalOpen = isModalOpen; }
     set orderDetailsOpen(orderDetailsOpen) { this.#orderDetailsOpen = orderDetailsOpen; }
@@ -144,7 +141,7 @@ class ManageOrderModel {
             date[i] = {Day: this.increase_month(date[i]), Total: total}
         }
 
-        return { list: list, data: date };
+        return { data: date };
     }
 }
 

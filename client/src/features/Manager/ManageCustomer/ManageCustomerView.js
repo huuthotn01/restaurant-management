@@ -15,8 +15,8 @@ class ManageCustomerView extends Component {
     }
 
     onClickAuth() {
-        this.props.changeView(0);
         this.props.getNotAuthCustomerList();
+        this.props.changeView(0);
     }
 
     onClickView() {
@@ -26,8 +26,12 @@ class ManageCustomerView extends Component {
     render() {
         const Auth = <AuthenticateCustomerView model = {this.props.model} 
                                                getNotAuthCustomerList = {this.props.getNotAuthCustomerList}
-                                               onToggleModalAuth = {this.props.onToggleModalAuth} />;
-        const View = <ViewCustomerView model = {this.props.model} />;
+                                               onToggleModalAuth = {this.props.onToggleModalAuth} 
+                                               authCus = {this.props.authCus} />;
+        const View = <ViewCustomerView model = {this.props.model} getCustomerList = {this.props.getCustomerList} 
+                                        onToggleViewModal = {this.props.onToggleViewModal} 
+                                        onToggleDeleteModal = {this.props.onToggleDeleteModal} 
+                                        deleteCustomer = {this.props.deleteCustomer}/>;
         return  <>
                     <ManageSidebar />
                     <Container>
