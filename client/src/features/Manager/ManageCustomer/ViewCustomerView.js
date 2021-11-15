@@ -40,7 +40,7 @@ class ViewCustomerView extends Component {
                 <td>
                     {customer.lastname + " " + customer.firstname}
                 </td>
-                <td>
+                <td className="d-none d-lg-block">
                     {customer.email}
                 </td>
                 <td>
@@ -65,7 +65,7 @@ class ViewCustomerView extends Component {
         return (
             <Container>
                     <Row className="manage-order-heading">
-                        <Col className='manage-order-header'> Danh sách khách hàng </Col>
+                        <Col md="6" xs="12" className='manage-order-header'> Danh sách khách hàng </Col>
                         <Col> 
                         <Row>
                             <Form className="search-bar" onSubmit={e => {e.preventDefault(); this.onInputCusName();}}>
@@ -83,7 +83,7 @@ class ViewCustomerView extends Component {
                     <Row>
                         <Col>
                             {not_Found}
-                            <Table responsive hover striped>
+                            <Table className="manage-table" responsive hover striped>
                             <thead>
                                 <tr>
                                 <th>
@@ -92,7 +92,7 @@ class ViewCustomerView extends Component {
                                 <th>
                                     Tên khách hàng
                                 </th>
-                                <th>
+                                <th className="d-none d-lg-block">
                                     Email
                                 </th>
                                 <th>
@@ -113,16 +113,16 @@ class ViewCustomerView extends Component {
                     <ModalBody>
                         <Container>
                             <Row style={{marginBottom: '30px'}}>
-                                <Col md="8">
+                                <Col xs="8">
                                 <img width="120px" height="41px" src='/assets/images/brand.png'/>
                                 </Col>
-                                <Col md="4" className="ms-auto">
+                                <Col xs="4" className="ms-auto">
                                 <Button className="out-bill-button" onClick={() => this.onChooseCus('', false)}> X </Button>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col md="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
-                                    THÔNG TIN TÀI KHOẢN
+                                    <span className="auth-header"> THÔNG TIN TÀI KHOẢN </span>
                                 </Col>
                             </Row>
                             <Row>
@@ -161,7 +161,7 @@ class ViewCustomerView extends Component {
                     </ModalBody>
                     </Modal>
                     <Modal centered isOpen={this.props.model.isModalDeleteOpen} toggle={this.toggleDeleteModal}>
-                    <ModalHeader> Bạn có chắc chắn với lựa chọn của mình ? </ModalHeader>
+                    <ModalHeader> <span className="agree-header"> Bạn có chắc chắn với lựa chọn của mình ? </span> </ModalHeader>
                     <ModalBody>
                         <Container>
                             <Row>

@@ -49,7 +49,7 @@ class AuthenticateCustomerView extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <Table responsive hover striped>
+                        <Table className="manage-table" responsive hover striped>
                             <thead>
                                 <tr>
                                 <th>
@@ -76,16 +76,16 @@ class AuthenticateCustomerView extends Component {
                     <ModalBody>
                         <Container>
                             <Row style={{marginBottom: '30px'}}>
-                                <Col md="8">
+                                <Col xs="8">
                                 <img width="120px" height="41px" src='/assets/images/brand.png'/>
                                 </Col>
-                                <Col md="4" className="ms-auto">
+                                <Col xs="4" className="ms-auto">
                                 <Button className="out-bill-button" onClick={() => this.toggleModal('', false)}> X </Button>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col md="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
-                                    THÔNG TIN XÁC THỰC
+                                    <span className="auth-header"> THÔNG TIN XÁC THỰC </span>
                                 </Col>
                             </Row>
                             <Row> 

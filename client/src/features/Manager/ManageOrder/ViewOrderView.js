@@ -42,7 +42,7 @@ class ViewOrder extends Component {
                 <td>
                     {order.orderID}
                 </td>
-                <td>
+                <td className="d-none d-lg-block">
                     {order.orderDate}
                 </td>
                 <td>
@@ -110,7 +110,7 @@ class ViewOrder extends Component {
         return (
             <Container>
                     <Row className="manage-order-heading">
-                        <Col className='manage-order-header'> Danh sách đơn hàng </Col>
+                        <Col md="6" xs="12" className='manage-order-header'> Danh sách đơn hàng </Col>
                         <Col> 
                         <Row>
                             <Form className="search-bar" onSubmit={e => {e.preventDefault(); this.onInputOrderID()}}>
@@ -128,7 +128,7 @@ class ViewOrder extends Component {
                     <Row>
                         <Col>
                             {not_Found}
-                            <Table responsive hover striped>
+                            <Table className="manage-table" responsive hover striped>
                             <thead>
                                 <tr>
                                 <th>
@@ -140,7 +140,7 @@ class ViewOrder extends Component {
                                 <th>
                                     Mã đơn hàng
                                 </th>
-                                <th>
+                                <th className="d-none d-lg-block">
                                     Ngày tạo đơn
                                 </th>
                                 <th>
@@ -196,39 +196,39 @@ class ViewOrder extends Component {
                     </Row>             
                 <Modal isOpen={this.props.model.isModalOpen} toggle={this.toggleModal} fullscreen ref={(el) => {this.componentRef = el}}>
                     <ModalBody>
-                        <Container>
+                        <Container className="order-content">
                             <Row style={{marginBottom: '30px'}}>
-                                <Col md="8">
+                                <Col xs="8">
                                 <img width="120px" height="41px" src='/assets/images/brand.png'/>
                                 </Col>
-                                <Col md="4" className="ms-auto">
+                                <Col xs="4" className="ms-auto">
                                 <Button className="out-bill-button" onClick={() => this.toggleModal('1', false)}> X </Button>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col md="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
+                                <Col className="order-header" xs="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
                                     HÓA ĐƠN
                                 </Col>
                             </Row>
                             <Row> 
-                                <Col>
+                                <Col xs="12">
                                     <span style={{fontWeight: 'bold'}}> Mã đơn hàng: </span>
                                     {order.orderID} 
                                 </Col>
                             </Row>
                             <Row style={{marginTop: '8px'}}>
-                                <Col> 
+                                <Col xs="12" md="6" className="order-customer-name"> 
                                     <span style={{fontWeight: 'bold'}}> Tên khách hàng: </span> 
                                     Nguyễn Khoa Gia Cát {order.customerName}
                                 </Col>
-                                <Col>
+                                <Col xs="12" md="6">
                                     <span style={{fontWeight: 'bold'}}>Ngày đặt hàng: </span>
                                     {order.orderDate}
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                <Table responsive hover striped style={{marginTop: '10px'}}>
+                                <Table className="manage-table" responsive hover striped style={{marginTop: '10px'}}>
                                 <thead>
                                     <tr>
                                     <th style={{textAlign: 'center'}}>

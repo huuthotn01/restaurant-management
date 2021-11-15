@@ -8,7 +8,7 @@ class Footer extends Component {
             <Container >
                 <br />
                 <Row>
-                    <Col>
+                    <Col  md="4" xs="12">
                         <Row>
                         <Col className="footer-header"> <Col> Aprycot </Col> </Col>
                         </Row>
@@ -16,12 +16,13 @@ class Footer extends Component {
                         <Col className="footer-content"> <Col> Nhà hàng cao cấp </Col></Col>
                         </Row>
                     </Col>
-                    <Col>
+                    <hr className="d-md-none"/>
+                    <Col  md="4" xs="12">
                         <Row>
                             <Col className="footer-header"> <Col> Bach Khoa University </Col> </Col>
                         </Row>
                         <Row>
-                            <Col md="8" className="footer-content"> <Col>
+                            <Col md="6" xs="6" className="footer-content"> <Col>
                             Ngô Thị Hà Bắc <br />
                             Nguyễn Khoa Gia Cát <br />
                             Cao Thị Thanh Mai <br />
@@ -29,17 +30,18 @@ class Footer extends Component {
                             Trần Nguyễn Hữu Thọ <br />
                             Nguyễn Văn Xuân Vũ                        
                             </Col> </Col>
-                            <Col md="2" className="footer-content"> <Col>
+                            <Col md="6" xs="6" className="footer-content"> <Col>
                             1912700 <br />
                             1912749 <br />
                             1911565  <br />
                             1914763  <br />
                             1915347  <br />
-                            1915982 <br />
+                            1915982
                             </Col> </Col>
                         </Row>
                     </Col>
-                    <Col>
+                    <hr className="d-md-none"/>
+                    <Col  md="4" xs="12">
                         <Row>
                             <Col className="footer-header"> <Col> Help  </Col> </Col>
                         </Row>

@@ -36,12 +36,12 @@ class ManageCustomerView extends Component {
                     <ManageSidebar />
                     <Container>
                         <Row>
-                            <Col md="6" style={{paddingLeft: '20px'}}> 
+                            <Col xs="6" style={{paddingLeft: '20px'}}> 
                                 <Button onClick={this.onClickAuth} className="manage-button"> 
-                                    Xác <span style={{textTransform: 'lowercase'}}> thực khách hàng </span> 
+                                    Xác <span style={{textTransform: 'lowercase'}}> thực <br className="d-md-none" /> khách hàng </span> 
                                 </Button> 
                             </Col>
-                            <Col md="6"> 
+                            <Col xs="6"> 
                                 <Button onClick={this.onClickView} className="manage-button"> 
                                     Xem <span style={{textTransform: 'lowercase'}}> thông tin khách hàng </span> 
                                 </Button>

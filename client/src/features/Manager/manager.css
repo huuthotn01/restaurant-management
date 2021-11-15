@@ -68,6 +68,7 @@
 
 .search-bar {
   width: 200px;
+  padding-right: 0px ;
 }
 
 .not-found-search {
@@ -87,7 +88,7 @@
   color: white;
   font-size: 15px;
   width: 100px;
-  height: 37.5px;
+  height: 38px;
   border: 1px solid #F09A61;
   text-transform: capitalize;
   padding: 6px 0px 6px 0px;
@@ -274,4 +275,114 @@
   text-align: center;
   border: 1px solid #F09A61;
   margin-left: 30%;
+}
+
+.total-money-chart {
+  padding-left: -50px;
+}
+
+@media (max-width: 576px) {
+.cat-manager-item-left, .cat-manager-item-right {
+  margin: auto;
+  width: 150px;
+  height: 150px;
+}
+
+.cat-manager-img {
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+}
+
+.cat-manager-text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.cat-manager-header {
+  font-size: 20px;
+}
+
+.cat-manager-card {
+  padding: 15px 12px 15px 12px;
+}
+
+.manage-button {
+  width: 150px !important;
+  height: 50px !important;
+  padding-top: 2px;
+  font-size: 15px !important;
+}
+
+.statistic-order-header, .manage-order-header {
+  font-size: 20px;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.manage-table {
+  font-size: 12px;
+}
+
+.auth-view-button {
+  font-size: 12px !important;
+  width: 60px !important;
+}
+
+.auth-header {
+  font-size: 25px;
+}
+
+.customer-button, .order-button {
+  font-size: 12px !important;
+  width: 35px !important;
+  margin: -2px 2px -2px 2px !important;
+}
+
+.agree-header {
+  font-size: 15px;
+}
+
+.search-bar {
+  width: 125px;
+}
+
+.search-box {
+  font-size: 12px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 114px;
+}
+
+.search-button {
+  font-size: 12px !important;
+  width: 80px !important;
+  height: 32px !important;
+  margin-left: 0px !important;
+  margin-top: 10px;
+  right: 0px
+}
+
+.order-content {
+  font-size: 12px;
+}
+
+.order-header {
+  font-size: 20px !important;
+}
+
+.order-customer-name {
+  margin-bottom: 8px;
+}
+
+.aprycot-pagination-number {
+  font-size: 12px;
+}
+
+.aprycot-pagination-button {
+  width: 25px !important;
+  height: 25px !important;
+  margin-bottom: 5px;
+}
 }
