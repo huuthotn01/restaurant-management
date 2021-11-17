@@ -2,9 +2,9 @@ var nodemailer = require('nodemailer');
 var fs = require('fs');
 var util = require('util');
 
-var html_content = fs.readFileSync('./index.html');
+var html_content = fs.readFileSync('./acc-activation.html');
 html_content = html_content.toString();
-var output = util.format(html_content, 'GCAbyss', '', 'yellow-bee.herokuapp.com', 'yellow-bee.herokuapp.com');
+var output = util.format(html_content, 'huuthotn01', '', 'yellow-bee.herokuapp.com', 'yellow-bee.herokuapp.com');
 
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -16,9 +16,9 @@ var transporter = nodemailer.createTransport({
 
 var mainOptions = {
     from: "Yellow Bee",
-    to: 'cat01697351001@gmail.com',
-    subject: '[YELLOW BEE] KÍCH HOẠT TÀI KHOẢN',
-    text: 'Message from YELLOW BEE',
+    to: 'huuthotn01@gmail.com',
+    subject: 'Aprycot: Kích hoạt tài khoản của bạn',
+    text: 'Kích hoạt tài khoản',
     html: output
 }
 
@@ -26,7 +26,7 @@ transporter.sendMail(mainOptions, (err, info) => {
     if (err) {
         console.log(err);
     } else {
-        console.log("Infp: ", info);
+        console.log("Info: ", info);
         console.log("Message sent.");
     }
 });

@@ -7,16 +7,18 @@
         "phone":"0257894578",
         "email":"annguyen01@gmail.com",
         "role":"3",
+        "avatar":"",
         "Authenticate": true
     },
     {
         "fname":"Huu Tho",
         "lname":"Tran Nguyen",
-        "username":"huutho",
+        "username":"huuthotn01",
         "password":"huuthobk",
         "phone":"0256894578",
         "email":"huuthotn01@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": false
     },
     {
@@ -26,7 +28,8 @@
         "password":"giacatbk",
         "phone":"0521485963",
         "email":"giacat@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"Ha Bac",
@@ -36,6 +39,7 @@
         "phone":"0264785413",
         "email":"habac@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": true
     },
     {
@@ -45,7 +49,8 @@
         "password":"xuanvubk",
         "phone":"0264845317",
         "email":"xuanvu@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"Thanh Mai",
@@ -55,6 +60,7 @@
         "phone":"0254135981",
         "email":"thanhmai@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": false
     },
     {
@@ -64,7 +70,8 @@
         "password":"huyphuocbk",
         "phone":"0256412589",
         "email":"huyphuoc@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"Hai",
@@ -74,6 +81,7 @@
         "phone":"0125786598",
         "email":"quanghai@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": true
     },
     {
@@ -83,7 +91,8 @@
         "password":"congphuongbk",
         "phone":"0256314523",
         "email":"congphuong@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"GC",
@@ -93,6 +102,7 @@
         "phone":"0265413559",
         "email":"jacac@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": false
     },
     {
@@ -102,7 +112,8 @@
         "password":"raumbk",
         "phone":"0245125896",
         "email":"raum@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"TDS",
@@ -112,6 +123,7 @@
         "phone":"0237267277",
         "email":"ducky@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": true
     },
     {
@@ -121,7 +133,8 @@
         "password":"kumeowbk",
         "phone":"0245632158",
         "email":"kumoew@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"Sarah",
@@ -131,6 +144,7 @@
         "phone":"0251103104",
         "email":"sarah@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": false
     },
     {
@@ -140,7 +154,8 @@
         "password":"tantaibk",
         "phone":"0212321232",
         "email":"tantai@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"Minh",
@@ -150,6 +165,7 @@
         "phone":"0256214798",
         "email":"nhatminh@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": true
     },
     {
@@ -159,7 +175,8 @@
         "password":"kungfuit",
         "phone":"0256123564",
         "email":"kungfu@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"Xuan Truong",
@@ -169,6 +186,7 @@
         "phone":"0231564897",
         "email":"xuantruong@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": false
     },
     {
@@ -178,7 +196,8 @@
         "password":"treepoobk",
         "phone":"0245612487",
         "email":"treepoo@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     },
     {
         "fname":"Kil",
@@ -188,6 +207,7 @@
         "phone":"0214523651",
         "email":"kilgroth@gmail.com",
         "role":"1",
+        "avatar":"",
         "Authenticate": true
     },
     {
@@ -197,6 +217,7 @@
         "password":"fennikaov",
         "phone":"0215423651",
         "email":"fennik@gmail.com",
-        "role":"2"
+        "role":"2",
+        "avatar":""
     }
 ]

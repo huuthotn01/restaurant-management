@@ -43,7 +43,7 @@ class Main extends Component {
 		};
 	}
 
-	render(){
+	render() {
         return (
             <LoginContext.Provider value={this.state.loginInfo} >
                 <Header />
@@ -60,7 +60,7 @@ class Main extends Component {
                         <Route path='/forgot-pass' component={ForgotPass} />
                         <Route path='/food_ordering' component={FoodOrdering} />
                         <LoginContext.Consumer>
-							{value => ((value.role === 3) ? <Redirect to="/manage" /> : <Redirect to="/home" />)}
+							{value => ((this.state.loginInfo.role === "2") ? <Redirect to="/manage" /> : <Redirect to="/home" />)}
 						</LoginContext.Consumer>
                     </Switch>
                 </div>

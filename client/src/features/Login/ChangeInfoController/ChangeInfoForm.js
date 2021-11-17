@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
 import $ from 'jquery';
+import { LoginContext } from '../../SharedComponent/LoginContext';
 
 class ChangeInfoForm extends React.Component {
     constructor(props) {
@@ -21,19 +22,19 @@ class ChangeInfoForm extends React.Component {
             <Form id='info-form' onSubmit={this.onSubmit}>
             <Form.Group>
                 <Form.Label>Tên tài khoản</Form.Label>
-                    <Form.Control id="username" value='huutho' type="text" disabled />
+                    <Form.Control id="username" value={this.context.email} type="text" disabled />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Họ</Form.Label>
-                    <Form.Control id="l-name" value='Tran Nguyen' type="text" />
+                    <Form.Control id="l-name" value={this.context.lname} type="text" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Tên</Form.Label>
-                    <Form.Control id="f-name" value='Huu Tho' type="text" />
+                    <Form.Control id="f-name" value={this.context.fname} type="text" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
-                    <Form.Control id="email" value='huuthotn01@gmail.com' type="email" />
+                    <Form.Control id="email" value={this.context.email} type="email" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Điện thoại</Form.Label>
@@ -50,5 +51,7 @@ class ChangeInfoForm extends React.Component {
         );
     }
 }
+
+ChangeInfoForm.contextType = LoginContext;
 
 export { ChangeInfoForm };

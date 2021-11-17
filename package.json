@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "google-auth-library": "^7.9.2",
     "google-oauth-jwt": "^0.2.0",

@@ -7,6 +7,7 @@ import SubmitButton from './SubmitButton';
 import $ from 'jquery';
 import { LoginContext } from '../../SharedComponent/LoginContext';
 import { Alert } from 'react-bootstrap';
+import { ValidateLogin, ValidateSignUp } from '../LoginModel';
 
 class SignExpanded extends Component {
 	constructor(props) {
@@ -14,7 +15,6 @@ class SignExpanded extends Component {
 		this.state = {
 			flexState: false,
 			animIsFinished: false,
-			role: 0
 		};
 		this.formSubmit = this.formSubmit.bind(this);
 	}
@@ -30,15 +30,23 @@ class SignExpanded extends Component {
 
 	formSubmit(e) {
 		e.preventDefault();
-		if (this.props.type === 'signIn') {
+		if (this.props.type === 'signIn') { // Sign In
 			let username = $("#username").val();
-			// let pass = $("#password").val();
-			if (username === 'admin') this.setState({role: 3});
-			else this.setState({role: 1});
-		} else {
+			let pass = $("#password").val();
+			let login_result = ValidateLogin(username, pass);
+			if (login_result === false) {
+				$("#signin-alert").css("display", "block");
+			} else {
+				if (login_result["url"] === "") 
+					login_result["url"] = 'https://lh3.googleusercontent.com/a/AATXAJxsingek8quu1NT_TwOz5qAfcmFcguY6BKQJFmr=s96-c';
+				this.context.updateContext(true, login_result["fname"], login_result["lname"], login_result["email"],
+									login_result["role"], login_result["url"]);
+			}
+		} else { // Sign Up
 			let fullname = $("#name").val();
 			let email = $("#name").val();
 			let password = $("#name").val();
+			let signup_result = ValidateSignUp(fullname, email, password);
 			$("#signup-alert").css("display", "block");
 			$("#login-form").trigger("reset");
 		}
@@ -74,28 +82,6 @@ class SignExpanded extends Component {
 					placeholder="MẬT KHẨU" />
 			</div>
 		);
-		if (this.state.role === 3) {
-			return (
-				<LoginContext.Consumer>
-				{value => {
-				value.updateContext(true, 'Gia Cat', 'Nguyen Khoa', 'giacat', 3, '');
-				return (
-					<Switch>
-						<Redirect to='/manage' />
-					</Switch>);
-				}}
-				</LoginContext.Consumer>
-			);
-		} else if (this.state.role === 1) {
-			return (
-				<LoginContext.Consumer>
-				{value => {
-				value.updateContext(true, 'Huu Tho', 'Tran Nguyen', 'huutho', 1, 'https://lh3.googleusercontent.com/a/AATXAJxsingek8quu1NT_TwOz5qAfcmFcguY6BKQJFmr=s96-c');
-				}}
-				</LoginContext.Consumer>
-			);
-		}
-
 		return (
 			<Motion style={{
 				flexVal: spring(this.state.flexState ? 8 : 1)
@@ -123,6 +109,9 @@ class SignExpanded extends Component {
 							{(this.props.type === 'signIn') &&  
 							<a href="/forgot-pass" className='forgotPass'>Quên mật khẩu?</a>
 							}
+							{(this.props.type === 'signIn') &&  
+							<Alert id='signin-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng nhập thất bại</Alert>
+							}
 							{(this.props.type === 'signUp') &&  
 							<Alert id='signup-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng kí thành công</Alert>
 							}
@@ -140,5 +129,7 @@ class SignExpanded extends Component {
 SignExpanded.propTypes ={
 	type: PropTypes.string	
 };
+
+SignExpanded.contextType = LoginContext;
 
 export default SignExpanded;

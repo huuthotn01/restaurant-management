@@ -42,7 +42,7 @@ class SignIn extends React.Component {
     
         this.onSuccess = (res) => {
             console.log('Login Successed, Current User: ', res.profileObj);
-            this.context.updateContext(true, res.profileObj.givenName, res.profileObj.familyName, res.profileObj.email, 1, res.profileObj.imageUrl);
+            this.context.updateContext(true, res.profileObj.givenName, res.profileObj.familyName, res.profileObj.email, "1", res.profileObj.imageUrl);
             this.sendToken(res.tokenId)
             .then(() => {
                     this.refreshTokenSetup(res);
@@ -76,7 +76,7 @@ class SignOut extends React.Component {
     constructor(props) {
         super(props);
         this.onSuccess = (res) => {
-            this.context.updateContext(false, '', '', '', -1, '');
+            this.context.updateContext(false, '', '', '', "-1", '');
             console.log("Logout successfully");
         };
     }

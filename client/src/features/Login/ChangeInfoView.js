@@ -26,16 +26,18 @@ class ChangeInfo extends React.Component {
                 <hr />
                 <div style={{display: "flex", "flexDirection": "column", alignItems: "center"}}>
                 <Nav variant='tabs' className='flex-column' style={{width: "100%"}} >
-                    <Nav.Item style={{paddingBottom: "5px"}} >
+                    <Nav.Item className='changeinfo-navitem' style={{paddingBottom: "5px"}} >
                         <Nav.Link eventKey='change-info' style={{borderLeftStyle: "solid", borderLeftColor: "grey"}}>
-                            <Container>
+                            <Container className='changeinfo-tab'>
                                 <FaInfoCircle/> <span>Thông tin cá nhân</span>
                             </Container>
                         </Nav.Link>
                     </Nav.Item>
-                    <Nav.Item style={{paddingTop: "5px"}} >
+                    <Nav.Item className='changeinfo-navitem' style={{paddingTop: "5px"}} >
                         <Nav.Link eventKey='change-pass' style={{borderLeftStyle: "solid", borderLeftColor: "grey"}}>
-                            <Container><AiFillLock/> <span>Bảo mật tài khoản</span></Container>
+                            <Container className='changeinfo-tab'>
+                                <AiFillLock/> <span>Bảo mật tài khoản</span>
+                            </Container>
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>

@@ -42,6 +42,6 @@ class ForgotPass extends React.Component {
     }
 }
 
-ForgotPass.contextTypes = LoginContext;
+ForgotPass.contextType = LoginContext;
 
 export { ForgotPass };
