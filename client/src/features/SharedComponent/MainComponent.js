@@ -7,45 +7,17 @@ import ManagePage from '../Manager/ManagePageComponent'
 import ManageOrderController from '../Manager/ManageOrder/ManageOrderController';
 import ManageCustomerController from '../Manager/ManageCustomer/ManageCustomerController';
 import ReservationPage from '../TableReservation/ReservationPage';
-import Payment from '../Payment/PaymentComponent';
+import Payment from '../payment/PaymentComponent';
 import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
-import { ChangeInfo } from '../Login/ChangeInfoView';
-import { ForgotPass } from '../Login/LoginController/ForgotPass';
-import FoodOrdering  from '../FoodOrdering/FoodOrdering';
-import { loginInfo, LoginContext } from './LoginContext';
-
+import { ChangeInfo } from '../login/ChangeInfoView';
+import { ForgotPass } from '../login/LoginController/ForgotPass';
+import Ordering from '../FoodOrdering/OrderingController'
+import FoodMenu from '../FoodOrdering/FoodMenuController';
+import DrinkMenu from '../FoodOrdering/DrinkMenuController';
 class Main extends Component {
-    constructor(props) {
-		super(props);
-		this.updateContext = (isin, fname, lname, email, role, url) => {
-			this.setState(state => ({
-				loginInfo: {
-					isIn: isin,
-					fName: fname,
-					lName: lname,
-					email: email,
-					role: role,
-					avatarURL: url,
-					updateContext: this.state.loginInfo.updateContext
-				}
-			}));
-		};
-		this.state = {
-			loginInfo: {
-				isIn: loginInfo.isIn,
-				fName: loginInfo.fName,
-				lName: loginInfo.lName,
-				email: loginInfo.email,
-				role: loginInfo.role,
-				avatarURL: loginInfo.avatarURL,
-				updateContext: this.updateContext,
-			}
-		};
-	}
-
 	render(){
         return (
-            <LoginContext.Provider value={this.state.loginInfo} >
+            <div>
                 <Header />
                 <div>
                     <Switch>
@@ -58,14 +30,14 @@ class Main extends Component {
                         <Route path='/cancel_reservation' component={CancelTablePage} />
                         <Route path='/change-info' component={ChangeInfo} />
                         <Route path='/forgot-pass' component={ForgotPass} />
-                        <Route path='/food_ordering' component={FoodOrdering} />
-                        <LoginContext.Consumer>
-							{value => ((value.role === 3) ? <Redirect to="/manage" /> : <Redirect to="/home" />)}
-						</LoginContext.Consumer>
+                        <Route path='/ordering' component={Ordering} />
+                        <Route path='/food-menu' component={FoodMenu} />
+                        <Route path='/drink-menu' component={DrinkMenu} />
+                        <Redirect to="/home" />
                     </Switch>
                 </div>
                 <Footer />
-            </LoginContext.Provider>
+            </div>
         );
     }
 }
