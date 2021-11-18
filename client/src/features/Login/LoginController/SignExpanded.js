@@ -1,6 +1,5 @@
 import React , {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Redirect} from 'react-router-dom';
 import {Motion, spring} from 'react-motion';
 import Input from './Input';
 import SubmitButton from './SubmitButton';
@@ -28,27 +27,34 @@ class SignExpanded extends Component {
 		this.setState({animIsFinished: true});
 	}
 
-	formSubmit(e) {
+	async formSubmit(e) {
 		e.preventDefault();
 		if (this.props.type === 'signIn') { // Sign In
 			let username = $("#username").val();
 			let pass = $("#password").val();
-			let login_result = ValidateLogin(username, pass);
+			let login_result = await ValidateLogin(username, pass);
 			if (login_result === false) {
 				$("#signin-alert").css("display", "block");
+				setTimeout(() => {$("#signin-alert").css("display", "none");}, 5000);
 			} else {
-				if (login_result["url"] === "") 
-					login_result["url"] = 'https://lh3.googleusercontent.com/a/AATXAJxsingek8quu1NT_TwOz5qAfcmFcguY6BKQJFmr=s96-c';
 				this.context.updateContext(true, login_result["fname"], login_result["lname"], login_result["email"],
 									login_result["role"], login_result["url"]);
 			}
 		} else { // Sign Up
 			let fullname = $("#name").val();
-			let email = $("#name").val();
-			let password = $("#name").val();
-			let signup_result = ValidateSignUp(fullname, email, password);
-			$("#signup-alert").css("display", "block");
-			$("#login-form").trigger("reset");
+			let email = $("#email").val();
+			let password = $("#password").val();
+			let signup_result = await ValidateSignUp(fullname, email, password);
+			if (signup_result) {
+				$("#signup-alert-fail").css("display", "none");
+				$("#signup-alert-succ").css("display", "block");
+				setTimeout(() => {$("#signup-alert-succ").css("display", "none");}, 5000);
+				$("#login-form").trigger("reset");
+			} else {
+				$("#signup-alert-succ").css("display", "none");
+				$("#signup-alert-fail").css("display", "block");
+				setTimeout(() => {$("#signup-alert-fail").css("display", "none");}, 5000);
+			}
 		}
 	}
 
@@ -58,7 +64,7 @@ class SignExpanded extends Component {
 				<Input
 					id="username"
 					type="text"
-					placeholder="USERNAME, EMAIL HOẶC SỐ ĐIỆN THOẠI" />
+					placeholder="USERNAME HOẶC EMAIL" />
 				<Input
 					id="password"
 					type="password"
@@ -113,7 +119,10 @@ class SignExpanded extends Component {
 							<Alert id='signin-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng nhập thất bại</Alert>
 							}
 							{(this.props.type === 'signUp') &&  
-							<Alert id='signup-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng kí thành công</Alert>
+							<Alert id='signup-alert-succ' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng kí thành công</Alert>
+							}
+							{(this.props.type === 'signUp') &&  
+							<Alert id='signup-alert-fail' variant='warning' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Thông tin đã tồn tại</Alert>
 							}
 						</form>
 						}

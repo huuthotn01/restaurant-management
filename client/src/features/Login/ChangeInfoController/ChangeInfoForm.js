@@ -22,23 +22,23 @@ class ChangeInfoForm extends React.Component {
             <Form id='info-form' onSubmit={this.onSubmit}>
             <Form.Group>
                 <Form.Label>Tên tài khoản</Form.Label>
-                    <Form.Control id="username" value={this.context.email} type="text" disabled />
+                    <Form.Control id="username" value={this.props.info.username} type="text" disabled />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Họ</Form.Label>
-                    <Form.Control id="l-name" value={this.context.lname} type="text" />
+                    <Form.Control id="l-name" value={this.props.info.lname} type="text" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Tên</Form.Label>
-                    <Form.Control id="f-name" value={this.context.fname} type="text" />
+                    <Form.Control id="f-name" value={this.props.info.fname} type="text" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
-                    <Form.Control id="email" value={this.context.email} type="email" />
+                    <Form.Control id="email" value={this.props.info.email} type="email" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Điện thoại</Form.Label>
-                    <Form.Control id="phone" value='0256894578' type="text" pattern="[0-9]{10}" />
+                    <Form.Control id="phone" value={this.props.info.phone} type="text" pattern="[0-9]{10}" />
                 </Form.Group>
                 <Button type='submit' style={{backgroundColor: "#F09A61", color: "black", width: "100%"}}>
                     <span style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'}} >

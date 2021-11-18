@@ -8,6 +8,37 @@ import { FaInfoCircle } from 'react-icons/fa';
 import { Switch, Redirect } from 'react-router-dom';
 
 class ChangeInfo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            info: {},
+        };
+    }
+
+    async componentDidMount() {
+        alert("Zô");
+        let user_data = {
+            "email": this.context.email
+        }
+        const response = await fetch('/change-info', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer'
+            },
+            body: JSON.stringify(user_data)
+        });
+        if (response.status !== 200) console.log("Error occurred!");
+        const body = await response.json();
+        if (!body.succ) {
+            alert("Error occurreddd!");
+            return;
+        }
+        this.setState({
+            info: body.info
+        });
+    }
+
     render() {
         if (!this.context.isIn) return (
             <Switch>
@@ -46,7 +77,7 @@ class ChangeInfo extends React.Component {
             <Col>
                 <Tab.Content>
                     <Tab.Pane eventKey='change-info'>
-                        <ChangeInfoForm />
+                        <ChangeInfoForm info={this.state.info} />
                     </Tab.Pane>
                     <Tab.Pane eventKey='change-pass'>
                         <ChangeInfoPass />
