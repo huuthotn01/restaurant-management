@@ -13,6 +13,7 @@ import { ChangeInfo } from '../Login/ChangeInfoView';
 import { ForgotPass } from '../Login/LoginController/ForgotPass';
 import FoodOrdering  from '../FoodOrdering/FoodOrdering';
 import { loginInfo, LoginContext } from './LoginContext';
+import Session from 'react-session-api';
 
 class Main extends Component {
     constructor(props) {

@@ -20,24 +20,57 @@ app.use(express.urlencoded({extended: true}));
 
 app.post('/gg_auth', (req, res) => {
     const gg_auth = require('./google_auth');
-    console.log("Token: ", req.body.tokenId);
     gg_auth(req.body.tokenId).then((response) => {
         console.log("Response from gg_auth: ", response);
-        // res.setHeader('Content-Type', 'application/json');
-        // res.write(JSON.stringify({body: 'Hello'}));
-        // res.end(JSON.stringify({body: 'Hello'}));
+        const filename = '../client/src/data/user.json';
+        let file = fs.readFileSync(filename, {encoding: "utf8"});
+        let cont = JSON.parse(file);
+        for (let i = 0; i < cont.length; i++) {
+            if (response["email"] === cont[i]["email"]) {
+                res.send({info: response});
+                return;
+            }
+        }
+        let username = response["email"].split("@")[0];
+        let user_data = {
+            "fname": response["fname"],
+            "lname": response["lname"],
+            "username": username,
+            "password": "none",
+            "phone": "",
+            "email": response["email"],
+            "role": "1",
+            "avatar": response["photoUrl"]
+        };
+        cont.push(user_data);
+        fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
         res.send({info: response});
     });
 });
 
+app.post('/forgot-pass', (req, res) => {
+    let info = req.body; // user data from frontend
+    const filename = '../client/src/data/user.json';
+    let file = fs.readFileSync(filename, {encoding: "utf8"});
+    let cont = JSON.parse(file);
+    for (let i = 0; i < cont.length; i++) {
+        if (info["email"] === cont[i]["email"]) {
+            // TODO send mail
+            res.send({succ: true});
+            return;
+        }
+    }
+    res.send({succ: false});
+});
+
 app.post('/signin', (req, res) => {
-    let info = req.body; // user dât from frontend
+    let info = req.body; // user data from frontend
     const filename = '../client/src/data/user.json';
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
     for (let i = 0; i < cont.length; i++) {
         if (info["username"] === cont[i]["username"]) {
-            if (bcrypt.compare(info["password"], cont[i]["password"])) {
+            if (cont[i]["password"] !== "none" && bcrypt.compareSync(info["password"], cont[i]["password"])) {
                 res.send({
                     succ: true,
                     data: {
@@ -99,14 +132,15 @@ app.post('/signup', (req, res) => {
     res.send({succ: true});
 });
 
-app.post('/change-info', (req, res) => {
+app.post('/get-user-info', (req, res) => {
     const filename = '../client/src/data/user.json';
-    let info = req.body;
+    let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
     for (let i = 0; i < cont.length; i++) {
         var data = cont[i];
         if (data["email"] === info["email"]) {
+            let has_pass = (data["password"] !== "none");
             res.send({
                 succ: true,
                 info: {
@@ -114,9 +148,83 @@ app.post('/change-info', (req, res) => {
                     "lname": data["lname"],
                     "fname": data["fname"],
                     "email": data["email"],
-                    "phone": data["phone"]
-                }
+                    "phone": data["phone"],
+                },
+                "haspass": has_pass
             });
+            return;
+        }
+    }
+    res.send({succ: false});
+});
+
+app.post('/change-info', (req, res) => {
+    const filename = '../client/src/data/user.json';
+    let info = req.body; // user info from frontend
+    let file = fs.readFileSync(filename, {encoding: "utf8"});
+    let cont = JSON.parse(file);
+    let count_position = -1;
+    for (let i = 0; i < cont.length; i++) {
+        var data = cont[i];
+        if ((data["email"] === info["email"] || data["phone"] === info["phone"]) && data["phone"] !== "" && info["phone"] !== "") {
+            if (data["username"] === info["username"]) {
+                count_position = i;
+                continue;
+            } else {
+                res.send({succ: false});
+                return;
+            }
+        }
+        if (data["username"] === info["username"]) {
+            count_position = i;
+            continue;
+        }
+    }
+    if (count_position === -1) {
+        res.send({succ: false});
+        return;
+    }
+    if (cont[count_position]["email"] !== info["email"]) {
+        cont[count_position]["email"] = info["email"];
+        // TODO send mail
+    }
+    if (cont[count_position]["phone"] !== info["phone"]) {
+        cont[count_position]["phone"] = info["phone"];
+        // TODO send mail
+    }
+    if (cont[count_position]["fname"] !== info["fname"]) {
+        cont[count_position]["fname"] = info["fname"];
+    }
+    if (cont[count_position]["lname"] !== info["lname"]) {
+        cont[count_position]["lname"] = info["lname"];
+    }
+    fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
+    res.send({
+        succ: true,
+        info: {
+            username: cont[count_position]["username"],
+            lname: cont[count_position]["lname"],
+            fname: cont[count_position]["fname"],
+            email: cont[count_position]["email"],
+            phone: cont[count_position]["phone"]
+        }
+    });
+});
+
+app.post('/change-password', (req, res) => {
+    const filename = '../client/src/data/user.json';
+    let info = req.body; // user info from frontend
+    let file = fs.readFileSync(filename, {encoding: "utf8"});
+    let cont = JSON.parse(file);
+    for (let i = 0; i < cont.length; i++) {
+        if (cont[i]["password"] === "none" || bcrypt.compareSync(info["oldpass"], cont[i]["password"])) {
+            cont[i]["password"] = bcrypt.hashSync(info["newpass"], 10);
+            fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"});
+            // TODO send mail
+            res.send({succ: true});
+            return;
+        } else {
+            res.send({succ: false});
             return;
         }
     }

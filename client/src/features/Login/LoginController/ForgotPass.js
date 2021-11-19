@@ -1,7 +1,6 @@
 import React from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
 import $ from 'jquery';
-import { Alert } from 'react-bootstrap';
 import { Switch, Redirect } from 'react-router-dom';
 import { LoginContext } from '../../SharedComponent/LoginContext';
 
@@ -11,10 +10,31 @@ class ForgotPass extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onSubmit(e) {
+    async onSubmit(e) {
         e.preventDefault();
-        $("#forgot-pass-form").trigger("reset");
-        $("#forgot-pass-alert").css("display", "block");
+        let user_data = {
+            email: $("#email").val().trim(),
+        };
+        const response = await fetch('/forgot-pass', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer'
+            },
+            body: JSON.stringify(user_data)
+        });
+        if (response.status !== 200) console.log("Error occurred!");
+        const body = await response.json();
+        if (body.succ) {
+            $("#forgot-pass-form").trigger("reset");
+            $("#forgot-pass-alert").css("display", "block");
+            $("#forgot-pass-warning").css("display", "none");
+            setTimeout(() => {$("#forgot-pass-alert").css("display", "none");}, 5000);
+        } else {
+            $("#forgot-pass-warning").css("display", "block");
+            $("#forgot-pass-alert").css("display", "none");
+            setTimeout(() => {$("#forgot-pass-warning").css("display", "none");}, 5000);
+        }
     }
 
     render() {
@@ -36,7 +56,8 @@ class ForgotPass extends React.Component {
                     </span>
                 </Button>
             </Form>
-            <Alert id='forgot-pass-alert' variant='info' style={{width: '50%', display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đặt lại mật khẩu được nhận qua email</Alert>
+            <Alert id='forgot-pass-alert' variant='info' style={{width: '50%', display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đường dẫn đặt lại mật khẩu đã được gửi qua email</Alert>
+            <Alert id='forgot-pass-warning' variant='warning' style={{width: '50%', display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đặt lại mật khẩu không thành công</Alert>
             </Container>
         );
     }

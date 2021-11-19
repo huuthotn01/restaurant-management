@@ -11,16 +11,23 @@ class ChangeInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            info: {},
+            info: {
+                username: '',
+                lname: '',
+                fname: '',
+                email: '',
+                phone: ''
+            },
+            haspass: false,
+            ok: false
         };
     }
 
     async componentDidMount() {
-        alert("Zô");
         let user_data = {
             "email": this.context.email
         }
-        const response = await fetch('/change-info', {
+        const response = await fetch('/get-user-info', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -31,11 +38,16 @@ class ChangeInfo extends React.Component {
         if (response.status !== 200) console.log("Error occurred!");
         const body = await response.json();
         if (!body.succ) {
-            alert("Error occurreddd!");
+            console.log("Error occurreddd!");
             return;
         }
         this.setState({
-            info: body.info
+            info: body.info,
+            haspass: body.haspass
+        }, () => {
+            this.setState({
+                ok: true
+            });
         });
     }
 
@@ -75,14 +87,14 @@ class ChangeInfo extends React.Component {
                 </div>
             </Col>
             <Col>
-                <Tab.Content>
+                {this.state.ok && <Tab.Content>
                     <Tab.Pane eventKey='change-info'>
                         <ChangeInfoForm info={this.state.info} />
                     </Tab.Pane>
                     <Tab.Pane eventKey='change-pass'>
-                        <ChangeInfoPass />
+                        <ChangeInfoPass haspass={this.state.haspass} />
                     </Tab.Pane>
-                </Tab.Content>
+                </Tab.Content>}
             </Col>
             </Row>
             </Tab.Container>
