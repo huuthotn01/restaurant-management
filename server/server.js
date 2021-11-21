@@ -21,14 +21,14 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
-app.post('/gg_auth', (req, res) => {
+app.post('/gg_auth', (req, res) => { // login (signin and signup) with google 
     const gg_auth = require('./google_auth');
     gg_auth(req.body.tokenId).then((response) => {
         console.log("Response from gg_auth: ", response);
         const filename = '../client/src/data/user.json';
         let file = fs.readFileSync(filename, {encoding: "utf8"});
         let cont = JSON.parse(file);
-        let username = response["email"].split("@")[0];
+        let username = response["email"].split("@")[0]; // solit username from email
         for (let i = 0; i < cont.length; i++) {
             if (response["email"] === cont[i]["email"]) {
                 let session = req.session;
@@ -64,7 +64,7 @@ app.post('/gg_auth', (req, res) => {
     });
 });
 
-app.post('/forgot-pass', (req, res) => {
+app.post('/forgot-pass', (req, res) => { // forgot pass and resetting pass
     let info = req.body; // user data from frontend
     const filename = '../client/src/data/user.json';
     let file = fs.readFileSync(filename, {encoding: "utf8"});
@@ -79,16 +79,18 @@ app.post('/forgot-pass', (req, res) => {
     res.send({succ: false});
 });
 
-app.post('/signin', (req, res) => {
+app.post('/signin', (req, res) => { // sign in by form
     let info = req.body; // user data from frontend
     const filename = '../client/src/data/user.json';
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
+    let username = info["username"];
+    username = username.split('@')[0]; // split username from email if needed
     for (let i = 0; i < cont.length; i++) {
-        if (info["username"] === cont[i]["username"]) {
+        if (username === cont[i]["username"]) {
             if (cont[i]["password"] !== "none" && bcrypt.compareSync(info["password"], cont[i]["password"])) {
                 let session = req.session;
-                session.userid = req.body["username"];
+                session.userid = username;
                 console.log(req.session);
                 res.send({
                     succ: true,
@@ -110,14 +112,14 @@ app.post('/signin', (req, res) => {
     res.send({succ: false});
 });
 
-app.post('/signup', (req, res) => {
+app.post('/signup', (req, res) => { // signup
     const filename = '../client/src/data/user.json';
     let info = req.body; // user data from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"}); // read file
     let cont = JSON.parse(file);
     for (let i = 0; i < cont.length; i++) {
         var data = cont[i];
-        if (data["email"] === info["email"]) {
+        if (data["email"] === info["email"]) { // account existed
             console.log("Duplicated");
             res.send({succ: false});
             return;
@@ -127,12 +129,18 @@ app.post('/signup', (req, res) => {
     let email = info["email"];
     let password = info["password"];
     let name_split = fullname.split(" ");
-    let lname = name_split[0]; // Last name
-    let fname = name_split[1]; // First name
-    let count = 2;
-    while (name_split[count] != null) { // Add remains to first name
-        fname += " " + name_split[count];
-        count++;
+    let lname = ''; // Last name
+    let fname = ''; // First name
+    if (name_split.length === 1) { // name contains one word
+        lname = name_split[0];
+        fname = name_split[1];
+        let count = 2;
+        while (name_split[count] != null) { // Add remains to first name
+            fname += " " + name_split[count];
+            count++;
+        }
+    } else {
+        fname = name_split[0];
     }
     let username = email.split("@")[0]; // username
     password = bcrypt.hashSync(password, 10);
@@ -151,7 +159,7 @@ app.post('/signup', (req, res) => {
     res.send({succ: true});
 });
 
-app.post('/get-user-info', (req, res) => {
+app.post('/get-user-info', (req, res) => { // get user info
     const filename = '../client/src/data/user.json';
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
@@ -177,7 +185,7 @@ app.post('/get-user-info', (req, res) => {
     res.send({succ: false});
 });
 
-app.post('/change-info', (req, res) => {
+app.post('/change-info', (req, res) => { // update changed info
     const filename = '../client/src/data/user.json';
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
@@ -226,13 +234,14 @@ app.post('/change-info', (req, res) => {
     });
 });
 
-app.post('/change-password', (req, res) => {
+app.post('/change-password', (req, res) => { // update changed password
     const filename = '../client/src/data/user.json';
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
+    let username = req.session.username;
     for (let i = 0; i < cont.length; i++) {
-        if (cont[i]["password"] === "none" || bcrypt.compareSync(info["oldpass"], cont[i]["password"])) {
+        if (cont[i]["password"] === "none" || (cont[i]["username"] === username && bcrypt.compareSync(info["oldpass"], cont[i]["password"]))) {
             cont[i]["password"] = bcrypt.hashSync(info["newpass"], 10);
             fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"});
             // TODO send mail
@@ -246,12 +255,12 @@ app.post('/change-password', (req, res) => {
     res.send({succ: false});
 });
 
-app.post('/logout', (req, res) => {
+app.post('/logout', (req, res) => { // logout
     req.session.destroy();
     res.end();
 });
 
-app.get('/verify', (req, res) => {
+app.get('/verify', (req, res) => { // verify session
     let session = req.session;
     console.log(req.session);
     if (session.userid === undefined) {
@@ -285,9 +294,9 @@ app.get('/verify', (req, res) => {
     }
 });
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build'))); // root ('/')
 
-app.get('*', function(req, res) {
+app.get('*', function(req, res) { // other routes not defined above
     console.log("In get *");
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
     console.log("End get *");

@@ -34,9 +34,8 @@ class ChangeInfoForm extends React.Component {
             email: $("#email").val().trim(),
             phone: $("#phone").val().trim()
         };
-        if (user_data.lname !== this.state.info.lname || user_data.fname !== this.state.info.fname || user_data.email !== this.state.info.email ||
-            user_data.phone !== this.state.info.phone) {
-            alert("Changed");
+        if (user_data.lname !== this.state.info.lname || user_data.fname !== this.state.info.fname || 
+            user_data.email !== this.state.info.email || user_data.phone !== this.state.info.phone) {
             const response = await fetch('/change-info', {
                 method: "POST",
                 headers: {
@@ -48,9 +47,10 @@ class ChangeInfoForm extends React.Component {
             if (response.status !== 200) console.log("Error occurred!");
             const body = await response.json();
             if (body.succ) {
+                this.context.updateContext(true, body.info.fname, body.info.lname, body.info.email, this.context.role, this.context.avatarURL);
                 this.setState({
                     info: body.info,
-                })
+                });
                 $("#info-alert").css("display", "block");
                 setTimeout(() => {$("#info-alert").css("display", "none");}, 5000);
             } else {
