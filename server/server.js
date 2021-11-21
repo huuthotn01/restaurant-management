@@ -1,22 +1,25 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const sessions = require('express-session');
 const app = express();
 const port = process.env.PORT || 5000;
 const path = require('path');
-const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'NKGC@24.11.2001',
-    database: 'pharmacy'
-  });
+const one_day = 1000 * 60 * 60 * 24;
+app.use(sessions({
+    secret: "aprycotsecretkeyforsession",
+    saveUninitialized: true,
+    cookie: { maxAge: one_day },
+    resave: false
+}));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 
 app.post('/gg_auth', (req, res) => {
     const gg_auth = require('./google_auth');
@@ -25,13 +28,23 @@ app.post('/gg_auth', (req, res) => {
         const filename = '../client/src/data/user.json';
         let file = fs.readFileSync(filename, {encoding: "utf8"});
         let cont = JSON.parse(file);
+        let username = response["email"].split("@")[0];
         for (let i = 0; i < cont.length; i++) {
             if (response["email"] === cont[i]["email"]) {
-                res.send({info: response});
+                let session = req.session;
+                session.userid = username;
+                console.log("GG auth: ", req.session);
+                res.send({info: {
+                    "fname": cont[i]["fname"],
+                    "lname": cont[i]["lname"],
+                    "email": cont[i]["email"],
+                    "role": cont[i]["role"],
+                    "avatar": cont[i]["avatar"],
+                    }
+                });
                 return;
             }
         }
-        let username = response["email"].split("@")[0];
         let user_data = {
             "fname": response["fname"],
             "lname": response["lname"],
@@ -44,6 +57,9 @@ app.post('/gg_auth', (req, res) => {
         };
         cont.push(user_data);
         fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
+        let session = req.session;
+        session.userid = username;
+        console.log("GG auth not yet: ", req.session);
         res.send({info: response});
     });
 });
@@ -71,6 +87,9 @@ app.post('/signin', (req, res) => {
     for (let i = 0; i < cont.length; i++) {
         if (info["username"] === cont[i]["username"]) {
             if (cont[i]["password"] !== "none" && bcrypt.compareSync(info["password"], cont[i]["password"])) {
+                let session = req.session;
+                session.userid = req.body["username"];
+                console.log(req.session);
                 res.send({
                     succ: true,
                     data: {
@@ -192,12 +211,8 @@ app.post('/change-info', (req, res) => {
         cont[count_position]["phone"] = info["phone"];
         // TODO send mail
     }
-    if (cont[count_position]["fname"] !== info["fname"]) {
-        cont[count_position]["fname"] = info["fname"];
-    }
-    if (cont[count_position]["lname"] !== info["lname"]) {
-        cont[count_position]["lname"] = info["lname"];
-    }
+    if (cont[count_position]["fname"] !== info["fname"]) cont[count_position]["fname"] = info["fname"];
+    if (cont[count_position]["lname"] !== info["lname"]) cont[count_position]["lname"] = info["lname"];
     fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
     res.send({
         succ: true,
@@ -231,22 +246,53 @@ app.post('/change-password', (req, res) => {
     res.send({succ: false});
 });
 
-app.get('/api/news', (req, res) => {
-    var sql = "SELECT * FROM doctor";
-    connection.query(sql, function(err, results) {
-      if (err) throw err;
-      res.json({news: results});
-    });
+app.post('/logout', (req, res) => {
+    req.session.destroy();
+    res.end();
+});
+
+app.get('/verify', (req, res) => {
+    let session = req.session;
+    console.log(req.session);
+    if (session.userid === undefined) {
+        console.log("Username is undefined!");
+        res.send({succ: false});
+        return;
+    } else {
+        const filename = '../client/src/data/user.json';
+        let file = fs.readFileSync(filename, {encoding: "utf8"});
+        let cont = JSON.parse(file);
+        for (let i = 0; i < cont.length; i++) {
+            let data = cont[i];
+            if (session.userid === data["username"]) {
+                console.log("OK");
+                res.send({
+                    succ: true,
+                    data: {
+                        "fname": data["fname"],
+                        "lname": data["lname"],
+                        "email": data["email"],
+                        "role": data["role"],
+                        "avatar": data["avatar"],
+                    }
+                });
+                return;
+            }
+        }
+        console.log("Not undefined but username not found!");
+        res.send({succ: false});
+        return;
+    }
 });
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', function(req, res) {
+    console.log("In get *");
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    console.log("End get *");
 });
-/*
 
 app.use(function(req, res, next) {
     res.status(404).send('<h1>Nothing found</h1>');
 });
-*/

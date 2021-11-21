@@ -12,14 +12,13 @@ class SignIn extends React.Component {
             const response = await fetch('/gg_auth', {
                 method: "POST",
                 headers: {
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer'
                 },
                 body: JSON.stringify({'tokenId': tokenId})
             });
             const body = await response.json();
-            console.log("Response: ", body);
+            return body;
         };
 
         this.refreshTokenSetup = (res) => {
@@ -40,11 +39,11 @@ class SignIn extends React.Component {
             setTimeout(refreshToken, refreshTiming);
         };
     
-        this.onSuccess = (res) => {
+        this.onSuccess = async (res) => {
             console.log('Login Successed, Current User: ', res.profileObj);
-            this.context.updateContext(true, res.profileObj.givenName, res.profileObj.familyName, res.profileObj.email, "1", res.profileObj.imageUrl);
             this.sendToken(res.tokenId)
-            .then(() => {
+            .then((r) => {
+                    this.context.updateContext(true, r.info["fname"],r.info["lname"], r.info["email"], r.info["role"], r.info["avatar"]);
                     this.refreshTokenSetup(res);
                 }
             );
@@ -75,7 +74,10 @@ class SignIn extends React.Component {
 class SignOut extends React.Component {
     constructor(props) {
         super(props);
-        this.onSuccess = (res) => {
+        this.onSuccess = async (res) => {
+            await fetch('/logout', {
+                method: "POST"
+            });
             this.context.updateContext(false, '', '', '', "-1", '');
             console.log("Logout successfully");
         };

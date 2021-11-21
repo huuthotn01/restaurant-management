@@ -12,8 +12,7 @@ import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
 import { ChangeInfo } from '../Login/ChangeInfoView';
 import { ForgotPass } from '../Login/LoginController/ForgotPass';
 import FoodOrdering  from '../FoodOrdering/FoodOrdering';
-import { loginInfo, LoginContext } from './LoginContext';
-import Session from 'react-session-api';
+import { LoginContext } from './LoginContext';
 
 class Main extends Component {
     constructor(props) {
@@ -33,15 +32,27 @@ class Main extends Component {
 		};
 		this.state = {
 			loginInfo: {
-				isIn: loginInfo.isIn,
-				fName: loginInfo.fName,
-				lName: loginInfo.lName,
-				email: loginInfo.email,
-				role: loginInfo.role,
-				avatarURL: loginInfo.avatarURL,
+				isIn: '',
+				fName: '',
+				lName: '',
+				email: '',
+				role: '',
+				avatarURL: '',
 				updateContext: this.updateContext,
 			}
 		};
+	}
+
+	async componentDidMount() {
+		const response = await fetch('/verify', {
+            method: "GET"
+        });
+		if (response.status !== 200) console.log("MainComponent Error occurred!");
+		const body = await response.json();
+		if (body.succ) {
+			const data = body.data;
+			this.updateContext(true, data.fname, data.lname, data.email, data.role, data.url);
+		}
 	}
 
 	render() {
@@ -60,9 +71,7 @@ class Main extends Component {
                         <Route path='/change-info' component={ChangeInfo} />
                         <Route path='/forgot-pass' component={ForgotPass} />
                         <Route path='/food_ordering' component={FoodOrdering} />
-                        <LoginContext.Consumer>
-							{value => ((this.state.loginInfo.role === "2") ? <Redirect to="/manage" /> : <Redirect to="/home" />)}
-						</LoginContext.Consumer>
+						{this.state.role === "2" ? <Redirect to='/manage' /> : <Redirect to='/home' />}
                     </Switch>
                 </div>
                 <Footer />
