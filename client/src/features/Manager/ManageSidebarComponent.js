@@ -88,7 +88,7 @@ class ManageSideBar extends Component {
             <Container>
             <Row>
                 <Col>
-                    <Button className="d-md-none" style={{border: 'none'}} onClick={this.onHandleToggleSidebar}>
+                    <Button className="d-md-none" style={{border: 'none', marginLeft: '8px'}} onClick={this.onHandleToggleSidebar}>
                         <FaBars />
                     </Button>
                 </Col>

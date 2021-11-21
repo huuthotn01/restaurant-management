@@ -61,7 +61,7 @@ body.modal-open {
   font-size: 15px;
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
 .navbar-brand {
   height: 35px;
   width: 90px;
@@ -97,3 +97,73 @@ hr {
   margin: auto !important;
 }
 }
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+.navbar-brand {
+  height: 40px;
+  width: 100px;
+  margin-top: -5px;
+}
+
+.flex-item {
+  text-align: center;
+}
+
+.navbar-button {
+  margin-top: 0px;
+  width: 50px;
+  padding-left: 8px;
+}
+
+.footer-content {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.footer-header {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+hr {
+  margin-bottom: 5px;
+  margin-top: 20px;
+  width: 75% !important;
+  text-align: center;
+  margin: auto !important;
+}
+}  
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .flex-item {
+    text-align: center;
+  }
+  
+  .navbar-button {
+    margin-top: 0px;
+    width: 50px;
+    padding-left: 8px;
+  }
+  
+  .footer-content {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+  
+  .footer-header {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+  
+  hr {
+    margin-bottom: 5px;
+    margin-top: 20px;
+    width: 75% !important;
+    text-align: center;
+    margin: auto !important;
+  }
+  }  

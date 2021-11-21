@@ -8,7 +8,7 @@ class Footer extends Component {
             <Container >
                 <br />
                 <Row>
-                    <Col  md="4" xs="12">
+                    <Col  lg="4" md="12" sm="12" xs="12">
                         <Row>
                         <Col className="footer-header"> <Col> Aprycot </Col> </Col>
                         </Row>
@@ -16,8 +16,8 @@ class Footer extends Component {
                         <Col className="footer-content"> <Col> Nhà hàng cao cấp </Col></Col>
                         </Row>
                     </Col>
-                    <hr className="d-md-none"/>
-                    <Col  md="4" xs="12">
+                    <hr className="d-lg-none"/>
+                    <Col  lg="4" md="12" sm="12" xs="12">
                         <Row>
                             <Col className="footer-header"> <Col> Bach Khoa University </Col> </Col>
                         </Row>
@@ -40,8 +40,8 @@ class Footer extends Component {
                             </Col> </Col>
                         </Row>
                     </Col>
-                    <hr className="d-md-none"/>
-                    <Col  md="4" xs="12">
+                    <hr className="d-lg-none"/>
+                    <Col  lg="4" md="12" sm="12" xs="12">
                         <Row>
                             <Col className="footer-header"> <Col> Help  </Col> </Col>
                         </Row>

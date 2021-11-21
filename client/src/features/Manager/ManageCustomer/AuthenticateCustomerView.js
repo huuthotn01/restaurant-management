@@ -21,6 +21,7 @@ class AuthenticateCustomerView extends Component {
     }
 
     render() {
+        console.log("Hello")
         const customer_not_auth = this.props.model.customers_not_auth.map(customer => {
             return (
                 <tr>

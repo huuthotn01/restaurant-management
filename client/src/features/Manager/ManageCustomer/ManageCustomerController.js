@@ -26,7 +26,7 @@ class ManageCustomerController extends Component {
 
     onToggleModalAuth(phone, flag) {
         const newModel = this.state.model;
-        if (flag == true) 
+        if (flag === true) 
             newModel.customerOpenAuth = this.state.model.getCustomer(phone);
 
         newModel.isModalOpenAuth = !this.state.model.isModalOpenAuth;

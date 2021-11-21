@@ -9,7 +9,7 @@ class ManagePage extends Component{
         return(
             <Container>
                 <Row>
-                    <Col md="12"> <h1 className="cat-manager-header">Chào mừng bạn đến với <br className="d-md-none"/> quản lý nhà hàng Aprycot !</h1>
+                    <Col md="12"> <h1 className="cat-manager-header">Chào mừng bạn đến với <br className="d-lg-none"/> quản lý nhà hàng Aprycot !</h1>
                     </Col>
                 </Row>
                 <hr />

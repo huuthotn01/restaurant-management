@@ -110,7 +110,7 @@ class ViewOrder extends Component {
         return (
             <Container>
                     <Row className="manage-order-heading">
-                        <Col md="6" xs="12" className='manage-order-header'> Danh sách đơn hàng </Col>
+                        <Col md="6" sm="12" xs="12" className='manage-order-header'> Danh sách đơn hàng </Col>
                         <Col> 
                         <Row>
                             <Form className="search-bar" onSubmit={e => {e.preventDefault(); this.onInputOrderID()}}>

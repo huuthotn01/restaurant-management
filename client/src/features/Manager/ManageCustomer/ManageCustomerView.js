@@ -38,7 +38,7 @@ class ManageCustomerView extends Component {
                         <Row>
                             <Col xs="6" style={{paddingLeft: '20px'}}> 
                                 <Button onClick={this.onClickAuth} className="manage-button"> 
-                                    Xác <span style={{textTransform: 'lowercase'}}> thực <br className="d-md-none" /> khách hàng </span> 
+                                    Xác <span style={{textTransform: 'lowercase'}}> thực <br className="d-sm-none" /> khách hàng </span> 
                                 </Button> 
                             </Col>
                             <Col xs="6"> 

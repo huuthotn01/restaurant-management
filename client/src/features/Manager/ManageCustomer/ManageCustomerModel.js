@@ -1,5 +1,16 @@
 import user_data from '../../../data/user.json';
 import Customer from "./Customer";
+import axios from 'axios';
+
+async function get_data() {
+    var data = []
+    await axios.get('/get_user').then(res => {
+        data = res.data.users;
+        user_data = res.data.users;
+      })
+     .catch(error => console.log(error));
+    return data
+}    
 
 class ManageCustomerModel {
 
@@ -8,37 +19,40 @@ class ManageCustomerModel {
     #isModalOpenAuth = undefined; #customerOpenAuth = undefined;
     #customers_display = []; #customerOpen = undefined; #isModalViewOpen = undefined;
     #isModalDeleteOpen = undefined; #customerDelete = undefined;
-    
 
     //-------------------------------CONSTRUCTOR---------------------------------
     constructor() {
-        this.#customers = user_data.filter(customer => {
-            return customer['role'] === "1";
-        }).map(customer => {
-            return new Customer(customer['fname'], customer['lname'], customer['username'], 
-                                customer['password'], customer['phone'], customer['email'], customer['Authenticate']);
-        });
+        (async () => {
+            // user_data = await get_data();
 
-        this.#option = 0;
-        this.#customers_not_auth = user_data.filter(customer => {
-            return customer['role'] === "1" && customer['Authenticate'] === false;
-        }).map(customer => {
-            return new Customer(customer['fname'], customer['lname'], customer['username'], 
-                                customer['password'], customer['phone'], customer['email'], customer['Authenticate']);
-        });;
-        this.#isModalOpenAuth = false;
-        this.#customerOpenAuth = new Customer('','','','','','','');
+            this.#customers = user_data.filter(customer => {
+                return customer['role'] === "1";
+            }).map(customer => {
+                return new Customer(customer['fname'], customer['lname'], customer['username'], 
+                                    customer['password'], customer['phone'], customer['email'], customer['Authenticate']);
+            });
 
-        this.#customers_display = user_data.filter(customer => {
-            return customer['role'] === "1";
-        }).map(customer => {
-            return new Customer(customer['fname'], customer['lname'], customer['username'], 
-                                customer['password'], customer['phone'], customer['email'], customer['Authenticate']);
-        });
-        this.#customerOpen = new Customer('','','','','','','');
-        this.#isModalViewOpen = false;
-        this.#isModalDeleteOpen = false;
-        this.#customerDelete = new Customer('','','','','','','');
+            this.#option = 0;
+            this.#customers_not_auth = user_data.filter(customer => {
+                return customer['role'] === "1" && customer['Authenticate'] === false;
+            }).map(customer => {
+                return new Customer(customer['fname'], customer['lname'], customer['username'], 
+                                    customer['password'], customer['phone'], customer['email'], customer['Authenticate']);
+            });;
+            this.#isModalOpenAuth = false;
+            this.#customerOpenAuth = new Customer('','','','','','','');
+
+            this.#customers_display = user_data.filter(customer => {
+                return customer['role'] === "1";
+            }).map(customer => {
+                return new Customer(customer['fname'], customer['lname'], customer['username'], 
+                                    customer['password'], customer['phone'], customer['email'], customer['Authenticate']);
+            });
+            this.#customerOpen = new Customer('','','','','','','');
+            this.#isModalViewOpen = false;
+            this.#isModalDeleteOpen = false;
+            this.#customerDelete = new Customer('','','','','','','');
+        })();
     }
 
     //----------------------------------------GETTER--------------------------------------
@@ -77,7 +91,11 @@ class ManageCustomerModel {
             if (this.#customers[i].phone.toString() === phone.toString())
                 return this.#customers[i];
     }
-    
+
+    writeData() {
+        axios.post('/update_user', user_data)
+            .then().catch(error => console.log(error));
+    }    
 
     //----------------------------------------MAIN_METHODS-----------------------------------------
     getCusnotAuth() {
@@ -90,7 +108,13 @@ class ManageCustomerModel {
         for (let i = 0; i < this.#customers.length; i++) { 
             if (this.#customers[i].phone.toString() === customer_phone.toString())
                 this.#customers[i].is_authenticate = true;
+                user_data.map(user => {
+                    if (user.phone.toString() === customer_phone.toString()) 
+                        user.Authenticate = true;
+                    return user;
+                })
         }
+        this.writeData();
     }
 
     getCustomerbyName(customer_name) {
@@ -107,6 +131,11 @@ class ManageCustomerModel {
         this.#customers_display = this.#customers_display.filter(customer => {
             return customer.phone.toString() !== customer_phone.toString();
         })
+        user_data.filter(user => {
+            return customer_phone.toString() !== user.phone.toString()
+        })
+        console.log(user_data)
+        this.writeData()
     }
 }
 

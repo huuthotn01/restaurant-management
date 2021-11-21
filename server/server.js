@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const path = require('path');
 const mysql = require('mysql');
+const fs = require('fs');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -28,6 +29,26 @@ app.post('/gg_auth', (req, res) => {
     });
 });
 
+app.get('/get_user', (req, res) => {
+    const users = JSON.parse(fs.readFileSync('./client/src/data/user.json'));
+    console.log(typeof(users));
+    res.json({users: users})
+})
+
+app.post('/update_user', (req, res) => {
+    try {
+        const data = JSON.stringify(req.body, null, 4);
+        console.log(data);
+    
+        fs.writeFileSync('./client/src/data/user.json', data, 'utf8');
+    
+        console.log(`File is written successfully!`);
+    
+    } catch (err) {
+        console.log(`Error writing file: ${err}`);
+    }
+})
+
 app.get('/api/news', (req, res) => {
     var sql = "SELECT * FROM doctor";
     connection.query(sql, function(err, results) {
@@ -36,11 +57,11 @@ app.get('/api/news', (req, res) => {
     });
 });
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.get('*', function(req, res) {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
+// app.get('*', function(req, res) {
+//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+// });
 /*
 app.get('/home', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));

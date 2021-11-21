@@ -268,7 +268,7 @@
   font-size: 15px;
   text-transform: capitalize;
   width: 60px;
-  height: 30px;
+  height: 30px; 
   box-shadow: none;
   margin: auto;
   padding: 2px 2% 2px 2%;
@@ -281,7 +281,7 @@
   padding-left: -50px;
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
 .cat-manager-item-left, .cat-manager-item-right {
   margin: auto;
   width: 150px;
@@ -385,4 +385,58 @@
   height: 25px !important;
   margin-bottom: 5px;
 }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+.cat-manager-card {
+  margin-top: 30px;
+}
+
+.manage-order-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.manage-table {
+  font-size: 14px;
+}
+
+.search-box {
+  font-size: 14px !important;
+  width: 155px;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  width: 150px;
+}
+
+.search-button {
+  font-size: 14px !important;
+  height: 35px !important;
+  margin-left: 16px !important;
+}
+
+.statistic-order-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.aprycot-pagination-number {
+  font-size: 12px;
+}
+
+.aprycot-pagination-button {
+  width: 25px !important;
+  height: 25px !important;
+  margin-bottom: 5px;
+}
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+.cat-manager-card {
+  margin-top: 30px;
+}
+
+
 }

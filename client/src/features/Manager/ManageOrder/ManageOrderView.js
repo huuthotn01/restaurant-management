@@ -40,7 +40,7 @@ class ManageOrderView extends Component {
                         </Col>
                         <Col xs="6"> 
                             <Button onClick={this.onClickStatistic} className="manage-button"> 
-                                Thống <span style={{textTransform: 'lowercase'}}> kê <br className="d-md-none"/> đơn hàng </span> 
+                                Thống <span style={{textTransform: 'lowercase'}}> kê <br className="d-sm-none"/> đơn hàng </span> 
                             </Button>
                         </Col>
                     </Row>
