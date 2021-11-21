@@ -239,7 +239,7 @@ app.post('/change-password', (req, res) => { // update changed password
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
-    let username = req.session.username;
+    let username = req.session.userid;
     for (let i = 0; i < cont.length; i++) {
         if (cont[i]["password"] === "none" || (cont[i]["username"] === username && bcrypt.compareSync(info["oldpass"], cont[i]["password"]))) {
             cont[i]["password"] = bcrypt.hashSync(info["newpass"], 10);
