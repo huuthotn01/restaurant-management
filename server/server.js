@@ -53,7 +53,9 @@ app.post('/gg_auth', (req, res) => { // login (signin and signup) with google
             "phone": "",
             "email": response["email"],
             "role": "1",
-            "avatar": response["photoUrl"]
+            "avatar": response["photoUrl"],
+            "activated": true,
+            "authenticated": false
         };
         cont.push(user_data);
         fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
@@ -88,7 +90,10 @@ app.post('/signin', (req, res) => { // sign in by form
     username = username.split('@')[0]; // split username from email if needed
     for (let i = 0; i < cont.length; i++) {
         if (username === cont[i]["username"]) {
-            if (cont[i]["password"] !== "none" && bcrypt.compareSync(info["password"], cont[i]["password"])) {
+            if (!cont[i]["activated"]) {
+                res.send({succ: false});
+                return;
+            } else if (cont[i]["password"] !== "none" && bcrypt.compareSync(info["password"], cont[i]["password"])) {
                 let session = req.session;
                 session.userid = username;
                 console.log(req.session);
@@ -132,6 +137,8 @@ app.post('/signup', (req, res) => { // signup
     let lname = ''; // Last name
     let fname = ''; // First name
     if (name_split.length === 1) { // name contains one word
+        fname = name_split[0];
+    } else {
         lname = name_split[0];
         fname = name_split[1];
         let count = 2;
@@ -139,8 +146,6 @@ app.post('/signup', (req, res) => { // signup
             fname += " " + name_split[count];
             count++;
         }
-    } else {
-        fname = name_split[0];
     }
     let username = email.split("@")[0]; // username
     password = bcrypt.hashSync(password, 10);
@@ -152,7 +157,9 @@ app.post('/signup', (req, res) => { // signup
         "phone": "",
         "email": email,
         "role": "1",
-        "avatar": ""
+        "avatar": "",
+        "activated": false,
+        "authenticated": false
     };
     cont.push(user_data);
     fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
@@ -194,10 +201,10 @@ app.post('/change-info', (req, res) => { // update changed info
     for (let i = 0; i < cont.length; i++) {
         var data = cont[i];
         if ((data["email"] === info["email"] || data["phone"] === info["phone"]) && data["phone"] !== "" && info["phone"] !== "") {
-            if (data["username"] === req.session.userid) {
+            if (data["username"] === req.session.userid) { // not changed
                 count_position = i;
                 continue;
-            } else {
+            } else { // changed email or phone duplicated to an existing user
                 res.send({succ: false});
                 return;
             }
@@ -208,11 +215,14 @@ app.post('/change-info', (req, res) => { // update changed info
         }
     }
     if (count_position === -1) {
+        console.log("-1");
         res.send({succ: false});
         return;
     }
     if (cont[count_position]["email"] !== info["email"]) {
         cont[count_position]["email"] = info["email"];
+        let username = info["email"].split("@")[0];
+        cont[count_position]["username"] = username;
         // TODO send mail
     }
     if (cont[count_position]["phone"] !== info["phone"]) {
@@ -294,18 +304,59 @@ app.get('/verify', (req, res) => { // verify session
     }
 });
 
-app.get('/activate/:id' , (req, res) => {
+app.get('/activate/:id' , (req, res) => { // activate account
     let act_id = req.params.id;
-    console.log("Id: ", act_id);
-    res.end();
+    const filename = '../client/src/data/user_activation.json';
+    let file = fs.readFileSync(filename, {encoding: "utf8"});
+    let cont = JSON.parse(file); // info about user activation id
+    let time_now = new Date();
+    for (let i = 0; i < cont.length; i++) {
+        if (cont[i]["activation_id"] === act_id) {
+            let saved_date = new Date(cont[i]["expire_day"]);
+            if (saved_date >= time_now) { // check today with day created account
+                const file_name = '../client/src/data/user.json';
+                let file_cont = fs.readFileSync(file_name, {encoding: "utf8"});
+                let content = JSON.parse(file_cont); // user info
+                for (let j = 0; j < content.length; j++) {
+                    if (content[j]["username"] === cont[i]["username"]) {
+                        content[j]["activated"] = true;
+                        cont.splice(i, 1);
+                        fs.writeFile(file_name, JSON.stringify(content), {encoding: "utf8"}, () => {});
+                        fs.writeFile(filename, JSON.stringify(cont), {encoding: "utf8"}, () => {});
+                        res.send("<b>Thành công</b>");
+                        return;
+                    }
+                }
+                res.send("<b>Không thành công</b>");
+                return;
+            } else {
+                let deleted_username = cont[i]["username"];
+                cont.splice(i, 1);
+                fs.writeFile(filename, JSON.stringify(cont), {encoding: "utf8"}, () => {});
+                const file_name = '../client/src/data/user.json';
+                let file_cont = fs.readFileSync(file_name, {encoding: "utf8"});
+                let content = JSON.parse(file_cont); // user info
+                for (let j = 0; j < content.length; j++) {
+                    if (content[j]["username"] === deleted_username) {
+                        content.splice(j, 1);
+                        fs.writeFile(file_name, JSON.stringify(content), options={encoding: "utf8"}, () => {});
+                        res.send("<b>Đã quá thời hạn kích hoạt tài khoản</b>");
+                        return;
+                    }
+                }
+                res.send("<b>Không thành công</b>");
+                return;
+            }
+        }
+    }
+    res.send("<b>Không thành công</b>");
+    return;
 });
 
 app.use(express.static(path.join(__dirname, '../client/build'))); // root ('/')
 
 app.get('*', function(req, res) { // other routes not defined above
-    console.log("In get *");
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-    console.log("End get *");
 });
 
 app.use(function(req, res, next) {

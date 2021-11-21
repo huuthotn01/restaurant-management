@@ -64,7 +64,7 @@ class ChangeInfo extends React.Component {
             <Col xs={3}>
                 <div style={{display: "flex", "flexDirection": "column", alignItems: "center"}}> 
                     <Image style={{height: "50%", width: "50%"}} src={this.context.avatarURL} roundedCircle /> 
-                    <br /> <b>{this.context.fName + ' ' + this.context.lName}</b> 
+                    <br /> <b>{this.context.lName + ' ' + this.context.fName}</b> 
                 </div>
                 <hr />
                 <div style={{display: "flex", "flexDirection": "column", alignItems: "center"}}>

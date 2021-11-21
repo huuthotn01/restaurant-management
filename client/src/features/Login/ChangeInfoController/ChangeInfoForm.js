@@ -36,7 +36,7 @@ class ChangeInfoForm extends React.Component {
         };
         if (user_data.lname !== this.state.info.lname || user_data.fname !== this.state.info.fname || 
             user_data.email !== this.state.info.email || user_data.phone !== this.state.info.phone) {
-            const response = await fetch('/change-info', {
+                const response = await fetch('/change-info', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

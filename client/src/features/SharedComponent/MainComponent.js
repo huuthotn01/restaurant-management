@@ -18,6 +18,8 @@ class Main extends Component {
     constructor(props) {
 		super(props);
 		this.updateContext = (isin, fname, lname, email, role, url) => {
+            console.log("URL: ", url);
+            if (url === "" || url === undefined) url = 'assets/images/blank_avatar.jpg';
 			this.setState(state => ({
 				loginInfo: {
 					isIn: isin,
