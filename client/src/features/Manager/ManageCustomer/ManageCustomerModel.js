@@ -1,6 +1,8 @@
-import user_data from '../../../data/user.json';
+// import user_data from '../../../data/user.json';
 import Customer from "./Customer";
 import axios from 'axios';
+
+let user_data = []
 
 async function get_data() {
     var data = []
@@ -23,7 +25,7 @@ class ManageCustomerModel {
     //-------------------------------CONSTRUCTOR---------------------------------
     constructor() {
         (async () => {
-            // user_data = await get_data();
+            user_data = await get_data();
 
             this.#customers = user_data.filter(customer => {
                 return customer['role'] === "1";
@@ -92,8 +94,8 @@ class ManageCustomerModel {
                 return this.#customers[i];
     }
 
-    writeData() {
-        axios.post('/update_user', user_data)
+    writeData(data) {
+        axios.post('/update_user', data)
             .then().catch(error => console.log(error));
     }    
 
@@ -105,16 +107,18 @@ class ManageCustomerModel {
     }
 
     authCustomer(customer_phone) {
+        let data = []
         for (let i = 0; i < this.#customers.length; i++) { 
             if (this.#customers[i].phone.toString() === customer_phone.toString())
                 this.#customers[i].is_authenticate = true;
-                user_data.map(user => {
+
+                data = user_data.map(user => {
                     if (user.phone.toString() === customer_phone.toString()) 
                         user.Authenticate = true;
                     return user;
                 })
         }
-        this.writeData();
+        this.writeData(data);
     }
 
     getCustomerbyName(customer_name) {
@@ -131,11 +135,14 @@ class ManageCustomerModel {
         this.#customers_display = this.#customers_display.filter(customer => {
             return customer.phone.toString() !== customer_phone.toString();
         })
-        user_data.filter(user => {
+        console.log(this.#customers)
+
+        const data = user_data.filter(user => {
             return customer_phone.toString() !== user.phone.toString()
         })
-        console.log(user_data)
-        this.writeData()
+
+        console.log(data)
+        this.writeData(data)
     }
 }
 
