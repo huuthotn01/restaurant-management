@@ -194,7 +194,7 @@ app.post('/change-info', (req, res) => { // update changed info
     for (let i = 0; i < cont.length; i++) {
         var data = cont[i];
         if ((data["email"] === info["email"] || data["phone"] === info["phone"]) && data["phone"] !== "" && info["phone"] !== "") {
-            if (data["username"] === info["username"]) {
+            if (data["username"] === req.session.userid) {
                 count_position = i;
                 continue;
             } else {
@@ -292,6 +292,12 @@ app.get('/verify', (req, res) => { // verify session
         res.send({succ: false});
         return;
     }
+});
+
+app.get('/activate/:id' , (req, res) => {
+    let act_id = req.params.id;
+    console.log("Id: ", act_id);
+    res.end();
 });
 
 app.use(express.static(path.join(__dirname, '../client/build'))); // root ('/')
