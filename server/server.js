@@ -30,7 +30,7 @@ app.post('/gg_auth', (req, res) => {
 });
 
 app.get('/get_user', (req, res) => {
-    const users = JSON.parse(fs.readFileSync('./client/src/data/user.json'));
+    const users = JSON.parse(fs.readFileSync('../client/src/data/user.json'));
     console.log(typeof(users));
     res.json({users: users})
 })
@@ -40,7 +40,7 @@ app.post('/update_user', (req, res) => {
         const data = JSON.stringify(req.body, null, 4);
         console.log(data);
     
-        fs.writeFileSync('./client/src/data/user.json', data, 'utf8');
+        fs.writeFileSync('../client/src/data/user.json', data, 'utf8');
     
         console.log(`File is written successfully!`);
     
