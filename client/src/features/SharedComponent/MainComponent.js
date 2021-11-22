@@ -63,6 +63,7 @@ class Main extends Component {
 	render() {
         return (
             <div>
+				<LoginContext.Provider value={this.state.loginInfo} >
                 <Header />
                 <div>
                     <Switch>
@@ -84,6 +85,7 @@ class Main extends Component {
                     </Switch>
                 </div>
                 <Footer />
+				</LoginContext.Provider>
             </div>
         );
     }
