@@ -7,15 +7,27 @@ import { ButtonGroup } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class Header extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            isNavOpen : false
+        }
+        this.toggleNav = this.toggleNav.bind(this);
+    }
+    toggleNav() {
+        this.setState({isNavOpen: !this.state.isNavOpen})
+    }
     render() {
         return (
             <div>
                 <Navbar className="navbar-header" color="light"  expand="md"  light container>
-                    <NavbarBrand href="/">
-                    <img width="120px" height="41px" src='assets/images/brand.png' alt="Logo"></img>
+                    <LinkContainer to='/'>
+                    <NavbarBrand>
+                    <img width="120px" height="50px" className="navbar-brand" src='assets/images/brand.png' alt="Logo"></img>
                     </NavbarBrand>
-                    <NavbarToggler />
-                    <Collapse navbar>
+                    </LinkContainer>
+                    <NavbarToggler className="me-2 navbar-button" onClick={this.toggleNav}/>
+                    <Collapse navbar isOpen={this.state.isNavOpen}>
                         <Nav className="nav-header flex-container" style={{width: "100%"}} navbar>
                             <NavItem className="flex-item" style={{flexGrow: "5"}}>
                             <NavLink className="nav-text">
@@ -40,13 +52,14 @@ class Header extends Component{
                                 </Dropdown>
                             </NavLink>
                             </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
-                            <NavLink href="/ordering">
+                            <LinkContainer to='/food_ordering' style={{cursor: 'pointer'}}>
+                            <NavItem className="flex-item" style={{flexGrow: "9"}}>
+                            <NavLink>
                                 <FaBookOpen /> Đặt món ăn
                             </NavLink>
-                            
                             </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
+                            </LinkContainer>
+                            <NavItem className="flex-item" style={{flexGrow: "8", cursor: 'pointer'}}>
                                 <LoginView />
                             </NavItem>
                         </Nav>
