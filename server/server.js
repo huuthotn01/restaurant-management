@@ -72,6 +72,20 @@ app.get('/get_user', (req, res) => {
     res.json({users: users})
 })
 
+app.post('/reservation', (request, response) => {
+    const filename = "../client/src/data/reservation.json";
+    var data = fs.readFileSync(filename, {encoding: "utf8"});
+    var myObject = JSON.parse(data);
+      
+    let newData = request.body;
+    myObject.push(newData);
+      
+    fs.writeFile(filename, JSON.stringify(myObject), {encoding: "utf8"}, (err) => {
+      if (err) throw err;
+      console.log("New data added");
+    });
+});
+
 app.post('/update_user', (req, res) => {
     try {
         const data = JSON.stringify(req.body, null, 4);
