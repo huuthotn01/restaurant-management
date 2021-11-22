@@ -8,6 +8,9 @@ import ManageOrderController from '../Manager/ManageOrder/ManageOrderController'
 import ManageCustomerController from '../Manager/ManageCustomer/ManageCustomerController';
 import ReservationPage from '../TableReservation/ReservationPage';
 import Payment from '../Payment/PaymentComponent';
+import MOMO from '../Payment/paymentMomo';
+import Paymentbycash from '../Payment/paymentCash';
+import PaymentCard from '../Payment/paymentCash';
 import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
 import Ordering from '../FoodOrdering/OrderingController'
 import FoodMenu from '../FoodOrdering/FoodMenuController';
@@ -79,7 +82,11 @@ class Main extends Component {
                         <Route path='/ordering' component={Ordering} />
                         <Route path='/food-menu' component={FoodMenu} />
                         <Route path='/drink-menu' component={DrinkMenu} />
-						<Route path='/search_item' component={SearchPage} />
+						<Route path='/search_item' component={SearchPage} />	
+                        <Route path='/payment' component={Payment} />  
+                        <Route path='/paymentcash' component={Paymentbycash} />
+                        <Route path='/paymentmomo' component={MOMO} /> 
+                        <Route path='/paymentbankcard' component={PaymentCard} /> 
 						{this.state.role === "2" ? <Redirect to='/manage' /> : <Redirect to='/home' />}
                     </Switch>
                 </div>
