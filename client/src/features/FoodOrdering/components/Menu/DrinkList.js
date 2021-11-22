@@ -21,7 +21,7 @@ const DUMMY_MEALS = [
     category: "Khác",
     name: "Lemonade",
     price: 2.95,
-    image: <img className={classes.itemImage} src='assets/images/Menu_Image/3.jpg' alt='item'/>
+    image: <img className={classes.itemImage} src='assets/images/Menu_Image/3.jpeg' alt='item'/>
   },
   {
     id: 4,

@@ -8,7 +8,7 @@ import classes from './Cart.module.css';
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
 
-  const totalAmount = `${cartContext.totalAmount.toFixed(0)} VND`;
+  const totalAmount = `${cartContext.totalAmount.toLocaleString('vi-VN')} VND`;
   const nonemptyCart = cartContext.items.length > 0;
 
   const cartItemRemove = (id) => {

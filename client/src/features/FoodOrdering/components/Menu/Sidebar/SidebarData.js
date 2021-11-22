@@ -30,7 +30,7 @@ export const SidebarData = [
   },
   {
     title: 'Tìm kiếm',
-    path: '/search-item',
+    path: '/search_item',
     icon: <AiIcons.AiOutlineSearch />,
     cName: 'nav-text'
   },

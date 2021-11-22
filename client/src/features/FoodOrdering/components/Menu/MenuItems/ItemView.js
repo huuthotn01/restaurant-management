@@ -7,7 +7,7 @@ import CartContext from '../../Cart/CartController/CartContext';
 const Item = (props) => {
   const cartCtx = useContext(CartContext);
 
-  const price = `${props.price.toFixed(0)} VND`;
+  const price = `${props.price.toLocaleString('vi-VN')} VND`;
 
   const addToCartHandler = amount => {
     cartCtx.addItem({

@@ -1,7 +1,7 @@
 import classes from './CartDetail.module.css';
 
 const CartItem = (props) => {
-  const price = `${props.price.toFixed(0)} VND`;
+  const price = `${props.price.toLocaleString('vi-VN')} VND`;
   return (
     <li className={classes['cart-item']}>
       <div>

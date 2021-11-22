@@ -87,7 +87,7 @@ class Main extends Component {
                         <Route path='/paymentcash' component={Paymentbycash} />
                         <Route path='/paymentmomo' component={MOMO} /> 
                         <Route path='/paymentbankcard' component={PaymentCard} /> 
-						{this.state.role === "2" ? <Redirect to='/manage' /> : <Redirect to='/home' />}
+						{this.state.loginInfo.role === "2" ? <Redirect to='/manage' /> : <Redirect to='/home' />}
                     </Switch>
                 </div>
                 <Footer />

@@ -8,7 +8,7 @@ export default function InfoModal(props) {
  
   var data = {
       code: props.code,
-      phone: props.code,
+      phone: props.phone,
       date: (new Date())
   }
  
