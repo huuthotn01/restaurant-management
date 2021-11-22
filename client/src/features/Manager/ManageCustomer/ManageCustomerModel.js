@@ -14,7 +14,7 @@ class ManageCustomerModel {
             return customer['role'] === "1";
         }).map(customer => {
             return new Customer(customer['fname'], customer['lname'], customer['username'], 
-                                customer['password'], customer['phone'], customer['email'], customer['Authenticate']);
+                                customer['password'], customer['phone'], customer['email'], customer['authenticate']);
         });
 
         this.#option = 0;
