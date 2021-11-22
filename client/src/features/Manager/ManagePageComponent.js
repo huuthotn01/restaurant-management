@@ -2,10 +2,17 @@ import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Card, CardBody, CardTitle} from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { LoginContext } from '../SharedComponent/LoginContext';
+import { Switch, Redirect } from 'react-router-dom';
 import './manager.css';
 
 class ManagePage extends Component{
     render(){
+        if (this.context.role !== "2") return (
+            <Switch>
+                <Redirect to='/home' />
+            </Switch>
+        );
         return(
             <Container>
                 <Row>
@@ -22,7 +29,7 @@ class ManagePage extends Component{
                             <CardTitle tag="h5" className="cat-manager-text">Quản lý đơn hàng</CardTitle>
                             </CardBody>
                         </Card>
-                        </LinkContainer >
+                        </LinkContainer>
                     </Col>
                     <Col md="6" xs="6" className="cat-manager-card">  
                         <LinkContainer to='/manage_customer' style={{cursor: 'pointer'}}>
@@ -55,4 +62,7 @@ class ManagePage extends Component{
         )
     }
 }
+
+ManagePage.contextType = LoginContext;
+
 export default ManagePage;
