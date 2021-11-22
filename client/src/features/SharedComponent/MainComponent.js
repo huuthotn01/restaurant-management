@@ -7,14 +7,14 @@ import ManagePage from '../Manager/ManagePageComponent'
 import ManageOrderController from '../Manager/ManageOrder/ManageOrderController';
 import ManageCustomerController from '../Manager/ManageCustomer/ManageCustomerController';
 import ReservationPage from '../TableReservation/ReservationPage';
-import Payment from '../payment/PaymentComponent';
+import Payment from '../Payment/PaymentComponent';
 import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
 import Ordering from '../FoodOrdering/OrderingController'
 import FoodMenu from '../FoodOrdering/FoodMenuController';
 import DrinkMenu from '../FoodOrdering/DrinkMenuController';
 import { ChangeInfo } from '../Login/ChangeInfoView';
 import { ForgotPass } from '../Login/LoginController/ForgotPass';
-import FoodOrdering  from '../FoodOrdering/FoodOrdering';
+import FoodOrdering  from '../FoodOrdering/FoodMenuController';
 import { LoginContext } from './LoginContext';
 
 class Main extends Component {

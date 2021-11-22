@@ -1,15 +1,15 @@
 import { useContext, useState, useEffect } from 'react';
 
-import Modal from '../food_ordering/components/Menu/MenuView/Modal';
+import Modal from '../FoodOrdering/components/Menu/MenuView/Modal';
 import Card from './Card';
 import BillDetail from './BillDetail';
-import CartContext from '../food_ordering/components/Cart/CartController/CartContext';
+import CartContext from '../FoodOrdering/components/Cart/CartController/CartContext';
 import classes from './Bill.module.css';
 import dropdown from './dropdown';
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
 import { FaShoppingCart, FaBookOpen, FaTable } from 'react-icons/fa';
-import { LoginView } from '../login/LoginView';
+import { LoginView } from '../Login/LoginView';
 import { Dropdown } from 'react-bootstrap';
 import { ButtonGroup } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';

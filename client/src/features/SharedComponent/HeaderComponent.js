@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
 import { FaShoppingCart, FaBookOpen, FaTable } from 'react-icons/fa';
-import { LoginView } from '../login/LoginView';
+import { LoginView } from '../Login/LoginView';
 import { Dropdown } from 'react-bootstrap';
 import { ButtonGroup } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';

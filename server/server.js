@@ -77,7 +77,7 @@ app.post('/update_user', (req, res) => {
         const data = JSON.stringify(req.body, null, 4);
         console.log(data);
     
-        fs.writeFileSync('./client/src/data/user.json', data, 'utf8');
+        fs.writeFileSync('../client/src/data/user.json', data, 'utf8');
     
         console.log(`File is written successfully!`);
     
@@ -86,11 +86,6 @@ app.post('/update_user', (req, res) => {
     }
 })
 
-app.get('/api/news', (req, res) => {
-    var sql = "SELECT * FROM doctor";
-    connection.query(sql, function(err, results) {
-      if (err) throw err;
-      res.json({news: results});
 app.post('/forgot-pass', (req, res) => { // forgot pass and resetting pass
     let info = req.body; // user data from frontend
     const filename = '../client/src/data/user.json';
