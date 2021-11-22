@@ -33,16 +33,6 @@
   margin-top: 10px;
 }
   
-.cat-manager-item-link {
-  text-decoration: none;
-  color: black;
-}
-    
-.cat-manager-item-link:hover {
-  text-decoration: none;
-  color: black;
-}
-  
 .pro-sidebar > .pro-sidebar-inner, .pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper,
 .pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
   background-color: #FFFFFF;
@@ -53,9 +43,10 @@
 }
   
 .pro-sidebar {
-  position: relative;
   float: left;
-  height: 693px;
+  top: 0;
+  position: sticky;
+  height: 100vh;
 }
   
 .pro-item-content:not(:hover), .pro-icon-wrapper:not(:hover) {
@@ -77,6 +68,7 @@
 
 .search-bar {
   width: 200px;
+  padding-right: 0px ;
 }
 
 .not-found-search {
@@ -96,7 +88,7 @@
   color: white;
   font-size: 15px;
   width: 100px;
-  height: 37.5px;
+  height: 38px;
   border: 1px solid #F09A61;
   text-transform: capitalize;
   padding: 6px 0px 6px 0px;
@@ -114,7 +106,7 @@
   width: 50px;
   box-shadow: none;
   margin: auto;
-  padding: 2px 8% 2px 8%;
+  padding: 2px 2% 2px 2%;
   text-align: center;
   margin-left: 18px;
   margin-top: -5px;
@@ -253,4 +245,198 @@
   padding: 2px 0% 2px 0%;
   text-align: center;
   margin-top: -5px;
+}
+
+.customer-button, .customer-button:hover, .customer-button:not(:hover)  {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  background-color: #F09A61;
+  color: white;
+  font-size: 15px;
+  text-transform: capitalize;
+  width: 50px;
+  box-shadow: none;
+  margin: -5px 9px auto 9px;
+  padding: 2px 2% 2px 2%;
+  text-align: center;
+  border: 1px solid #F09A61;
+}
+
+.delete-button, .delete-button:hover, .delete-button:not(:hover)  {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  background-color: #F09A61;
+  color: white;
+  font-size: 15px;
+  text-transform: capitalize;
+  width: 60px;
+  height: 30px; 
+  box-shadow: none;
+  margin: auto;
+  padding: 2px 2% 2px 2%;
+  text-align: center;
+  border: 1px solid #F09A61;
+  margin-left: 30%;
+}
+
+.total-money-chart {
+  padding-left: -50px;
+}
+
+@media screen and (max-width: 576px) {
+.cat-manager-item-left, .cat-manager-item-right {
+  margin: auto;
+  width: 150px;
+  height: 150px;
+}
+
+.cat-manager-img {
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+}
+
+.cat-manager-text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.cat-manager-header {
+  font-size: 20px;
+}
+
+.cat-manager-card {
+  padding: 15px 12px 15px 12px;
+}
+
+.manage-button {
+  width: 150px !important;
+  height: 50px !important;
+  padding-top: 2px;
+  font-size: 15px !important;
+}
+
+.statistic-order-header, .manage-order-header {
+  font-size: 20px;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.manage-table {
+  font-size: 12px;
+}
+
+.auth-view-button {
+  font-size: 12px !important;
+  width: 60px !important;
+}
+
+.auth-header {
+  font-size: 25px;
+}
+
+.customer-button, .order-button {
+  font-size: 12px !important;
+  width: 35px !important;
+  margin: -2px 2px -2px 2px !important;
+}
+
+.agree-header {
+  font-size: 15px;
+}
+
+.search-bar {
+  width: 125px;
+}
+
+.search-box {
+  font-size: 12px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 114px;
+}
+
+.search-button {
+  font-size: 12px !important;
+  width: 80px !important;
+  height: 32px !important;
+  margin-left: 0px !important;
+  margin-top: 10px;
+  right: 0px
+}
+
+.order-content {
+  font-size: 12px;
+}
+
+.order-header {
+  font-size: 20px !important;
+}
+
+.order-customer-name {
+  margin-bottom: 8px;
+}
+
+.aprycot-pagination-number {
+  font-size: 12px;
+}
+
+.aprycot-pagination-button {
+  width: 25px !important;
+  height: 25px !important;
+  margin-bottom: 5px;
+}
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+.cat-manager-card {
+  margin-top: 30px;
+}
+
+.manage-order-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.manage-table {
+  font-size: 14px;
+}
+
+.search-box {
+  font-size: 14px !important;
+  width: 155px;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  width: 150px;
+}
+
+.search-button {
+  font-size: 14px !important;
+  height: 35px !important;
+  margin-left: 16px !important;
+}
+
+.statistic-order-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.aprycot-pagination-number {
+  font-size: 12px;
+}
+
+.aprycot-pagination-button {
+  width: 25px !important;
+  height: 25px !important;
+  margin-bottom: 5px;
+}
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+.cat-manager-card {
+  margin-top: 30px;
+}
+
+
 }

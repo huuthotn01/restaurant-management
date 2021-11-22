@@ -2,7 +2,6 @@ import React from 'react';
 import * as AiIcons from 'react-icons/ai';
 import * as CgIcons from 'react-icons/cg';
 import * as MdIcons from 'react-icons/md';
-import { IoFastFood } from 'react-icons/io5'
 
 export const SidebarData = [
   {
@@ -20,7 +19,7 @@ export const SidebarData = [
   {
     title: 'Đồ ăn',
     path: '/food-menu',
-    icon: <IoFastFood />,
+    icon: <MdIcons.MdFoodBank />,
     cName: 'nav-text'
   },
   {
