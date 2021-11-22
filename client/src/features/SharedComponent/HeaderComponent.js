@@ -7,15 +7,25 @@ import { ButtonGroup } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class Header extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            isNavOpen : false
+        }
+        this.toggleNav = this.toggleNav.bind(this);
+    }
+    toggleNav() {
+        this.setState({isNavOpen: !this.state.isNavOpen})
+    }
     render() {
         return (
             <div>
                 <Navbar className="navbar-header" color="light"  expand="md"  light container>
                     <NavbarBrand href="/">
-                    <img width="120px" height="41px" src='assets/images/brand.png' alt="Logo"></img>
+                    <img width="120px" height="50px" className="navbar-brand" src='assets/images/brand.png' alt="Logo"></img>
                     </NavbarBrand>
-                    <NavbarToggler />
-                    <Collapse navbar>
+                    <NavbarToggler className="me-2 navbar-button" onClick={this.toggleNav}/>
+                    <Collapse navbar isOpen={this.state.isNavOpen}>
                         <Nav className="nav-header flex-container" style={{width: "100%"}} navbar>
                             <NavItem className="flex-item" style={{flexGrow: "5"}}>
                             <NavLink className="nav-text">

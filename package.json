@@ -6,17 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build",
-    "start": "cd server && node server.js"
+    "start": "cd server && node server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"nodemon ./server/server.js localhost 5000 \" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^6.4.0",
     "express": "^4.17.1",
     "google-auth-library": "^7.9.2",
     "google-oauth-jwt": "^0.2.0",
     "mysql": "^2.18.1",
     "nodemailer": "^6.7.0",
+    "nodemon": "^2.0.15",
     "react-helmet": "^6.1.0"
   },
   "engines": {
