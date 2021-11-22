@@ -195,7 +195,7 @@ app.post('/signup', (req, res) => { // signup
     }
     let username = email.split("@")[0]; // username
     const md5 = require('md5');
-    const act_id = md5(username);
+    const act_id = md5(email);
     console.log("Act id: ", act_id);
     const file_name = '../client/src/data/user_activation.json';
     let act_file = fs.readFileSync(file_name, {encoding: "utf8"});
@@ -265,16 +265,19 @@ app.post('/change-info', (req, res) => { // update changed info
     let count_position = -1;
     for (let i = 0; i < cont.length; i++) {
         var data = cont[i];
-        if ((data["email"] === info["email"] || data["phone"] === info["phone"]) && data["phone"] !== "" && info["phone"] !== "") {
+        if (data["email"] === info["email"] || (data["phone"] === info["phone"] && data["phone"] !== "" && info["phone"] !== "")) {
             if (data["email"] === req.session.userid) { // not changed
+                console.log("Not changed: ", req.session.userid);
                 count_position = i;
                 continue;
             } else { // changed email or phone duplicated to an existing user
+                console.log("Existed: ", req.session.userid);
                 res.send({succ: false});
                 return;
             }
         }
         if (data["email"] === req.session.userid) {
+            console.log("Position: ", req.session.userid);
             count_position = i;
             continue;
         }
@@ -315,17 +318,19 @@ app.post('/change-password', (req, res) => { // update changed password
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
-    let username = req.session.userid;
+    let email = req.session.userid;
     for (let i = 0; i < cont.length; i++) {
-        if (cont[i]["password"] === "none" || (cont[i]["username"] === username && bcrypt.compareSync(info["oldpass"], cont[i]["password"]))) {
-            cont[i]["password"] = bcrypt.hashSync(info["newpass"], 10);
-            fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"});
-            // TODO send mail
-            res.send({succ: true});
-            return;
-        } else {
-            res.send({succ: false});
-            return;
+        if (email === cont[i]["email"]) {
+            if (cont[i]["password"] === "none" || bcrypt.compareSync(info["oldpass"], cont[i]["password"])) {
+                cont[i]["password"] = bcrypt.hashSync(info["newpass"], 10);
+                fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"});
+                // TODO send mail
+                res.send({succ: true});
+                return;
+            } else {
+                res.send({succ: false});
+                return;
+            }
         }
     }
     res.send({succ: false});
