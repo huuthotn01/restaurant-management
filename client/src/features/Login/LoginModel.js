@@ -1,6 +1,6 @@
-async function ValidateLogin(username, password) {
+async function ValidateLogin(email, password) {
     let user_data = {
-        "username": username,
+        "email": email,
         "password": password
     };
     const response = await fetch('/signin', {

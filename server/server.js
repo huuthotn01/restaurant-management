@@ -32,7 +32,7 @@ app.post('/gg_auth', (req, res) => { // login (signin and signup) with google
         for (let i = 0; i < cont.length; i++) {
             if (response["email"] === cont[i]["email"]) {
                 let session = req.session;
-                session.userid = username;
+                session.userid = response["email"];
                 console.log("GG auth: ", req.session);
                 res.send({info: {
                     "fname": cont[i]["fname"],
@@ -60,7 +60,7 @@ app.post('/gg_auth', (req, res) => { // login (signin and signup) with google
         cont.push(user_data);
         fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
         let session = req.session;
-        session.userid = username;
+        session.userid = response["email"];
         console.log("GG auth not yet: ", req.session);
         res.send({info: response});
     });
@@ -86,16 +86,15 @@ app.post('/signin', (req, res) => { // sign in by form
     const filename = '../client/src/data/user.json';
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
-    let username = info["username"];
-    username = username.split('@')[0]; // split username from email if needed
+    let email = info["email"];
     for (let i = 0; i < cont.length; i++) {
-        if (username === cont[i]["username"]) {
+        if (email === cont[i]["email"]) {
             if (!cont[i]["activated"]) {
                 res.send({succ: false});
                 return;
             } else if (cont[i]["password"] !== "none" && bcrypt.compareSync(info["password"], cont[i]["password"])) {
                 let session = req.session;
-                session.userid = username;
+                session.userid = email;
                 console.log(req.session);
                 res.send({
                     succ: true,
@@ -175,9 +174,12 @@ app.post('/signup', (req, res) => { // signup
         "authenticated": false
     };
     cont.push(user_data);
-    fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
+    let protocol = req.protocol;
+    let host = req.get('host');
+    console.log("Protocol: ", protocol, " host: ", host);
     const send_mail = require('./send_mail/acc-activation');
-    send_mail(username, email, act_id);
+    send_mail(protocol, host, username, email, act_id);
+    fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
     res.send({succ: true});
 });
 
@@ -216,7 +218,7 @@ app.post('/change-info', (req, res) => { // update changed info
     for (let i = 0; i < cont.length; i++) {
         var data = cont[i];
         if ((data["email"] === info["email"] || data["phone"] === info["phone"]) && data["phone"] !== "" && info["phone"] !== "") {
-            if (data["username"] === req.session.userid) { // not changed
+            if (data["email"] === req.session.userid) { // not changed
                 count_position = i;
                 continue;
             } else { // changed email or phone duplicated to an existing user
@@ -224,7 +226,7 @@ app.post('/change-info', (req, res) => { // update changed info
                 return;
             }
         }
-        if (data["username"] === info["username"]) {
+        if (data["email"] === req.session.userid) {
             count_position = i;
             continue;
         }
@@ -235,6 +237,7 @@ app.post('/change-info', (req, res) => { // update changed info
         return;
     }
     if (cont[count_position]["email"] !== info["email"]) {
+        req.session.userid = info["email"];
         cont[count_position]["email"] = info["email"];
         let username = info["email"].split("@")[0];
         cont[count_position]["username"] = username;
@@ -298,7 +301,7 @@ app.get('/verify', (req, res) => { // verify session
         let cont = JSON.parse(file);
         for (let i = 0; i < cont.length; i++) {
             let data = cont[i];
-            if (session.userid === data["username"]) {
+            if (session.userid === data["email"]) {
                 console.log("OK");
                 res.send({
                     succ: true,
@@ -371,6 +374,9 @@ app.get('/activate/:id' , (req, res) => { // activate account
 app.use(express.static(path.join(__dirname, '../client/build'))); // root ('/')
 
 app.get('*', function(req, res) { // other routes not defined above
+    console.log("Protocol: ", req.protocol);
+    console.log("Host: ", req.get("host"));
+    console.log("Original URL: ", req.originalUrl);
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 

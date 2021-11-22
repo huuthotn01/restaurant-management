@@ -30,9 +30,9 @@ class SignExpanded extends Component {
 	async formSubmit(e) {
 		e.preventDefault();
 		if (this.props.type === 'signIn') { // Sign In
-			let username = $("#username").val();
-			let pass = $("#password").val();
-			let login_result = await ValidateLogin(username, pass);
+			let email = $("#email").val().trim();
+			let pass = $("#password").val().trim();
+			let login_result = await ValidateLogin(email, pass);
 			if (login_result === false) {
 				$("#signin-alert").css("display", "block");
 				setTimeout(() => {$("#signin-alert").css("display", "none");}, 5000);
@@ -62,9 +62,9 @@ class SignExpanded extends Component {
 		let signin = (
 			<div>
 				<Input
-					id="username"
+					id="email"
 					type="text"
-					placeholder="USERNAME HOẶC EMAIL" />
+					placeholder="EMAIL" />
 				<Input
 					id="password"
 					type="password"

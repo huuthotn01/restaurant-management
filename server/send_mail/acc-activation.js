@@ -2,11 +2,11 @@ var nodemailer = require('nodemailer');
 var fs = require('fs');
 var util = require('util');
 
-async function accActivation(username, email, act_id) {
-    let html_content = fs.readFileSync('./acc-activation.html');
+async function accActivation(protocol, host, username, email, act_id) {
+    let html_content = fs.readFileSync('./send_mail/acc-activation.html');
     html_content = html_content.toString();
-    // let activation_link = 'aprycot.herokuapp.com/activate/' + act_id;
-    let activation_link = 'localhost:5000/activate/' + act_id;
+    let activation_link = protocol + "://" + host + "/activate/" + act_id;
+    console.log(activation_link);
     let output = util.format(html_content, username, '', activation_link, activation_link);
 
     let transporter = nodemailer.createTransport({
