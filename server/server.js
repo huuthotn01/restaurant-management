@@ -66,6 +66,20 @@ app.post('/gg_auth', (req, res) => { // login (signin and signup) with google
     });
 });
 
+app.post('/addCancelTable', (request, response) => {
+    const filename = "../client/src/data/canceltable.json";
+    var data = fs.readFileSync(filename, {encoding: "utf8"});
+    var myObject = JSON.parse(data);
+      
+    let newData = request.body;
+    myObject.push(newData);
+      
+    fs.writeFile(filename, JSON.stringify(myObject), {encoding: "utf8"}, (err) => {
+      if (err) throw err;
+      console.log("New data added");
+    });
+});
+
 app.get('/get_user', (req, res) => {
     const users = JSON.parse(fs.readFileSync('../client/src/data/user.json'));
     console.log(typeof(users));

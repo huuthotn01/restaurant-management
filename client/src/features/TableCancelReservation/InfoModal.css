@@ -14,3 +14,18 @@
     background-color: #a19c99 !important;
     border-radius: 10px;
 }
+.themodal{
+    
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      
+}
+
+.cancaltable{
+
+}
+.cancelbtn{
+    padding-top: 30px !important;
+}
