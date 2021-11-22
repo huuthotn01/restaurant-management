@@ -1,11 +1,39 @@
-import React from 'react';
-import User from '../../data/user.json';
-
-function ValidateLogin(username, password) {
-    for (let i = 0; i < User.length; i++) {
-        if (User[i]["username"] === username && User[i]["password"] === password) return true;
-    }
-    return false;
+async function ValidateLogin(email, password) {
+    let user_data = {
+        "email": email,
+        "password": password
+    };
+    const response = await fetch('/signin', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer'
+        },
+        body: JSON.stringify(user_data)
+    });
+    if (response.status !== 200) throw Error("No proper response!");
+    const body = await response.json();
+    if (body.succ) return body.data;
+    else return false;
 }
 
-export { ValidateLogin }
+async function ValidateSignUp(fullname, email, password) {
+    let user_data = {
+        "fullname": fullname,
+        "email": email,
+        "password": password
+    };
+    const response = await fetch('/signup', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer'
+        },
+        body: JSON.stringify(user_data)
+    });
+    if (response.status !== 200) throw Error("No proper response!");
+    const body = await response.json();
+    return body.succ;
+}
+
+export { ValidateLogin, ValidateSignUp }

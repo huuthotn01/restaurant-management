@@ -21,9 +21,11 @@ class Header extends Component{
         return (
             <div>
                 <Navbar className="navbar-header" color="light"  expand="md"  light container>
-                    <NavbarBrand href="/">
+                    <LinkContainer to='/'>
+                    <NavbarBrand>
                     <img width="120px" height="50px" className="navbar-brand" src='assets/images/brand.png' alt="Logo"></img>
                     </NavbarBrand>
+                    </LinkContainer>
                     <NavbarToggler className="me-2 navbar-button" onClick={this.toggleNav}/>
                     <Collapse navbar isOpen={this.state.isNavOpen}>
                         <Nav className="nav-header flex-container" style={{width: "100%"}} navbar>

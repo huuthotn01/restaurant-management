@@ -5,19 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm install && npm run build",
     "start": "cd server && node server.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"nodemon ./server/server.js localhost 5000 \" \"npm run client\""
+    "dev": "concurrently \"nodemon ./server/server.js localhost 5000 \" \"npm run client\"",
+    "build": "cd server && npm install && cd ../client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^6.4.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "google-auth-library": "^7.9.2",
     "google-oauth-jwt": "^0.2.0",
+    "md5": "^2.3.0",
     "mysql": "^2.18.1",
     "nodemailer": "^6.7.0",
     "nodemon": "^2.0.15",

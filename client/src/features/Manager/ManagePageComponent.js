@@ -8,7 +8,7 @@ import './manager.css';
 
 class ManagePage extends Component{
     render() {
-        if (this.context.role !== 3) return (
+        if (this.context.role !== "2") return (
             <Switch>
                 <Redirect to='/home' />
             </Switch>
