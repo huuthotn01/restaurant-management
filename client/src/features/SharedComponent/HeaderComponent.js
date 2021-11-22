@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
 import { FaShoppingCart, FaBookOpen, FaTable } from 'react-icons/fa';
-import { LoginView } from '../Login/LoginView';
+import { LoginView } from '../login/LoginView';
 import { Dropdown } from 'react-bootstrap';
 import { ButtonGroup } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -50,14 +50,13 @@ class Header extends Component{
                                 </Dropdown>
                             </NavLink>
                             </NavItem>
-                            <LinkContainer to='/food_ordering' style={{cursor: 'pointer'}}>
-                            <NavItem className="flex-item" style={{flexGrow: "9"}}>
-                            <NavLink>
+                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
+                            <NavLink href="/ordering">
                                 <FaBookOpen /> Đặt món ăn
                             </NavLink>
+                            
                             </NavItem>
-                            </LinkContainer>
-                            <NavItem className="flex-item" style={{flexGrow: "8", cursor: 'pointer'}}>
+                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
                                 <LoginView />
                             </NavItem>
                         </Nav>
