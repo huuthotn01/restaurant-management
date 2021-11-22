@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import Input from '../MenuView/Input';
+import Input from './Input';
 import classes from './ItemFormController.module.css';
 
 const ItemForm = (props) => {

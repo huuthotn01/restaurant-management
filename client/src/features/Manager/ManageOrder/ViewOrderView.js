@@ -42,7 +42,7 @@ class ViewOrder extends Component {
                 <td>
                     {order.orderID}
                 </td>
-                <td className="d-none d-lg-block">
+                <td>
                     {order.orderDate}
                 </td>
                 <td>
@@ -110,12 +110,12 @@ class ViewOrder extends Component {
         return (
             <Container>
                     <Row className="manage-order-heading">
-                        <Col md="6" sm="12" xs="12" className='manage-order-header'> Danh sách đơn hàng </Col>
+                        <Col className='manage-order-header'> Danh sách đơn hàng </Col>
                         <Col> 
                         <Row>
-                            <Form className="search-bar" onSubmit={e => {e.preventDefault(); this.onInputOrderID()}}>
+                            <Form className="search-bar" onSubmit={e => {e.preventDefault();}}>
                                 <FormGroup>
-                                    <Input autoComplete="off" className="search-box" id="search" name="search-drugs" placeholder="Nhập đơn hàng"
+                                    <Input className="search-box" id="search" name="search-drugs" placeholder="Nhập đơn hàng"
                                     innerRef={(input) => this.search_item = input} />
                                 </FormGroup>
                             </Form> 
@@ -128,7 +128,7 @@ class ViewOrder extends Component {
                     <Row>
                         <Col>
                             {not_Found}
-                            <Table className="manage-table" responsive hover striped>
+                            <Table responsive hover striped>
                             <thead>
                                 <tr>
                                 <th>
@@ -140,7 +140,7 @@ class ViewOrder extends Component {
                                 <th>
                                     Mã đơn hàng
                                 </th>
-                                <th className="d-none d-lg-block">
+                                <th>
                                     Ngày tạo đơn
                                 </th>
                                 <th>
@@ -196,39 +196,39 @@ class ViewOrder extends Component {
                     </Row>             
                 <Modal isOpen={this.props.model.isModalOpen} toggle={this.toggleModal} fullscreen ref={(el) => {this.componentRef = el}}>
                     <ModalBody>
-                        <Container className="order-content">
+                        <Container>
                             <Row style={{marginBottom: '30px'}}>
-                                <Col xs="8">
+                                <Col md="8">
                                 <img width="120px" height="41px" src='/assets/images/brand.png'/>
                                 </Col>
-                                <Col xs="4" className="ms-auto">
+                                <Col md="4" className="ms-auto">
                                 <Button className="out-bill-button" onClick={() => this.toggleModal('1', false)}> X </Button>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col className="order-header" xs="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
+                                <Col md="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
                                     HÓA ĐƠN
                                 </Col>
                             </Row>
                             <Row> 
-                                <Col xs="12">
+                                <Col>
                                     <span style={{fontWeight: 'bold'}}> Mã đơn hàng: </span>
                                     {order.orderID} 
                                 </Col>
                             </Row>
                             <Row style={{marginTop: '8px'}}>
-                                <Col xs="12" md="6" className="order-customer-name"> 
+                                <Col> 
                                     <span style={{fontWeight: 'bold'}}> Tên khách hàng: </span> 
                                     Nguyễn Khoa Gia Cát {order.customerName}
                                 </Col>
-                                <Col xs="12" md="6">
+                                <Col>
                                     <span style={{fontWeight: 'bold'}}>Ngày đặt hàng: </span>
                                     {order.orderDate}
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                <Table className="manage-table" responsive hover striped style={{marginTop: '10px'}}>
+                                <Table responsive hover striped style={{marginTop: '10px'}}>
                                 <thead>
                                     <tr>
                                     <th style={{textAlign: 'center'}}>

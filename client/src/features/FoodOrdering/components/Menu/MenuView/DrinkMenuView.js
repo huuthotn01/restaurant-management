@@ -5,8 +5,8 @@ import Drink from '../DrinkMenuModel';
 const DrinkMenuController = () => {
   return (
     <Fragment>
-      <Slogan />
-      <br></br>
+      {/* <Slogan />
+      <br></br> */}
       <Drink />
     </Fragment>
   );

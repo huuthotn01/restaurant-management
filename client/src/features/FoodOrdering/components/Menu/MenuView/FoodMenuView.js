@@ -1,15 +1,14 @@
 import { Fragment } from 'react';
-import Slogan from './Slogan';
+// import Slogan from './Slogan';
 import Food from '../FoodMenuModel';
 
-const FoodMenuController = () => {
+const App = () => {
   return (
     <Fragment>
-      <Slogan />
-      <br></br>
+      {/* <Slogan /> */}
       <Food />
     </Fragment>
   );
 };
 
-export default FoodMenuController;
+export default App;

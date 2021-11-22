@@ -15,8 +15,8 @@ class ManageCustomerView extends Component {
     }
 
     onClickAuth() {
-        this.props.getNotAuthCustomerList();
         this.props.changeView(0);
+        this.props.getNotAuthCustomerList();
     }
 
     onClickView() {
@@ -26,22 +26,18 @@ class ManageCustomerView extends Component {
     render() {
         const Auth = <AuthenticateCustomerView model = {this.props.model} 
                                                getNotAuthCustomerList = {this.props.getNotAuthCustomerList}
-                                               onToggleModalAuth = {this.props.onToggleModalAuth} 
-                                               authCus = {this.props.authCus} />;
-        const View = <ViewCustomerView model = {this.props.model} getCustomerList = {this.props.getCustomerList} 
-                                        onToggleViewModal = {this.props.onToggleViewModal} 
-                                        onToggleDeleteModal = {this.props.onToggleDeleteModal} 
-                                        deleteCustomer = {this.props.deleteCustomer}/>;
+                                               onToggleModalAuth = {this.props.onToggleModalAuth} />;
+        const View = <ViewCustomerView model = {this.props.model} />;
         return  <>
                     <ManageSidebar />
                     <Container>
                         <Row>
-                            <Col xs="6" style={{paddingLeft: '20px'}}> 
+                            <Col md="6" style={{paddingLeft: '20px'}}> 
                                 <Button onClick={this.onClickAuth} className="manage-button"> 
-                                    Xác <span style={{textTransform: 'lowercase'}}> thực <br className="d-sm-none" /> khách hàng </span> 
+                                    Xác <span style={{textTransform: 'lowercase'}}> thực khách hàng </span> 
                                 </Button> 
                             </Col>
-                            <Col xs="6"> 
+                            <Col md="6"> 
                                 <Button onClick={this.onClickView} className="manage-button"> 
                                     Xem <span style={{textTransform: 'lowercase'}}> thông tin khách hàng </span> 
                                 </Button>

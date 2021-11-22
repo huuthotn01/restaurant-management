@@ -1,0 +1,24 @@
+.input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  /* background-color: #FBF9F0; */
+}
+
+.input label {
+  /* align-items: right; */
+  text-align: center;
+  font-weight: bold;
+  /* margin-right: 1rem; */
+  padding: 0.5rem;
+}
+
+.input input {
+  width: 2.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font: inherit;
+  padding-left: 0.5rem;
+  background-color: antiquewhite;
+}

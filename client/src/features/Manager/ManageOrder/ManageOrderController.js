@@ -27,6 +27,7 @@ class ManageOrderController extends Component {
         const newModel = this.state.model;
         const value = this.state.model.getOrderbyTime(startTime, endTime);
 
+        newModel.orders_statistic = value.list;
         newModel.Data_Statistic = value.data;
 
         this.setState({model: newModel});

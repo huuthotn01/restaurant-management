@@ -9,58 +9,15 @@ import ManageCustomerController from '../Manager/ManageCustomer/ManageCustomerCo
 import ReservationPage from '../TableReservation/ReservationPage';
 import Payment from '../payment/PaymentComponent';
 import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
+import { ChangeInfo } from '../login/ChangeInfoView';
+import { ForgotPass } from '../login/LoginController/ForgotPass';
 import Ordering from '../FoodOrdering/OrderingController'
 import FoodMenu from '../FoodOrdering/FoodMenuController';
 import DrinkMenu from '../FoodOrdering/DrinkMenuController';
-import { ChangeInfo } from '../Login/ChangeInfoView';
-import { ForgotPass } from '../Login/LoginController/ForgotPass';
-import FoodOrdering  from '../FoodOrdering/FoodOrdering';
-import { LoginContext } from './LoginContext';
+import SearchPage from '../FoodOrdering/SearchPageController';
 
 class Main extends Component {
-    constructor(props) {
-		super(props);
-		this.updateContext = (isin, fname, lname, email, role, url) => {
-            console.log("URL: ", url);
-            if (url === "" || url === undefined) url = 'assets/images/blank_avatar.jpg';
-			this.setState(state => ({
-				loginInfo: {
-					isIn: isin,
-					fName: fname,
-					lName: lname,
-					email: email,
-					role: role,
-					avatarURL: url,
-					updateContext: this.state.loginInfo.updateContext
-				}
-			}));
-		};
-		this.state = {
-			loginInfo: {
-				isIn: '',
-				fName: '',
-				lName: '',
-				email: '',
-				role: '',
-				avatarURL: '',
-				updateContext: this.updateContext,
-			}
-		};
-	}
-
-	async componentDidMount() {
-		const response = await fetch('/verify', {
-            method: "GET"
-        });
-		if (response.status !== 200) console.log("MainComponent Error occurred!");
-		const body = await response.json();
-		if (body.succ) {
-			const data = body.data;
-			this.updateContext(true, data.fname, data.lname, data.email, data.role, data.url);
-		}
-	}
-
-	render() {
+	render(){
         return (
             <div>
                 <Header />
@@ -78,9 +35,8 @@ class Main extends Component {
                         <Route path='/ordering' component={Ordering} />
                         <Route path='/food-menu' component={FoodMenu} />
                         <Route path='/drink-menu' component={DrinkMenu} />
+                        <Route path='/search-item' component={SearchPage} />
                         <Redirect to="/home" />
-                        <Route path='/food_ordering' component={FoodOrdering} />
-						{this.state.role === "2" ? <Redirect to='/manage' /> : <Redirect to='/home' />}
                     </Switch>
                 </div>
                 <Footer />

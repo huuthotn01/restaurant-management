@@ -33,14 +33,14 @@ class ManageOrderView extends Component {
                 <ManageSideBar />
                 <Container>
                     <Row>
-                        <Col xs="6" style={{paddingLeft: '20px'}}> 
+                        <Col md="6" style={{paddingLeft: '20px'}}> 
                             <Button onClick={this.onClickView} className="manage-button"> 
                                 Xem <span style={{textTransform: 'lowercase'}}> thông tin đơn hàng </span> 
                             </Button> 
                         </Col>
-                        <Col xs="6"> 
+                        <Col md="6"> 
                             <Button onClick={this.onClickStatistic} className="manage-button"> 
-                                Thống <span style={{textTransform: 'lowercase'}}> kê <br className="d-sm-none"/> đơn hàng </span> 
+                                Thống <span style={{textTransform: 'lowercase'}}> kê đơn hàng </span> 
                             </Button>
                         </Col>
                     </Row>

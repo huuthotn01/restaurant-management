@@ -17,7 +17,7 @@ const Sign = (props) => {
 		<div onClick={props.onChange} className={props.type ==='signIn' ? 'signIn' : 'signUp'}>
 			<div className='center'>
 				{icon}
-				<p>{props.type === 'signIn' ? 'ĐĂNG NHẬP' : 'ĐĂNG KÝ'}</p>
+				<p>{props.type === 'signIn' ? 'SIGN IN' : 'SIGN UP'}</p>
 			</div>
 		</div>
 	);
