@@ -23,7 +23,6 @@ const Item = (props) => {
     <li className={classes.meal}>
       <div>
         <div className={classes.frame}>{props.image}</div>
-        <br></br>
         <h3>{props.name}</h3>
         <div className={classes.price}>{price}</div>
       </div>

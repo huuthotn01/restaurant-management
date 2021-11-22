@@ -7,6 +7,7 @@ import Bill from './Bill';
 import CartProvider from '../FoodOrdering/components/Cart/CartController/CartProvider';
 import { useState } from 'react';
 import NavigationView from './NavigationView';
+import CartContext from '../food_ordering/components/Cart/CartController/CartContext';
 
 function Payment() {
     const [cartIsShown, setCartIsShown] = useState(false);
@@ -16,6 +17,7 @@ function Payment() {
     const hideCartHandler = () => {
         setCartIsShown(false);
     };
+    // const totalAmount = `${cartContext.totalAmount.toFixed(0)} VND`;
     return (
         <CartProvider>
             {cartIsShown && <Bill onClose={hideCartHandler} />}

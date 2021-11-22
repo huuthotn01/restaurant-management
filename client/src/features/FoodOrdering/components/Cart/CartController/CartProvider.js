@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useReducer } from 'react';
 import CartContext from './CartContext';
 
 const defaultCartState = {
+  type: [],
   items: [],
   totalAmount: 0,
 };
@@ -59,6 +60,7 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
+  
   const [cartState, dispatchCartAction] = useReducer(cartReducer,defaultCartState, () => {
     const localData = localStorage.getItem('cart');
     return localData ? JSON.parse(localData) : defaultCartState;

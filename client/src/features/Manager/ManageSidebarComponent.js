@@ -1,27 +1,12 @@
 import React, { Component } from 'react';
 import { ProSidebar, Menu, MenuItem, SidebarContent, SidebarFooter, SidebarHeader } from 'react-pro-sidebar';
-import { FaHeart, FaGithub, FaBars } from 'react-icons/fa';
+import { FaHeart, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'reactstrap';
 
 class ManageSideBar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            toggled: false
-        }
-        this.onHandleToggleSidebar = this.onHandleToggleSidebar.bind(this);
-    }
-
-    onHandleToggleSidebar() {
-        this.setState({toggled: !this.state.toggled})
-    }
-
     render(){
         return(
-            <>
-            <ProSidebar className="cat-manager-sidebar" breakPoint="md" 
-                        toggled={this.state.toggled} onToggle={this.onHandleToggleSidebar}>
+            <ProSidebar className="cat-manager-sidebar">
                 <SidebarHeader>
                     <div
                         style={{
@@ -85,16 +70,6 @@ class ManageSideBar extends Component {
                 </div>
                 </SidebarFooter>
             </ProSidebar>
-            <Container>
-            <Row>
-                <Col>
-                    <Button className="d-md-none" style={{border: 'none', marginLeft: '8px'}} onClick={this.onHandleToggleSidebar}>
-                        <FaBars />
-                    </Button>
-                </Col>
-            </Row>
-            </Container>
-            </>
         );
     }
 }

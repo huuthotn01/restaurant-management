@@ -1,51 +1,15 @@
-import React, { Component } from 'react';
 import "./CancelForm.css";
-import InfoModal from "./InfoModal"
-
-
-class CancelForm extends Component {
-  
-  name = document.getElementById('name')
- password = document.getElementById('password')
- form = document.getElementById('cancelform')
-  
-
-
-
-
-  
-  constructor(props) {
-    super(props);
-    this.state = {value1: ''};
-    this.state = {value2: ''};
-    
-    this.handleChange1 = this.handleChange1.bind(this);
-    this.handleChange2 = this.handleChange2.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleChange1(event) {
-    this.setState({value1: event.target.value});
-    
-  }
-  handleChange2(event) {
-    this.setState({value2: event.target.value});
-    
-  }
-   handleSubmit(event) {
-     this.code = this.state.value1;
-     this.phone = this.state.value2;
-     
-   }
-  render(){
+import React from "react";
+export function CancelForm() {
   return (
     <form
-      class="cancelform row g-3"
+      class="row g-3"
       style={{
         width: "400px",
         justifyContent: "center",
         alignItems: "center",
       }}
-      onSubmit={this.handleSubmit} >
+    >
       <h4 style={{ textAlign: "center", color: "#EA6A12", marginTop: "50px" }}>
         Thông tin hủy đặt bàn
       </h4>
@@ -53,13 +17,13 @@ class CancelForm extends Component {
         <label for="exampleText1" class="form-label">
           Số điện thoại
         </label>
-        <input type="text" class="form-control" id="exampleText1"  value2={this.state.value2} onChange={this.handleChange2}/>
+        <input type="text" class="form-control" id="exampleText1" />
       </div>
       <div class="col-12">
-        <label for="examplePhoneNumber" class="form-label" >
+        <label for="examplePhoneNumber" class="form-label">
           Mã đặt bàn
         </label>
-        <input type="tel" class="form-control" id="examplePhoneNumber" value1={this.state.value1} onChange={this.handleChange1}/> 
+        <input type="tel" class="form-control" id="examplePhoneNumber" />
       </div>
 
       <div class="col-12">
@@ -70,15 +34,10 @@ class CancelForm extends Component {
       </div>
 
       <div class="col-12 text-center">
-      <InfoModal
-        code = {this.state.value1}
-        phone = {this.state.value2}
-      ></InfoModal> 
-        
+        <button type="submit" class="btn btn-primary text-white">
+          Hủy đặt bàn
+        </button>
       </div>
     </form>
   );
 }
-
-}
-export default CancelForm

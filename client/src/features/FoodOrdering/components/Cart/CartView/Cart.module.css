@@ -24,9 +24,12 @@
   cursor: pointer;
   background-color: transparent;
   border: 1px solid #e7b392;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 2rem !important;
   border-radius: 25px;
   margin-left: 1rem;
+  width: 220px;
+  margin-top: 2px !important;
+  text-transform: none !important;
 }
 
 .actions button:hover,

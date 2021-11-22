@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {MdArrowForward} from 'react-icons/md';
-import {SignIn} from './Google';
-import {LoginContext} from '../../SharedComponent/LoginContext';
+import {Login} from './Google';
+import {LoginContext} from './LoginContext';
 
 class SubmitButton extends React.Component {
 	constructor(props) {
 		super(props);
+		// this.onSignIn = this.onSignIn.bind(this);
 	}
 
 	render() {
 		let socialNets = (
 			<div className='socialNets'>
 				<LoginContext.Consumer>
-					{value => (<SignIn context={value} />)}
+					{(loginInfo) => (<Login context={loginInfo} />)}
 				</LoginContext.Consumer>
 			</div>
 		);

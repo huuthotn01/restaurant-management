@@ -1,5 +1,8 @@
 .form {
   text-align: right;
+  /* color: transparent; */
+  /* background-image: linear-gradient(to right, #ffa400, #00aefd);
+  -webkit-background-clip: text; */
 }
 
 .form button {
@@ -8,10 +11,14 @@
   background-color: #f09a61;
   border: 1px solid #f09a61;
   color: white;
-  padding: 0.25rem 2rem;
   border-radius: 20px;
   font-weight: bold;
-  width: max-content;
+  width: auto;
+  padding: 0.25rem 1rem !important;
+  margin-top: 2px !important;
+  text-transform: none !important;  
+  /* position: sticky;
+  bottom: 0; */
 }
 
 .form button:hover,

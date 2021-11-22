@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 import NavigationBar from './components/Menu/MenuView/NavigationView';
-import Menu from './components/Menu/MenuView/MenuView';
+import Menu from './components/Menu/MenuView/MainPageView';
 import Cart from './components/Cart/CartView/Cart';
 import CartProvider from './components/Cart/CartController/CartProvider';
 
