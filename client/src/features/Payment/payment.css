@@ -1,39 +1,13 @@
-.space1 {
-  width: 60%;
-  height: 450px;
-  padding-top: 70px;
-  padding-left: 150px;
-  float: left;
-}
-.space2 {
-  width: auto;
-  height: 450px;
-  float: left;
-}
-.text {
-  color:  black;
-  position: absolute;
-  top: 171px;
-  left: 250px;
-  font-size: 15px;
-  font-weight: bold;
-  }
 
-#text2 {
-  color:  black;
-  position: absolute;
-  top: 230px;
-  left:300px;
-  font-size: 15px;
-  font-weight: bold;
+#huhuhu{
+  padding-left: 280px;
 }
-#text3 {
-  color:  black;
-  position: absolute;
-  top: 270px;
-  left:330px;
-  font-size: 14px;
+
+.space2 {
+  text-align: center;
+  
 }
+
 a {
   text-decoration: none;
   color: black;
@@ -48,10 +22,7 @@ button a:hover {
 .imag{
   border-radius: 4px;
 }
-#bill {
-  border: 5px solid orange;
-  border-style: double;
-}
+
 #card{
   position: absolute;
   top: 450px;
@@ -67,10 +38,57 @@ button a:hover {
 #pad {
   padding-left: 95px;
 }
-#huhu {
-  padding-left: 120px;
+.hihi {
+  color: black;
+  font-size: 1.8vw;
 }
 
 .button-phuoc {
     border: 1px orange;
+}
+
+.ahuhu{
+  padding-top: 50px;
+}
+#huhu{
+  width: 100px;
+  height: 150px;
+}
+.mai{
+  height: 100%;
+  /* object-fit: contain;  */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#maiz{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1280px ) {
+  .ko{
+    width: 35%;
+  }
+  .koo{
+    font-size: 80px;
+  }
+}
+@media only screen and (max-width: 770px ) {
+  .ko{
+    width: 65%;
+  }
+  .koo{
+    font-size: 50px;
+  }
+}
+@media only screen and (min-width: 1360px ) {
+  .ko{
+    width: 35%;
+  }
+  .koo{
+    font-size: 50px;
+  }
 }

@@ -4,11 +4,10 @@ import BillDetail from './BillDetail';
 import CartContext from '../FoodOrdering/components/Cart/CartController/CartContext';
 import classes from './Bill.module.css';
 import React  from 'react';
-import {  Col, Row} from 'reactstrap';
-import DropMenu from './dropdown2';
-import DropPayment from './dropdown';
+import random from './Id'
 
-const Cart = (props) => {
+
+const Cart1 = (props) => {
   const cartContext = useContext(CartContext);
 
   const totalAmount = `${cartContext.totalAmount.toLocaleString('vi-VN')} VND`;
@@ -25,10 +24,11 @@ const Cart = (props) => {
       ))}
     </ul>
   );
-
+  let id = random();
 
   return (
       <Card>
+          <span style={{ fontWeight: 'bold', fontSize: '2.1vw'}}> ID:{id}</span>
         {cartItems}
         <div style={{paddingTop: "40px"}}>
         <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "left", float: "left"}}> 
@@ -38,17 +38,9 @@ const Cart = (props) => {
           {totalAmount}
         </div>
         </div>
-        <Row >
-          <Col style={{textAlign: "center"}}>
-          <DropPayment /> 
-            </Col>
-            <Col style={{textAlign: "center"}}>
-            <DropMenu />
-            </Col>
-          </Row>
       </Card>
   );
 
 };
 
-export default Cart;
+export default Cart1;

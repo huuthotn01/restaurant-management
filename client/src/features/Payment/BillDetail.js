@@ -1,22 +1,21 @@
 import classes from './BillDetail.module.css';
 
 const BillDetail = (props) => {
-  const price = `${props.price.toFixed(0)} VND`;
+  const price = `${props.price.toLocaleString('vi-VN')} VND`;
   return (
     <li className={classes['cart-item']}>
       <div>
-        <h2>{props.name}</h2>
+      <h2 style={{ fontWeight: 'bold',  fontSize: '2vw'}}>{props.name}</h2>
         <div className={classes.summary}> 
-          <span className={classes.price}>{price}</span>
-          <span className={classes.amount}>{props.amount}</span>
+          <span style={{  fontSize: '2vw'}} className={classes.price}>{price}&ensp;&ensp;&ensp;
+          <span style={{  fontSize: '2vw'}}className={classes.amount}>{props.amount}</span>&emsp;&emsp;
+          <span style={{ fontWeight: 'bold', fontSize: '2vw'}}>{(props.price*props.amount).toLocaleString('vi-VN')}VND</span>
+          </span>  
         </div>
       </div>
-      <div className={classes.total}>
-          {/* <span className={classes.price}> Giá </span> */}
-          <span>{props.price*props.amount} VND</span>
-        </div>
     </li>
   );
 };
 
 export default BillDetail;
+

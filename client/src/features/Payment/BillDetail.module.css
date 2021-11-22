@@ -21,16 +21,15 @@
   margin: 1rem 0;
 }
 
-.total {
+/* .total {
   font-weight: bold;
-  border: 1px solid rgb(0, 0, 0);
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
   color: #000000;
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1.5rem
 
-}
+} */
 
 .price {
   font-weight: bold;
@@ -40,7 +39,7 @@
 .amount {
   font-weight: bold;
   border: 1px solid rgb(0, 0, 0);
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.65rem;
   border-radius: 6px;
   color: #000000;
 }

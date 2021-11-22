@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
 
-import Cart from './Bill';
+import Cart1 from './Bill1';
 import classes from './NavigationView.module.css';
 
-const NavigationView = (props) => {
+const NavigationView1 = (props) => {
     return (
         <Fragment>
             <div className={classes.header}>
-                <Cart/>
+                <Cart1/>
             </div>
         </Fragment>
     );
 };
 
 
-export default NavigationView;
+export default NavigationView1;
