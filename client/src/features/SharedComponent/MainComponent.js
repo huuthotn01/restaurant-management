@@ -7,10 +7,10 @@ import ManagePage from '../Manager/ManagePageComponent'
 import ManageOrderController from '../Manager/ManageOrder/ManageOrderController';
 import ManageCustomerController from '../Manager/ManageCustomer/ManageCustomerController';
 import ReservationPage from '../TableReservation/ReservationPage';
-import Payment from '../Payment/PaymentComponent';
-import MOMO from '../Payment/paymentMomo';
-import Paymentbycash from '../Payment/paymentCash';
-import PaymentCard from '../Payment/paymentCash';
+import Payment from '../Payment/PaymentView/PaymentView';
+import MOMO from '../Payment/PaymentView/paymentMomo';
+import Paymentbycash from '../Payment/PaymentView/paymentCash';
+import PaymentCard from '../Payment/PaymentView/paymentBankCard';
 import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
 import Ordering from '../FoodOrdering/OrderingController'
 import FoodMenu from '../FoodOrdering/FoodMenuController';
