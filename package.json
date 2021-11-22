@@ -18,6 +18,7 @@
     "express-session": "^1.17.2",
     "google-auth-library": "^7.9.2",
     "google-oauth-jwt": "^0.2.0",
+    "md5": "^2.3.0",
     "mysql": "^2.18.1",
     "nodemailer": "^6.7.0"
   },

@@ -125,7 +125,6 @@ app.post('/signup', (req, res) => { // signup
     for (let i = 0; i < cont.length; i++) {
         var data = cont[i];
         if (data["email"] === info["email"]) { // account existed
-            console.log("Duplicated");
             res.send({succ: false});
             return;
         }
@@ -148,6 +147,20 @@ app.post('/signup', (req, res) => { // signup
         }
     }
     let username = email.split("@")[0]; // username
+    const md5 = require('md5');
+    const act_id = md5(username);
+    console.log("Act id: ", act_id);
+    const file_name = '../client/src/data/user_activation.json';
+    let act_file = fs.readFileSync(file_name, {encoding: "utf8"});
+    let activation = JSON.parse(act_file);
+    let expire_day = new Date();
+    expire_day.setDate(expire_day.getDate() + 1);
+    activation.push({
+        "username": username,
+        "activation_id": act_id,
+        "expire_day": expire_day
+    });
+    fs.writeFileSync(file_name, JSON.stringify(activation), {encoding: "utf8"});
     password = bcrypt.hashSync(password, 10);
     let user_data = {
         "fname": fname,
@@ -163,6 +176,8 @@ app.post('/signup', (req, res) => { // signup
     };
     cont.push(user_data);
     fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
+    const send_mail = require('./send_mail/acc-activation');
+    send_mail(username, email, act_id);
     res.send({succ: true});
 });
 
