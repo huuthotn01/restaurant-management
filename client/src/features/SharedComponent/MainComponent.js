@@ -14,7 +14,6 @@ import FoodMenu from '../FoodOrdering/FoodMenuController';
 import DrinkMenu from '../FoodOrdering/DrinkMenuController';
 import { ChangeInfo } from '../Login/ChangeInfoView';
 import { ForgotPass } from '../Login/LoginController/ForgotPass';
-import FoodOrdering  from '../FoodOrdering/FoodMenuController';
 import { LoginContext } from './LoginContext';
 import SearchPage from '../FoodOrdering/SearchPageController';
 
@@ -80,8 +79,6 @@ class Main extends Component {
                         <Route path='/ordering' component={Ordering} />
                         <Route path='/food-menu' component={FoodMenu} />
                         <Route path='/drink-menu' component={DrinkMenu} />
-                        <Redirect to="/home" />
-                        <Route path='/food_ordering' component={FoodOrdering} />
 						<Route path='/search_item' component={SearchPage} />
 						{this.state.role === "2" ? <Redirect to='/manage' /> : <Redirect to='/home' />}
                     </Switch>

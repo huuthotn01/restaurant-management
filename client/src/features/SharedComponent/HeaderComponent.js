@@ -52,7 +52,7 @@ class Header extends Component{
                                 </Dropdown>
                             </NavLink>
                             </NavItem>
-                            <LinkContainer to='/food_ordering' style={{cursor: 'pointer'}}>
+                            <LinkContainer to='/ordering' style={{cursor: 'pointer'}}>
                             <NavItem className="flex-item" style={{flexGrow: "9"}}>
                             <NavLink>
                                 <FaBookOpen /> Đặt món ăn
