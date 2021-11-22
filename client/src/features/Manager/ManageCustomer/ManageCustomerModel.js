@@ -1,21 +1,22 @@
-// import user_data from '../../../data/user.json';
+import user_data from '../../../data/user.json';
 import Customer from "./Customer";
 import axios from 'axios';
 
-var user_data;
-async function get_data() {
-    var data = []
-    const response = await axios.get('/get_user');
-    const body = response.data.users;
-    console.log("Return body: ", body);
-    data = body;
-    return data;
-}    
-get_data()
-.then(res => {
-    console.log("Res: ", res);
-    user_data = res;
-});
+// var user_data;
+// async function get_data() {
+//     var data = []
+//     const response = await axios.get('/get_user');
+//     const body = response.data.users;
+//     console.log("Return body: ", body);
+//     data = body;
+//     return data;
+// }    
+// get_data()
+// .then(res => {
+//     console.log("Res: ", res);
+//     user_data = res;
+// });
+
 class ManageCustomerModel {
 
     //------------------------------ATTRIBUTE------------------------------------
@@ -27,7 +28,7 @@ class ManageCustomerModel {
     //-------------------------------CONSTRUCTOR---------------------------------
     constructor() {
         (async () => {
-            console.log("Hihi: ", user_data);
+            // console.log("Hihi: ", user_data);
             this.#customers = user_data.filter(customer => {
                 return customer['role'] === "1";
             }).map(customer => {

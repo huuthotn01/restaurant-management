@@ -61,6 +61,35 @@ body.modal-open {
   font-size: 15px;
 }
 
+.home-img1, .home-img2, .home-img3, .home-img4 {
+  height: 200px;
+  width: 200px;
+  border-radius: 55px;
+}
+
+.home-food {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.info-button, .info-button:hover, .info-button:not(:hover)  {
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  background-color: #FBF9F0 !important;
+  color: lightslategrey;
+  font-size: 15px;
+  text-transform: capitalize;
+  /* width: 200px; */
+  box-shadow: none !important;
+  margin: auto;
+  padding: 0px !important;
+  text-align: left;
+  border: 1px solid #FFFFFF;
+  margin-left: 0px;
+  margin-top: -6px;
+}
+
 @media screen and (max-width: 576px) {
 .navbar-brand {
   height: 35px;
@@ -81,6 +110,7 @@ body.modal-open {
   text-align: center;
   margin-bottom: 5px;
   font-size: 10px;
+  margin-top: 5px;
 }
 
 .footer-header {
@@ -96,9 +126,36 @@ hr {
   text-align: center;
   margin: auto !important;
 }
+
+.home-img1, .home-img3{
+  height: 100px;
+  width: 100px;
+  border-radius: 25px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+.home-img2, .home-img4{
+  height: 100px;
+  width: 100px;
+  border-radius: 25px;
+  margin-left: 20px;
+}
+
+.home-food {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 }
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
+.info-button {
+  text-align: center;
+}
+
 .navbar-brand {
   height: 40px;
   width: 100px;
@@ -134,6 +191,28 @@ hr {
   text-align: center;
   margin: auto !important;
 }
+.home-img1, .home-img3{
+  height: 200px;
+  width: 200px;
+  border-radius: 25px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+.home-img2, .home-img4{
+  height: 200px;
+  width: 200px;
+  border-radius: 25px;
+  margin-left: 30px;
+}
+
+.home-food {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 }  
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
