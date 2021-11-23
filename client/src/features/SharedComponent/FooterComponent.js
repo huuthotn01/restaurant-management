@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col} from 'reactstrap';
-import { Modal, Button, ModalHeader, ModalBody } from 'reactstrap'
+import { Modal, Button, ModalHeader, ModalBody } from 'reactstrap';
+import { LoginContext } from './LoginContext';
 
 class Footer extends Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class Footer extends Component {
                         <Col className="footer-header"> <Col> Aprycot </Col> </Col>
                         </Row>
                         <Row>
-                        <Col className="footer-content"> <Col> Fine Dining Restaurant </Col></Col>
+                        <Col className="footer-content"> <Col> {this.context.lang === "vi" ? "Nhà hàng chất lượng cao" : "Fine Dining Restaurant"} </Col></Col>
                         </Row>
                     </Col>
                     {/* <hr className="d-lg-none"/> */}
@@ -33,7 +34,7 @@ class Footer extends Component {
                         <Row> 
                         <Col className="footer-header"> 
                             <Col> 
-                                About Us 
+                                {this.context.lang === "vi" ? "Về chúng tôi" : "About us"}
                             </Col> 
                         </Col>
                         </Row>
@@ -41,7 +42,7 @@ class Footer extends Component {
                             <Col className="footer-content">
                                 <Col>
                                     <Button className="info-button" onClick={() => this.onToggleModal()}> 
-                                        <span className="footer-content">Aprycot Team </span> 
+                                        <span className="footer-content">{this.context.lang === "vi" ? "Đội ngũ Aprycot" : "Aprycot Team"}</span> 
                                     </Button>
                                 </Col>
                             </Col>
@@ -50,11 +51,11 @@ class Footer extends Component {
                     {/* <hr className="d-lg-none"/> */}
                     <Col  xs="4">
                         <Row>
-                            <Col className="footer-header"> <Col> Help  </Col> </Col>
+                            <Col className="footer-header"> <Col> {this.context.lang === "vi" ? "Hỗ trợ" : "Help"}  </Col> </Col>
                         </Row>
                         <Row>
                             <Col className="footer-content"> <Col>
-                            Help center 
+                            {this.context.lang === "vi" ? "Trung tâm hỗ trợ" : "Help center"}
                             {/* Contact support <br />
                             Instructions <br />
                             How it works <br /> */}
@@ -66,7 +67,7 @@ class Footer extends Component {
             </Container>
             <Modal isOpen={this.state.isModalOpen} toggle={this.onToggleModal}>
                 <ModalHeader className="footer-header">
-                    Trường Đại học Bách Khoa
+                    {this.context.lang === "vi" ? "Trường Đại học Bách Khoa TP. Hồ Chí Minh" : "Ho Chi Minh University of Technology"}
                 </ModalHeader>
                 <ModalBody>
                     <Container>
@@ -97,5 +98,7 @@ class Footer extends Component {
         );
     }
 }
+
+Footer.contextType = LoginContext;
 
 export default Footer;

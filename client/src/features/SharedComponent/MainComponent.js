@@ -43,12 +43,12 @@ class Main extends Component {
 		this.changeLang = (lang) => {
 			this.setState(state => ({
 				loginInfo: {
-					isIn: this.state.loginInfo.isin,
-					fName: this.state.loginInfo.fname,
-					lName: this.state.loginInfo.lname,
+					isIn: this.state.loginInfo.isIn,
+					fName: this.state.loginInfo.fName,
+					lName: this.state.loginInfo.lName,
 					email: this.state.loginInfo.email,
 					role: this.state.loginInfo.role,
-					avatarURL: this.state.loginInfo.url,
+					avatarURL: this.state.loginInfo.avatarURL,
 					lang: lang,
 					updateContext: this.state.loginInfo.updateContext,
 					changeLang: this.state.loginInfo.changeLang

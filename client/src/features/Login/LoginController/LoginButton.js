@@ -1,14 +1,19 @@
 import React from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
+import { LoginContext } from '../../SharedComponent/LoginContext';
 
-function LoginButton(props) {
-    return (
-        <div className='NavigationPanel' style={{width: "100%"}}>
-            <span className='nav-link' onClick={props.onClick}>
-                <FaSignInAlt /> Đăng nhập / Đăng kí
-            </span>
-        </div>
-    );
+class LoginButton extends React.Component {
+    render() {
+        return (
+            <div className='NavigationPanel' style={{width: "100%"}}>
+                <span className='nav-link' onClick={this.props.onClick}>
+                    <FaSignInAlt /> {this.context.lang === "vi" ? "Đăng nhập / Đăng kí" : "Sign in / Sign up"}
+                </span>
+            </div>
+        );
+    }
 }
+
+LoginButton.contextType = LoginContext;
 
 export { LoginButton };

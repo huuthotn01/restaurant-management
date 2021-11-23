@@ -14,7 +14,7 @@ class Home extends Component {
         return(   
             <Container>
                 <Row>
-                    <img src='/assets/images/jumbotron.png' alt="Ảnh" />
+                    <img src='/assets/images/jumbotron.png' alt="Aprycot" />
                 </Row>
             </Container>
         );

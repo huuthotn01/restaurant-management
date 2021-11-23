@@ -36,18 +36,20 @@ class Header extends Component{
                                 <Dropdown as={ButtonGroup}>
                                     <Dropdown.Toggle variant='success' style={{marginLeft: "5px", paddingTop: "0px", marginTop: "0px", paddingBottom: "0px", backgroundColor: "transparent", color: "black", borderColor: "transparent"}} >
                                         <span style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}}>
-                                            <FaTable /> Dịch vụ bàn
+                                            <FaTable /> {this.context.lang === "vi" ? "Dịch vụ bàn" : "Table Service"}
                                         </span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <LinkContainer to='/reservation' >
                                             <Dropdown.Item eventKey="1">
-                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >Đặt bàn</span>
+                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >
+                                                {this.context.lang === "vi" ? "Đặt bàn" : "Table Reservation"}</span>
                                             </Dropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/cancel_reservation' >
                                             <Dropdown.Item eventKey="2" >
-                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >Hủy đặt bàn</span>
+                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >
+                                                {this.context.lang === "vi" ? "Hủy đặt bàn" : "Table Cancellation"}</span>
                                             </Dropdown.Item>
                                         </LinkContainer>
                                     </Dropdown.Menu>
