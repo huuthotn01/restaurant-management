@@ -7,5 +7,7 @@ export const LoginContext = React.createContext({
 	email: '',
 	role: '',
 	avatarURL: '',
+	lang: 'vi',
 	updateContext: () => {},
+	changeLang: () => {}
 });

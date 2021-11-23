@@ -34,7 +34,24 @@ class Main extends Component {
 					email: email,
 					role: role,
 					avatarURL: url,
-					updateContext: this.state.loginInfo.updateContext
+					lang: this.state.loginInfo.lang,
+					updateContext: this.state.loginInfo.updateContext,
+					changeLang: this.state.loginInfo.changeLang
+				}
+			}));
+		};
+		this.changeLang = (lang) => {
+			this.setState(state => ({
+				loginInfo: {
+					isIn: this.state.loginInfo.isin,
+					fName: this.state.loginInfo.fname,
+					lName: this.state.loginInfo.lname,
+					email: this.state.loginInfo.email,
+					role: this.state.loginInfo.role,
+					avatarURL: this.state.loginInfo.url,
+					lang: lang,
+					updateContext: this.state.loginInfo.updateContext,
+					changeLang: this.state.loginInfo.changeLang
 				}
 			}));
 		};
@@ -46,7 +63,9 @@ class Main extends Component {
 				email: '',
 				role: '',
 				avatarURL: '',
+				lang: 'vi',
 				updateContext: this.updateContext,
+				changeLang: this.changeLang
 			}
 		};
 	}

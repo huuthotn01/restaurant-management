@@ -341,6 +341,11 @@ app.post('/logout', (req, res) => { // logout
     res.end();
 });
 
+app.post('/payment_momo', (req, res) => {
+    const momo = require('./momo_payment');
+    res.end();
+});
+
 app.get('/verify', (req, res) => { // verify session
     let session = req.session;
     console.log(req.session);

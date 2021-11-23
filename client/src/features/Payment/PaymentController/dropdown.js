@@ -9,6 +9,13 @@ export default class DropPayment extends React.Component {
     this.state = {
       dropdownOpen: false
     };
+    this.momoPayment = this.momoPayment.bind(this);
+  }
+
+  async momoPayment() {
+    await fetch('/payment_momo', {
+      method: 'POST'
+    });
   }
 
   toggle() {
@@ -24,7 +31,7 @@ export default class DropPayment extends React.Component {
           Thanh toán
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem><a  className="hihi" href="/paymentmomo"> Ví điện tử Momo (Momo wallet) </a><img className="imag" border-radius="50px" width="30px" height="30px" src='./assets/images/momo.jpg' alt=""></img></DropdownItem>
+          <DropdownItem><span id="payment_momo" className="hihi" onClick={this.momoPayment}> Ví điện tử Momo (Momo wallet) </span><img className="imag" border-radius="50px" width="30px" height="30px" src='./assets/images/momo.jpg' alt=""></img></DropdownItem>
           <DropdownItem><a className="hihi" href="/paymentbankcard">Thẻ ngân hàng (Bank card)</a><img width="70px" height="50px" src='./assets/images/bankcard.png' alt=""></img></DropdownItem>
           <DropdownItem><a className="hihi" href="/paymentcash">Tiền mặt</a>&ensp;<img  width="100px" height="50px" src='./assets/images/cash.png' alt=""></img></DropdownItem> 
         </DropdownMenu>

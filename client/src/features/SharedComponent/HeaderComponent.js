@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, NavLink } from 'reactstrap';
-import { FaShoppingCart, FaBookOpen, FaTable } from 'react-icons/fa';
+import { FaBookOpen, FaTable } from 'react-icons/fa';
 import { LoginView } from '../Login/LoginView';
 import { Dropdown } from 'react-bootstrap';
 import { ButtonGroup } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Language } from './ChangeLang';
+import { LoginContext } from './LoginContext';
 
 class Header extends Component{
     constructor(props) {
@@ -55,12 +57,15 @@ class Header extends Component{
                             <LinkContainer to='/ordering' style={{cursor: 'pointer'}}>
                             <NavItem className="flex-item" style={{flexGrow: "9"}}>
                             <NavLink>
-                                <FaBookOpen /> Đặt món ăn
+                                <FaBookOpen /> {this.context.lang === "vi" ? "Đặt món ăn" : "Food Ordering"}
                             </NavLink>
                             </NavItem>
                             </LinkContainer>
                             <NavItem className="flex-item" style={{flexGrow: "8", cursor: 'pointer'}}>
                                 <LoginView />
+                            </NavItem>
+                            <NavItem className="flex-item" style={{flexGrow: "1", cursor: 'pointer'}}>
+                                <Language />
                             </NavItem>
                         </Nav>
                     </Collapse>
@@ -69,4 +74,7 @@ class Header extends Component{
         );
     }
 }
+
+Header.contextType = LoginContext;
+
 export default Header;
