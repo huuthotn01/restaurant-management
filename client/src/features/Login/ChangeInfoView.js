@@ -72,14 +72,14 @@ class ChangeInfo extends React.Component {
                     <Nav.Item className='changeinfo-navitem' style={{paddingBottom: "5px"}} >
                         <Nav.Link eventKey='change-info' style={{borderLeftStyle: "solid", borderLeftColor: "grey"}}>
                             <Container className='changeinfo-tab'>
-                                <FaInfoCircle/> <span>Thông tin cá nhân</span>
+                                <FaInfoCircle/> <span>{this.context.lang === "vi" ? "Thông tin cá nhân" : "Personal information"}</span>
                             </Container>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className='changeinfo-navitem' style={{paddingTop: "5px"}} >
                         <Nav.Link eventKey='change-pass' style={{borderLeftStyle: "solid", borderLeftColor: "grey"}}>
                             <Container className='changeinfo-tab'>
-                                <AiFillLock/> <span>Bảo mật tài khoản</span>
+                                <AiFillLock/> <span>{this.context.lang === "vi" ? "Bảo mật tài khoản" : "Account security"}</span>
                             </Container>
                         </Nav.Link>
                     </Nav.Item>

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ImUserPlus } from 'react-icons/im';
 import {GoSignIn} from 'react-icons/go';
+import { LoginContext } from '../../SharedComponent/LoginContext';
 
 const Sign = (props) => {
 
@@ -14,12 +15,17 @@ const Sign = (props) => {
 	}
 
 	return (
-		<div onClick={props.onChange} className={props.type ==='signIn' ? 'signIn' : 'signUp'}>
-			<div className='center'>
-				{icon}
-				<p>{props.type === 'signIn' ? 'ĐĂNG NHẬP' : 'ĐĂNG KÝ'}</p>
+		<LoginContext.Consumer>
+		{data => (
+			<div onClick={props.onChange} className={props.type ==='signIn' ? 'signIn' : 'signUp'}>
+				<div className='center'>
+					{icon}
+					<p>{props.type === 'signIn' ? (data.lang === "vi" ? 'ĐĂNG NHẬP' : 'SIGN IN') :
+							(data.lang === "vi" ? 'ĐĂNG KÍ' : 'SIGN UP')}</p>
+				</div>
 			</div>
-		</div>
+		)}
+		</LoginContext.Consumer>
 	);
 }
 

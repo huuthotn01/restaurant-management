@@ -7,6 +7,7 @@ import $ from 'jquery';
 import { LoginContext } from '../../SharedComponent/LoginContext';
 import { Alert } from 'react-bootstrap';
 import { ValidateLogin, ValidateSignUp } from '../LoginModel';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class SignExpanded extends Component {
 	constructor(props) {
@@ -68,7 +69,7 @@ class SignExpanded extends Component {
 				<Input
 					id="password"
 					type="password"
-					placeholder="MẬT KHẨU" />
+					placeholder={this.context.lang === "vi" ? "MẬT KHẨU" : "PASSWORD"} />
 			</div>
 		);
 
@@ -77,7 +78,7 @@ class SignExpanded extends Component {
 				<Input
 					id="name"
 					type="text"
-					placeholder="HỌ VÀ TÊN" />
+					placeholder={this.context.lang === "vi" ? "HỌ VÀ TÊN" : "FULL NAME"} />
 				<Input
 					id="email"
 					type="email"
@@ -85,7 +86,7 @@ class SignExpanded extends Component {
 				<Input
 					id="password"
 					type="password"
-					placeholder="MẬT KHẨU" />
+					placeholder={this.context.lang === "vi" ? "MẬT KHẨU" : "PASSWORD"} />
 			</div>
 		);
 		return (
@@ -109,20 +110,30 @@ class SignExpanded extends Component {
 							transform: `translate3d(0, ${y}px, 0)`,
 							opacity: `${opacity}`
 						}}>
-							<h2 style={{marginBottom: '50px'}}>{this.props.type === 'signIn' ? 'ĐĂNG NHẬP' : 'ĐĂNG KÝ'}</h2>
+							<h2 style={{marginBottom: '50px'}}>
+								{this.props.type === 'signIn' ? (this.context.lang === "vi" ? 'ĐĂNG NHẬP' : 'SIGN IN') : (this.context.lang === "vi" ? 'ĐĂNG KÝ' : 'SIGN UP')}
+							</h2>
 							{this.props.type === 'signIn' ? signin : signup}
 							<SubmitButton type={this.props.type}></SubmitButton>
-							{(this.props.type === 'signIn') &&  
-							<a href="/forgot-pass" className='forgotPass'>Quên mật khẩu?</a>
+							{(this.props.type === 'signIn') &&
+							<LinkContainer to='/forgot-pass' style={{cursor: 'pointer'}}>
+								<a className='forgotPass'>{this.context.lang === "vi" ? "Quên mật khẩu?" : "Forgot password?"}</a>
+							</LinkContainer>
 							}
 							{(this.props.type === 'signIn') &&  
-							<Alert id='signin-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng nhập thất bại</Alert>
+							<Alert id='signin-alert' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >
+								{this.context.lang === "vi" ? "Đăng nhập thất bại" : "Signin failed"}
+							</Alert>
 							}
 							{(this.props.type === 'signUp') &&  
-							<Alert id='signup-alert-succ' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đăng kí thành công</Alert>
+							<Alert id='signup-alert-succ' variant='info' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >
+								{this.context.lang === "vi" ? "Đăng kí thành công" : "Signup successed"}
+							</Alert>
 							}
 							{(this.props.type === 'signUp') &&  
-							<Alert id='signup-alert-fail' variant='warning' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Thông tin đã tồn tại</Alert>
+							<Alert id='signup-alert-fail' variant='warning' style={{display: 'none', marginTop: '5px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >
+								{this.context.lang === "vi" ? "Thông tin đã tồn tại" : "Used email, try another one"}
+							</Alert>
 							}
 						</form>
 						}

@@ -64,16 +64,16 @@ class ChangeInfoForm extends React.Component {
         return (
             <>
             <Form id='info-form' onSubmit={this.onSubmit}>
-            <Form.Group>
-                <Form.Label>Tên tài khoản</Form.Label>
+                <Form.Group>
+                    <Form.Label>{this.context.lang === "vi" ? "Tên tài khoản" : "Username"}</Form.Label>
                     <Form.Control id="username" defaultValue={this.state.info.username} type="text" disabled />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Họ</Form.Label>
+                    <Form.Label>{this.context.lang === "vi" ? "Họ" : "Last name"}</Form.Label>
                     <Form.Control id="l-name" defaultValue={this.state.info.lname} type="text" />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Tên</Form.Label>
+                    <Form.Label>{this.context.lang === "vi" ? "Tên" : "First name"}</Form.Label>
                     <Form.Control id="f-name" defaultValue={this.state.info.fname} type="text" />
                 </Form.Group>
                 <Form.Group>
@@ -81,17 +81,21 @@ class ChangeInfoForm extends React.Component {
                     <Form.Control id="email" defaultValue={this.state.info.email} type="email" />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Điện thoại</Form.Label>
+                    <Form.Label>{this.context.lang === "vi" ? "Điện thoại" : "Phone"}</Form.Label>
                     <Form.Control id="phone" defaultValue={this.state.info.phone} type="text" pattern="[0-9]{10}" />
                 </Form.Group>
                 <Button type='submit' style={{backgroundColor: "#F09A61", color: "black", width: "100%"}}>
                     <span style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'}} >
-                        Chỉnh sửa thông tin
+                        {this.context.lang === "vi" ? "Chỉnh sửa thông tin" : "Change information"}
                     </span>
                 </Button>
             </Form>
-            <Alert id='info-alert' variant='info' style={{display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đổi thông tin thành công</Alert>
-            <Alert id='info-warning' variant='warning' style={{display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đổi thông tin không thành công</Alert>
+            <Alert id='info-alert' variant='info' style={{display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >
+                {this.context.lang === "vi" ? "Đổi thông tin thành công" : "Change info successfully"}
+            </Alert>
+            <Alert id='info-warning' variant='warning' style={{display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >
+                {this.context.lang === "vi" ? "Đổi thông tin không thành công" : "Change info unsuccessfully"}
+            </Alert>
             </>
         );
     }
