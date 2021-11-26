@@ -3,6 +3,7 @@ import MealItem from './MenuItems/ItemView';
 import classes from './MenuView/Menu.module.css';
 import { useState } from 'react';
 import DUMMY_MEALS from './DrinkList';
+import { LoginContext } from '../../../SharedComponent/LoginContext'
 
 const Drinks = () => {
 
@@ -40,19 +41,21 @@ const Drinks = () => {
   ));
 
   return (
+    <LoginContext.Consumer>
+{data => (  
     <section className={classes.meals}>
       <div className={classes.menuButton}>
         <button className={classes.singleButton} value="All" onClick={handleBtns}>
-          Tất cả
+        {data.lang === "vi" ? "Tất cả" : "All"}
         </button>
         <button className={classes.singleButton} value="Nước suối" onClick={handleBtns}>
-          Nước suối
+        {data.lang === "vi" ? "Nước suối" : "Mineral water"}
         </button>
         <button className={classes.singleButton} value="Coca" onClick={handleBtns}>
-          Coca
+        {data.lang === "vi" ? "Coca" : "Coke"}
         </button>
         <button className={classes.singleButton} value="Khác" onClick={handleBtns}>
-          Khác
+        {data.lang === "vi" ? "Khác" : "Others"}
         </button>
       </div>
 
@@ -60,7 +63,13 @@ const Drinks = () => {
         <ul>{drinkList}</ul>
       </Card>
     </section>
+)}
+        </LoginContext.Consumer>
+
   );
 };
+
+
+// Drinks.contextType = LoginContext;
 
 export default Drinks;

@@ -29,11 +29,5 @@ const Modal = (props) => {
   );
 };
 
-// const goToCheckOut = (props) => {
-//   history.pushState(`/checkout/${props.cart.id}`)
-//   localStorage.setItem('cart-id', props.cart.id);
-//   props.setModalOpen(false)
-//   props.setCheckOut(true)
-// };
 
 export default Modal;

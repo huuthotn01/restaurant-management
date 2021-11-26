@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 
 import CartIcon from './CartIcon';
 import CartContext from '../CartController/CartContext';
-
+import { LoginContext } from '../../../../SharedComponent/LoginContext';
 import classes from './CartButton.module.css';
 
 const HeaderCartButton = (props) => {
@@ -35,13 +35,18 @@ const HeaderCartButton = (props) => {
 
   
   return (
-    <button className={btnClasses} onClick={props.onClick}>
-      <span className={classes.icon}>
-        <CartIcon />
-      </span>
-      <span>Giỏ hàng</span>
-      <span className={classes.badge}>{amountItem}</span>
-    </button>
+    <LoginContext.Consumer>
+      {data => ( 
+        <button className={btnClasses} onClick={props.onClick}>
+          <span className={classes.icon}>
+            <CartIcon />
+          </span>
+          <span>{data.lang === "vi" ? "Giỏ hàng" : "Cart"}</span>
+          <span className={classes.badge}>{amountItem}</span>
+        </button>
+      )}
+    </LoginContext.Consumer>
+
   );
 };
 
