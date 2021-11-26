@@ -3,7 +3,8 @@ import MealItem from './MenuItems/ItemView';
 import classes from './MenuView/Menu.module.css';
 import DUMMY_MEALS from './FoodList';
 import { useState } from 'react';
-import SearchBar from './SearchBar/CardSearchBar';
+// import SearchBar from './SearchBar/CardSearchBar';
+import { LoginContext } from '../../../SharedComponent/LoginContext';
 
 const Foods = () => {
   const [state, setState] = useState(DUMMY_MEALS);
@@ -56,52 +57,38 @@ const Foods = () => {
   const filteredItems = getFilteredItems(query, DUMMY_MEALS);
 
   return (
-    <section className={classes.meals}>
+    <LoginContext.Consumer>
+      {data => ( 
+        <section className={classes.meals}>
+          <div className={classes.menuButton}>
+            <button className={classes.singleButton} value="All" onClick={handleBtns}>
+            {data.lang === "vi" ? "Tất cả" : "All"}
+              {/* <span><img className={classes.categoryImage} src={all} alt='bread' /></span> */}
+            </button>
+            <button className={classes.singleButton} value="Cơm" onClick={handleBtns}>
+            {data.lang === "vi" ? "Cơm" : "Rice"}
+              {/* <img className={classes.categoryImage} src={rice} alt='rice' /> */}
+            </button>
+            <button className={classes.singleButton} value="Bánh mì" onClick={handleBtns}>
+            {data.lang === "vi" ? "Bánh mì" : "Naan"}
+              {/* <span><img className={classes.categoryImage} src={bread} alt='bread' /></span> */}
+            </button>
+            <button className={classes.singleButton} value="Món phụ" onClick={handleBtns}>
+            {data.lang === "vi" ? "Món phụ" : "Side dish"}
+              {/* <span><img className={classes.categoryImage} src={salad} alt='bread' /></span> */}
+            </button>
+          </div>
 
-      <div className={classes.menuButton}>
-        <button className={classes.singleButton} value="All" onClick={handleBtns}>
-          Tất cả
-          {/* <span><img className={classes.categoryImage} src={all} alt='bread' /></span> */}
-        </button>
-        <button className={classes.singleButton} value="Cơm" onClick={handleBtns}>
-          Cơm
-          {/* <img className={classes.categoryImage} src={rice} alt='rice' /> */}
-        </button>
-        <button className={classes.singleButton} value="Bánh mì" onClick={handleBtns}>
-          Bánh mì
-          {/* <span><img className={classes.categoryImage} src={bread} alt='bread' /></span> */}
-        </button>
-        <button className={classes.singleButton} value="Món phụ" onClick={handleBtns}>
-          Món phụ
-          {/* <span><img className={classes.categoryImage} src={salad} alt='bread' /></span> */}
-        </button>
-      </div>
+          <Card>
+            <ul>{mealsList}</ul>
+          </Card>
+        </section> 
+      )}
 
-      {/* <div className={classes.searchBar}>
-        <label>Search</label>
-        <input type="text" onChange={(e) => setQuery(e.target.value)} />
-      </div>
-      
-      <SearchBar>
-        {filteredItems.map((value) => (
-          <ul key={value.name}>     
-            <MealItem
-              key={value.id}
-              category={value.category}
-              id={value.id}
-              name={value.name}
-              price={value.price*23000}
-              image={value.image}
-            /> 
-          </ul>
-        ))}
-      </SearchBar> */}
 
-      <Card>
-        <ul>{mealsList}</ul>
-      </Card>
-    </section>
+    </LoginContext.Consumer>
   );
 };
+
 
 export default Foods;

@@ -34,16 +34,4 @@ export const SidebarData = [
     icon: <AiIcons.AiOutlineSearch />,
     cName: 'nav-text'
   },
-  // {
-  //   title: 'Liên hệ hỗ trợ',
-  //   path: '/',
-  //   icon: <FaIcons.FaEnvelopeOpenText />,
-  //   cName: 'nav-text'
-  // },
-  // {
-  //   title: 'Support',
-  //   path: '/support',
-  //   icon: <IoIcons.IoMdHelpCircle />,
-  //   cName: 'nav-text'
-  // }
 ];

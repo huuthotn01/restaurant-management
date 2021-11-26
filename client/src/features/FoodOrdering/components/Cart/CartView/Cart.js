@@ -5,6 +5,8 @@ import CartItem from './CartDetail';
 import CartContext from '../CartController/CartContext';
 import classes from './Cart.module.css';
 
+import { LoginContext } from '../../../../SharedComponent/LoginContext';
+
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
 
@@ -36,17 +38,22 @@ const Cart = (props) => {
 
 
   return (
-    <Modal onClose={props.onClose}>
-      {cartItems}
-      <div className={classes.total}>
-        <span>Thành tiền</span>
-        <span>{totalAmount}</span>
-      </div>
-      <div className={classes.actions}>
-        <button className={classes['button--alt']} onClick={props.onClose}>Quay lại menu</button>
-        {nonemptyCart && <a href='/payment'> <button className={classes.button}>Tiến hành thanh toán</button></a>}
-      </div>
-    </Modal>
+    <LoginContext.Consumer>
+      {data => ( 
+
+        <Modal onClose={props.onClose}>
+          {cartItems}
+          <div className={classes.total}>
+            <span>{data.lang === "vi" ? "Thành tiền" : "Total amount"}</span>
+            <span>{totalAmount}</span>
+          </div>
+          <div className={classes.actions}>
+            <button className={classes['button--alt']} onClick={props.onClose}>{data.lang === "vi" ? "Quay lại menu" : "Back to menu"}</button>
+            {nonemptyCart && <a href='/payment'> <button className={classes.button}>{data.lang === "vi" ? "Tiến hành thanh toán" : "Checkout"}</button></a>}
+          </div>
+        </Modal>
+      )}
+    </LoginContext.Consumer>
   );
 
 };

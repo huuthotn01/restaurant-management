@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 
 import Input from './Input';
 import classes from './ItemFormController.module.css';
+import { LoginContext } from '../../../../SharedComponent/LoginContext';
 
 const ItemForm = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
@@ -27,23 +28,31 @@ const ItemForm = (props) => {
   };
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <Input
-        ref={amountInputRef}
-        label='Số lượng'
-        input={{
-          id: 'amount_' + props.id,
-          type: 'number',
-          min: '1',
-          max: '100',
-          step: '1',
-          defaultValue: '0',
-        }}
-      />
-      <button>Thêm</button>
-      {!amountIsValid && <p>Vui lòng nhập số lượng</p>}
-    </form>
+    <LoginContext.Consumer>
+      {data => ( 
+        <form className={classes.form} onSubmit={submitHandler}>
+          <Input
+            ref={amountInputRef}
+            label={data.lang === "vi" ? "Số lượng" : "Amount"}
+            input={{
+              id: 'amount_' + props.id,
+              type: 'number',
+              min: '1',
+              max: '100',
+              step: '1',
+              defaultValue: '0',
+            }}
+          />
+          <button>{data.lang === "vi" ? "Thêm" : "Add"}</button>
+          {!amountIsValid && <p>Vui lòng nhập số lượng</p>}
+        </form>
+      )}
+
+
+    </LoginContext.Consumer>
+
   );
 };
 
+ItemForm.contextType = LoginContext;
 export default ItemForm;

@@ -3,7 +3,7 @@ import classes from './components/Menu/MenuView/Menu.module.css';
 import itemList from './components/Menu/TempList';
 import { useState } from 'react';
 import SearchBar from './components/Menu/SearchBar/CardSearchBar';
-
+import { LoginContext } from '../SharedComponent/LoginContext';
 
 const Foods = () => {
     const getFilteredItems = (query, items) => {
@@ -17,13 +17,16 @@ const Foods = () => {
     const filteredItems = getFilteredItems(query, itemList);
   
     return (
+      <LoginContext.Consumer>
+      {data => ( 
+
       <section className={classes.meals}>
         <div className={classes.searchBar}>
-          <label>Tìm kiếm </label>
+          <label>{data.lang === "vi" ? "Tìm kiếm" : "Search"}</label>
           <input type="text" onChange={(e) => setQuery(e.target.value)} />
         </div>
         <div className={classes.text}>
-          <p>Kết quả tìm kiếm</p>
+          <p>{data.lang === "vi" ? "Kết quả tìm kiếm" : "Result"}</p>
         </div>
         <SearchBar>
           {filteredItems.map((value) => (
@@ -40,6 +43,12 @@ const Foods = () => {
           ))}
         </SearchBar>
       </section>
+
+)}
+
+
+</LoginContext.Consumer>
+
     );
 };
 
