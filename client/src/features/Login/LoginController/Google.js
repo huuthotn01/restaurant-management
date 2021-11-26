@@ -92,7 +92,7 @@ class SignOut extends React.Component {
                 <GoogleLogout
                     render={renderProps => (<span onClick={renderProps.onClick}> <FaPowerOff className='socialNetsIcon' style={{marginTop: '0px', marginRight: "5px"}} disabled={renderProps.disabled} /> 
                                                 <span id="signout-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >
-                                                    Đăng xuất</span> 
+                                                    {this.context.lang === "vi" ? "Đăng xuất" : "Sign Out"}</span> 
                                             </span>)}
                     clientId={clientID}
                     buttonText="LogOut"

@@ -22,10 +22,11 @@ class In extends React.Component {
                             <b style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px", marginLeft: '5px'}}>{this.context.fName}</b></>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {this.context.role !== 3 && 
+                            {this.context.role === "1" && 
                             (<LinkContainer to='/change-info' >
                             <Dropdown.Item eventKey="2" >
-                                <FaEdit className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >Chỉnh sửa thông tin</span>
+                                <FaEdit className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >
+                                    {this.context.lang === "vi" ? "Chỉnh sửa thông tin" : "Change Information"}</span>
                             </Dropdown.Item>
                             </LinkContainer>)}
                             <Dropdown.Item eventKey="3">

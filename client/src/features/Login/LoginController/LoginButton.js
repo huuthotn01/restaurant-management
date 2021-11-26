@@ -5,7 +5,7 @@ import { LoginContext } from '../../SharedComponent/LoginContext';
 class LoginButton extends React.Component {
     render() {
         return (
-            <div className='NavigationButton' style={{width: "100%"}}>
+            <div className='LoginBtn' style={{width: "100%"}}>
                 <span className='nav-link' onClick={this.props.onClick}>
                     <FaSignInAlt /> {this.context.lang === "vi" ? "Đăng nhập / Đăng kí" : "Sign in / Sign up"}
                 </span>

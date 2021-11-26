@@ -47,17 +47,21 @@ class ForgotPass extends React.Component {
             <Container style={{marginTop: "30px", display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Form id='forgot-pass-form' style={{width: '50%'}} onSubmit={this.onSubmit}>
             <Form.Group>
-                <p><strong>Nhập địa chỉ email của bạn để nhận đường dẫn đặt lại mật khẩu: </strong></p>
+                <p><strong>{this.context.lang === "vi" ? "Nhập địa chỉ email của bạn: " : "Enter your email address: "}</strong></p>
                 <Form.Control id="email" type="email" placeholder='Email' required />
                 </Form.Group>
                 <Button type='submit' style={{backgroundColor: "#F09A61", color: "black", width: "100%"}}>
                     <span style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'}} >
-                        Gửi đường dẫn đặt lại mật khẩu
+                        {this.context.lang === "vi" ? "Gửi đường dẫn đặt lại mật khẩu" : "Send password reset link"}
                     </span>
                 </Button>
             </Form>
-            <Alert id='forgot-pass-alert' variant='info' style={{width: '50%', display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đường dẫn đặt lại mật khẩu đã được gửi qua email</Alert>
-            <Alert id='forgot-pass-warning' variant='warning' style={{width: '50%', display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >Đặt lại mật khẩu không thành công</Alert>
+            <Alert id='forgot-pass-alert' variant='info' style={{width: '50%', display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >
+                {this.context.lang === "vi" ? "Đường dẫn đặt lại mật khẩu đã được gửi qua email" : "Password reset link was sent to your email"}
+            </Alert>
+            <Alert id='forgot-pass-warning' variant='warning' style={{width: '50%', display: 'none', marginTop: '10px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px'}} >
+                {this.context.lang === "vi" ? "Đặt lại mật khẩu không thành công" : "Password reset failed"}
+            </Alert>
             </Container>
         );
     }
