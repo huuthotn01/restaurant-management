@@ -5,25 +5,20 @@ import { Modal } from "react-bootstrap";
 import "./InfoModal.css"
 import CancelTableModel from './CancelTableModel'
 export default function InfoModal(props) {
- 
+  
+  const model = new CancelTableModel()
+  
+ const [refund,setrefund] = useState(false);
+  
+  
+  
+const postData = (s) => {
   var data = {
-      code: props.code,
-      phone: props.phone,
-      date: (new Date())
-  }
- 
-  // useEffect(() => {
-  //   fetch('../../data/canceltable.json').then(response => {
-  //     return response.json();
-  //   }).then(data => {
-  //     // Work with JSON data here
-  //     datacancal = data;
-  //   }).catch(err => {
-  //     // Do something for an error here
-  //   });
-  // });
-
-  const postData = () => {
+    code: props.code,
+    phone: props.phone,
+    date: (new Date().toLocaleDateString()),
+    refund : s,
+}
      fetch('/addCancelTable', {
       method: "POST",
       headers: {
@@ -33,15 +28,28 @@ export default function InfoModal(props) {
       body: JSON.stringify(data)
   });
   }
-  const model = new CancelTableModel()
+  
+
   const [thecase,setCase]= useState(0)
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    
+  }
+  const handleClose2 = () => {
+    setrefund(true)
+    postData(model.find_cast(props.code,props.phone))
+    setShow(false);
+    
+    
+  }
   const handleClose1 = () => {
     setShow(false);
     setCase(3);
     setShow(true);
+    
+    postData(0)
   }
   
   const handleShow = () => {
@@ -71,13 +79,15 @@ export default function InfoModal(props) {
        else if(model.check_noCast(props.code,props.phone)){
          setShow(true);
           setCase(3)
-          postData()
+          
+          postData(0)
 
        }
        else if(model.check_time(props.code,props.phone,new Date())){
-         setShow(true);
+        
+        setShow(true);
          setCase(4);
-         postData()
+         
        }
        else {
          setShow(true);
@@ -100,7 +110,7 @@ const rever = (arr) => {
      
       <button type="button" class="btn send text-white" onClick={handleShow}>
       
-        Hủy đặt bàn
+      Hủy đặt bàn
       </button>
       {thecase===1 && (<Modal show={show} onHide={handleClose} centered >
         <Modal.Header style={{background: 'red', color: 'white'}}>
@@ -172,7 +182,7 @@ const rever = (arr) => {
         <div>Nhà hàng chúng tôi luôn hân hoan chào đón quý khách!</div>
         </Modal.Body>
         <Modal.Footer>
-          <button type="button" class="btn unsent text-white" onClick={handleClose}>
+          <button type="button" class="btn unsent text-white" onClick={handleClose2}>
             OK
           </button>
          
