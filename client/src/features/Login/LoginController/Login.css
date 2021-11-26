@@ -64,9 +64,11 @@
     order: 1;
     flex-grow: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    margin-top: -5px;
+    margin-bottom: -15px;
   }
 
   .changeinfo-tab {

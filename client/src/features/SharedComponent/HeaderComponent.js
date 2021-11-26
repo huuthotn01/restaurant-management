@@ -7,6 +7,7 @@ import { ButtonGroup } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Language } from './ChangeLang';
 import { LoginContext } from './LoginContext';
+import { FaLanguage } from 'react-icons/fa';
 
 class Header extends Component{
     constructor(props) {
@@ -31,42 +32,40 @@ class Header extends Component{
                     <NavbarToggler className="me-2 navbar-button" onClick={this.toggleNav}/>
                     <Collapse navbar isOpen={this.state.isNavOpen}>
                         <Nav className="nav-header flex-container" style={{width: "100%"}} navbar>
-                            <NavItem className="flex-item" style={{flexGrow: "5"}}>
-                            <NavLink className="nav-text">
+                            <NavItem className="flex-item" style={{flexGrow: "5", backgroundColor: "#FFFAF7"}}>
                                 <Dropdown as={ButtonGroup}>
-                                    <Dropdown.Toggle variant='success' style={{marginLeft: "5px", paddingTop: "0px", marginTop: "0px", paddingBottom: "0px", backgroundColor: "transparent", color: "black", borderColor: "transparent"}} >
-                                        <span style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}}>
+                                    <Dropdown.Toggle variant='success' style={{marginLeft: "5px", paddingTop: "4px", marginTop: "0px", paddingBottom: "0px", backgroundColor: "transparent", color: "black", borderColor: "transparent"}} >
+                                        <span style={{textTransform: 'none', fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "15px"}}>
                                             <FaTable /> {this.context.lang === "vi" ? "Dịch vụ bàn" : "Table Service"}
                                         </span>
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu>
                                         <LinkContainer to='/reservation' >
                                             <Dropdown.Item eventKey="1">
-                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >
+                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "15px"}} >
                                                 {this.context.lang === "vi" ? "Đặt bàn" : "Table Reservation"}</span>
                                             </Dropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/cancel_reservation' >
                                             <Dropdown.Item eventKey="2" >
-                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "14px"}} >
+                                                <FaTable className='socialNetsIcon' style={{marginRight: "0px"}} /> <span id="edit-text" style={{fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"', fontSize: "15px"}} >
                                                 {this.context.lang === "vi" ? "Hủy đặt bàn" : "Table Cancellation"}</span>
                                             </Dropdown.Item>
                                         </LinkContainer>
                                     </Dropdown.Menu>
                                 </Dropdown>
-                            </NavLink>
                             </NavItem>
-                            <LinkContainer to='/ordering' style={{cursor: 'pointer'}}>
+                            <LinkContainer to='/ordering' style={{cursor: 'pointer',  backgroundColor: "#FFFAF7"}}>
                             <NavItem className="flex-item" style={{flexGrow: "9"}}>
                             <NavLink>
                                 <FaBookOpen /> {this.context.lang === "vi" ? "Đặt món ăn" : "Food Ordering"}
                             </NavLink>
                             </NavItem>
                             </LinkContainer>
-                            <NavItem className="flex-item" style={{flexGrow: "8", cursor: 'pointer'}}>
+                            <NavItem className="flex-item" style={{flexGrow: "8", cursor: 'pointer', textAlign: 'center', backgroundColor: "#FFFAF7"}}>
                                 <LoginView />
                             </NavItem>
-                            <NavItem className="flex-item" style={{flexGrow: "1", cursor: 'pointer'}}>
+                            <NavItem className="flex-item" style={{flexGrow: "1", cursor: 'pointer',  backgroundColor: "#FFFAF7"}}>
                                 <Language />
                             </NavItem>
                         </Nav>
