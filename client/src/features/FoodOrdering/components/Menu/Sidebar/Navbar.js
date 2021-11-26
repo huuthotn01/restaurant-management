@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
+import { LoginContext } from '../../../../SharedComponent/LoginContext'
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -12,34 +13,39 @@ function Navbar() {
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
-    <>
-      <IconContext.Provider value={{ color: '#753e19' }}>
-        <div className='navbar'>
-          <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
+    <LoginContext.Consumer>
+      {data => ( 
+          <>
+          <IconContext.Provider value={{ color: '#753e19' }}>
+            <div className='navbar'>
               <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
+                <FaIcons.FaBars onClick={showSidebar} />
               </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span className='sidebarspan'>{item.title}</span>
+            </div>
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+              <ul className='nav-menu-items' onClick={showSidebar}>
+                <li className='navbar-toggle'>
+                  <Link to='#' className='menu-bars'>
+                    <AiIcons.AiOutlineClose />
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
-          </nav>
-      </IconContext.Provider>
-    </>
+                {SidebarData(data.lang).map((item, index) => {
+                  return (
+                    <li key={index} className={item.cName}>
+                      <Link to={item.path}>
+                        {item.icon}
+                        <span className='sidebarspan'>{item.title}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              </nav>
+          </IconContext.Provider>
+        </>
+       )}
+    
+    </LoginContext.Consumer>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { LoginContext } from '../../SharedComponent/LoginContext';
 
@@ -20,11 +21,13 @@ export default class DropMenu extends React.Component {
 
   render() {
     return (
+      <LinkContainer to='/ordering'>
         <Dropdown  isOpen={this.state.btnDropright}  toggle={() => { this.setState({ btnDropright: !this.state.btnDropright }); }}>
         <DropdownToggle caret>
-        <a href='/ordering'> {this.context.lang === "vi" ? "Quay lại Menu" : "Go back to Menu"} </a>
+         <span> {this.context.lang === "vi" ? "Quay lại Menu" : "Go back to Menu"} </span> 
         </DropdownToggle>
       </Dropdown>
+      </LinkContainer>
     );
   }
 }

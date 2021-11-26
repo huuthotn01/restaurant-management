@@ -6,6 +6,7 @@ import CartContext from '../CartController/CartContext';
 import classes from './Cart.module.css';
 
 import { LoginContext } from '../../../../SharedComponent/LoginContext';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
@@ -49,7 +50,10 @@ const Cart = (props) => {
           </div>
           <div className={classes.actions}>
             <button className={classes['button--alt']} onClick={props.onClose}>{data.lang === "vi" ? "Quay lại menu" : "Back to menu"}</button>
-            {nonemptyCart && <a href='/payment'> <button className={classes.button}>{data.lang === "vi" ? "Tiến hành thanh toán" : "Checkout"}</button></a>}
+            {nonemptyCart && <LinkContainer to='/payment'> 
+                                  <button className={classes.button}>{data.lang === "vi" ? "Tiến hành thanh toán" : "Checkout"}
+                                  </button>
+                              </LinkContainer>}
           </div>
         </Modal>
       )}
