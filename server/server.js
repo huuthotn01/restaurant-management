@@ -121,7 +121,8 @@ app.post('/forgot-pass', (req, res) => { // forgot pass and resetting pass
     let cont = JSON.parse(file);
     for (let i = 0; i < cont.length; i++) {
         if (info["email"] === cont[i]["email"]) {
-            // TODO send mail
+            const send_mail = require('./send_mail/forgot-pass');
+            send_mail(req.protocol, req.get('host'), cont[i]["username"], cont[i]["email"]);
             res.send({succ: true});
             return;
         }
@@ -224,7 +225,6 @@ app.post('/signup', (req, res) => { // signup
     cont.push(user_data);
     let protocol = req.protocol;
     let host = req.get('host');
-    console.log("Protocol: ", protocol, " host: ", host);
     const send_mail = require('./send_mail/acc-activation');
     send_mail(protocol, host, username, email, act_id);
     fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"}); // write file
@@ -287,16 +287,21 @@ app.post('/change-info', (req, res) => { // update changed info
         res.send({succ: false});
         return;
     }
+    let need_mail = false;
     if (cont[count_position]["email"] !== info["email"]) {
         req.session.userid = info["email"];
         cont[count_position]["email"] = info["email"];
         let username = info["email"].split("@")[0];
         cont[count_position]["username"] = username;
-        // TODO send mail
+        need_mail = true;
     }
     if (cont[count_position]["phone"] !== info["phone"]) {
         cont[count_position]["phone"] = info["phone"];
-        // TODO send mail
+        need_mail = true;
+    }
+    if (need_mail) {
+        const send_mail = require('./send_mail/change-info');
+        send_mail(cont[count_position]["username"], cont[count_position]["username"], "thông tin cá nhân");
     }
     if (cont[count_position]["fname"] !== info["fname"]) cont[count_position]["fname"] = info["fname"];
     if (cont[count_position]["lname"] !== info["lname"]) cont[count_position]["lname"] = info["lname"];
@@ -324,7 +329,8 @@ app.post('/change-password', (req, res) => { // update changed password
             if (cont[i]["password"] === "none" || bcrypt.compareSync(info["oldpass"], cont[i]["password"])) {
                 cont[i]["password"] = bcrypt.hashSync(info["newpass"], 10);
                 fs.writeFileSync(filename, JSON.stringify(cont), {encoding: "utf8"});
-                // TODO send mail
+                const send_mail = require('./send_mail/change-info');
+                send_mail(cont[i]["email"], cont[i]["username"], "mật khẩu");
                 res.send({succ: true});
                 return;
             } else {
