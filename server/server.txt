@@ -100,12 +100,12 @@ app.post('/reservation', (request, response) => {
       console.log("New data added");
     });
     let quantity = {
-        "type2": newData["type2"],
-        "type4": newData["type4"],
-        "type8": newData["type8"],
-        "type12": newData["type12"],
+        "type2": newData.type2,
+        "type4": newData.type4,
+        "type8": newData.type8,
+        "type12": newData.type12,
     }
-    send_mail(newData["email"], newData["name"], newData["code"], newData["date"], newData["time"], newData["duration"], quantity);
+    send_mail(newData.email, newData.name, newData.code, newData.date, newData.time, newData.duration, quantity);
 });
 
 app.post('/update_user', (req, res) => {
