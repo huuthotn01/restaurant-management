@@ -84,3 +84,28 @@
   background-color: #9b6b57;
   color: white;
 }
+
+@media all and (max-width: 500px) {
+  .price {
+    font-size: 11px !important;
+  }
+  
+  .amount {
+    font-weight: bold;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    color: #000000;
+    font-size: 12px !important;
+   
+  }
+  .summary {
+   font-size: 25px !important;
+  }
+  .tong{
+    font-size: 25px !important;
+  }
+  .name{
+    font-size: 11px !important;
+  }
+  }
