@@ -6,6 +6,7 @@ const port = process.env.PORT || 5000;
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
+const cors = require('cors');
 
 const one_day = 1000 * 60 * 60 * 24;
 app.use(sessions({
@@ -17,6 +18,7 @@ app.use(sessions({
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -349,7 +351,7 @@ app.post('/logout', (req, res) => { // logout
 
 app.post('/payment_momo', (req, res) => {
     const momo = require('./momo_payment');
-    res.end();
+    momo(req.protocol, req.get('host'), req.body.amount, res);
 });
 
 app.get('/verify', (req, res) => { // verify session

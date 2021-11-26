@@ -13,8 +13,17 @@ export default class DropPayment extends React.Component {
   }
 
   async momoPayment() {
+    let amount = {
+      amount: 23000
+    }
     await fetch('/payment_momo', {
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify(amount)
     });
   }
 
