@@ -37,6 +37,18 @@
   align-items: center;
   justify-content: flex-start;
 }
+.LoginBtn {
+  background-color: #FFFAF7;
+  width: 80px;
+  color: rgb(64, 70, 86);
+  font-size: 30px;
+  order: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
 
 @media screen and (max-width: 650px) {
   .LoginWindow {
@@ -65,6 +77,20 @@
     flex-grow: 1;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .LoginBtn {
+    background-color: #FFFAF7;
+    width: 300px;
+    height: 50px;
+    color: rgb(64, 70, 86);
+    font-size: 30px;
+    order: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
   }
