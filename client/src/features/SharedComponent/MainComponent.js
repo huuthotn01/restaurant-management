@@ -6,19 +6,19 @@ import Home from './HomeComponent';
 import ManagePage from '../Manager/ManagePageComponent'
 import ManageOrderController from '../Manager/ManageOrder/ManageOrderController';
 import ManageCustomerController from '../Manager/ManageCustomer/ManageCustomerController';
-import ReservationPage from '../TableReservation/ReservationPage';
-import Payment from '../Payment/PaymentView/PaymentView';
-import MOMO from '../Payment/PaymentView/paymentMomo';
-import Paymentbycash from '../Payment/PaymentView/paymentCash';
-import PaymentCard from '../Payment/PaymentView/paymentBankCard';
-import { CancelTablePage } from '../TableCancelReservation/CancelTablePage';
+import ReservationPage from '../TableReservation/ReservationPage'; /////////
+import Payment from '../Payment/PaymentView/PaymentView';  ////////
+import MOMO from '../Payment/PaymentView/paymentMomo'; ////////
+import Paymentbycash from '../Payment/PaymentView/paymentCash'; ////////
+import PaymentCard from '../Payment/PaymentView/paymentBankCard'; ///////
+import { CancelTablePage } from '../TableCancelReservation/CancelTablePage'; ///////
 import Ordering from '../FoodOrdering/OrderingController'
-import FoodMenu from '../FoodOrdering/FoodMenuController';
-import DrinkMenu from '../FoodOrdering/DrinkMenuController';
-import { ChangeInfo } from '../Login/ChangeInfoView';
+import FoodMenu from '../FoodOrdering/FoodMenuController'; ////////
+import DrinkMenu from '../FoodOrdering/DrinkMenuController'; ///////
+import { ChangeInfo } from '../Login/ChangeInfoView'; 
 import { ForgotPass } from '../Login/LoginController/ForgotPass';
 import { LoginContext } from './LoginContext';
-import SearchPage from '../FoodOrdering/SearchPageController';
+import SearchPage from '../FoodOrdering/SearchPageController'; ///////
 
 class Main extends Component {
     constructor(props) {
