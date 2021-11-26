@@ -33,15 +33,15 @@ class ManageCustomerModel {
                 return customer['role'] === "1";
             }).map(customer => {
                 return new Customer(customer['fname'], customer['lname'], customer['username'], 
-                                    customer['password'], customer['phone'], customer['email'], customer['authenticate']);
+                                    customer['password'], customer['phone'], customer['email'], customer['authenticated']);
             });
 
             this.#option = 0;
             this.#customers_not_auth = user_data.filter(customer => {
-                return customer['role'] === "1" && customer['Authenticate'] === false;
+                return customer['role'] === "1" && customer['authenticated'] === false;
             }).map(customer => {
                 return new Customer(customer['fname'], customer['lname'], customer['username'], 
-                                    customer['password'], customer['phone'], customer['email'], customer['authenticate']);
+                                    customer['password'], customer['phone'], customer['email'], customer['authenticated']);
             });;
             this.#isModalOpenAuth = false;
             this.#customerOpenAuth = new Customer('','','','','','','');
@@ -50,7 +50,7 @@ class ManageCustomerModel {
                 return customer['role'] === "1";
             }).map(customer => {
                 return new Customer(customer['fname'], customer['lname'], customer['username'], 
-                                    customer['password'], customer['phone'], customer['email'], customer['authenticate']);
+                                    customer['password'], customer['phone'], customer['email'], customer['authenticated']);
             });
             this.#customerOpen = new Customer('','','','','','','');
             this.#isModalViewOpen = false;

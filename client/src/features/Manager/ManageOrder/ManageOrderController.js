@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ManageOrderView from './ManageOrderView';
 import ManageOrderModel from './ManageOrderModel';
+import { LoginContext } from '../../SharedComponent/LoginContext';
+import { Switch, Redirect } from 'react-router' 
 
 class ManageOrderController extends Component { 
     constructor(props) {
@@ -64,10 +66,15 @@ class ManageOrderController extends Component {
     }
     
     render() {
-        return  <ManageOrderView model = {this.state.model} getOrders = {this.getOrders} 
-        getOrderList = {this.getOrderList} onToggleModal = {this.onToggleModal} 
-        onPageChange = {this.onPageChange} changeView={this.changeView}/>
+        return  <>
+                {this.context.role !== "2" && <Switch> <Redirect to="/" /> </Switch>}
+                <ManageOrderView model = {this.state.model} getOrders = {this.getOrders} 
+                getOrderList = {this.getOrderList} onToggleModal = {this.onToggleModal} 
+                onPageChange = {this.onPageChange} changeView={this.changeView}/>
+                </>
     }
 }
+
+ManageOrderController.contextType = LoginContext;
 
 export default ManageOrderController;
