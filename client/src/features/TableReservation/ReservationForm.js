@@ -202,18 +202,25 @@ class ReservationForm extends React.Component{
               {this.state.type8? (((this.state.type2 > 0 || this.state.type4 > 0)? "- " + this.state.type8: this.state.type8) + (this.context.lang === "vi"? " bàn 8 người ": " table(s) type 8 " )): ""} 
               {this.state.type12? (((this.state.type2 > 0 || this.state.type4 > 0 || this.state.type8 > 0)? "- " + this.state.type12: this.state.type12) + (this.context.lang === "vi"? " bàn 12 người ": " table(s) type 12 " )): ""} 
               {this.context.lang === "vi"? "vào": "at"} {this.state.time}, {moment(new Date(this.state.date)).format("DD/MM/YYYY")}, {this.context.lang === "vi"? "thời lượng sử dụng là": "duration is"} {this.state.duration} {this.context.lang === "vi"? "giờ.": "hours."}</h6>
-              <h6>{this.context.lang === "vi"? "Phí đặt cọc của quý khách là": "Your deposit fee is"} {this.state.depositfee.toLocaleString('vi-VN')} VNĐ.</h6>
-              <h6>{this.context.lang === "vi"? "Vui lòng thanh toán phí đặt cọc để hoàn tất đặt bàn.": "Please take payment for deposit fee to complete reservation."}</h6>
+              {!this.state.depositfee && 
+              <h6>{this.context.lang === "vi"? "Quý khách được miễn phí đặt cọc.": "You get free deposit."}</h6>}
+              {!this.state.depositfee && 
+              <h6>{this.context.lang === "vi"? "Vui lòng xác nhận để hoàn tất đặt bàn.": "Please confirm to complete reservation."}</h6>}
+              {this.state.depositfee > 0 && 
+              <h6>{this.context.lang === "vi"? "Phí đặt cọc của quý khách là": "Your deposit fee is"} {this.state.depositfee.toLocaleString('vi-VN')} VNĐ.</h6>}
+              {this.state.depositfee > 0 && 
+              <h6>{this.context.lang === "vi"? "Vui lòng thanh toán phí đặt cọc để hoàn tất đặt bàn.": "Please take payment for deposit fee to complete reservation."}</h6>}
+              {this.state.depositfee > 0 && 
               <div class="d-flex justify-content-center align-items-center">
                 <img class="text-center" alt="" width="300px" height="300px" src={`https://momosv3.apimienphi.com/api/QRCode?phone=0971083236&amount=${this.state.depositfee}& note=${this.state.depositfee.toLocaleString('vi-VN')}đ`}/>
-              </div>
+              </div>}
               </Modal.Body>
               <Modal.Footer>
                 <button type="button" class="btn unsent text-white" onClick={this.handleCancel}>
                 {this.context.lang === "vi"? "Hủy yêu cầu": "Cancel Request"}  
                 </button>
                 <button type="button" class="btn send text-white" onClick={this.handlePayment}>
-                {this.context.lang === "vi"? "Thanh toán": "Take Payment"}
+                {!this.context.isIn? (this.context.lang === "vi"? "Thanh toán": "Take Payment"): (this.context.lang === "vi"? "Xác nhận": "Confirm")}
                 </button>
               </Modal.Footer>
             </Modal>
