@@ -1,11 +1,17 @@
 import  CancelForm   from './CancelForm';
 import './CancelTablePage.css'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { LoginContext } from '../SharedComponent/LoginContext'
+import { LoginContext } from '../SharedComponent/LoginContext';
+import { Switch, Redirect} from 'react-router-dom';
+
 export function CancelTablePage() {
     return (
         <LoginContext.Consumer>
-      {data => (
+      {data => data.role === "2" ? (
+        <Switch>
+          <Redirect to='/manage' />
+        </Switch>
+      ) : (
         <div class="row ps-5 pe-5">
         <div class="pt-5"></div>
         <div class="col-auto ps-5 pe-5">

@@ -1,9 +1,15 @@
 import { Component } from "react";
 import ReservationForm from "./ReservationForm";
 import { LoginContext } from "../SharedComponent/LoginContext";
+import { Switch, Redirect} from 'react-router-dom';
 
 class ReservationPage extends Component {
   render() {
+    if (this.context.role === "2") return (
+      <Switch>
+          <Redirect to="/manage" />
+      </Switch>
+    );
     return (
       <div class="col">
         <div class="text-center mt-5">

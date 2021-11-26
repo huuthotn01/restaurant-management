@@ -6,6 +6,8 @@ import Bill from '../PaymentModel/Bill';
 import CartProvider from '../../FoodOrdering/components/Cart/CartController/CartProvider';
 import { useState } from 'react';
 import NavigationView from './NavigationView';
+import { LoginContext } from '../../SharedComponent/LoginContext';
+import { Redirect, Switch } from 'react-router';
 
 function Payment() {
     const [cartIsShown, setCartIsShown] = useState(false);
@@ -16,6 +18,12 @@ function Payment() {
         setCartIsShown(false);
     };
     return (
+        <LoginContext.Consumer>
+    {data => data.role === "2" ? (
+      <Switch>
+        <Redirect to='/manage' />
+      </Switch>
+    ) : (
         <div class="row w-100 pt-5 ps-2">
             <div class="d-flex justify-content-center">
             <div class="col-2 pe-3"> 
@@ -34,6 +42,9 @@ function Payment() {
               
             </div>   
             </div>  
+            )}
+    
+    </LoginContext.Consumer>
     );
 }
 export default Payment;

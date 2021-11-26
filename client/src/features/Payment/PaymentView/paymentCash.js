@@ -6,6 +6,7 @@ import CartProvider from '../../FoodOrdering/components/Cart/CartController/Cart
 import { useState } from 'react';
 import NavigationView1 from './NavigationView1';
 import { LoginContext } from '../../SharedComponent/LoginContext';
+import { Redirect, Switch } from 'react-router';
 
 function Paymentbycash() {
     const [cartIsShown, setCartIsShown] = useState(false);
@@ -17,7 +18,11 @@ function Paymentbycash() {
     };
     return (
         <LoginContext.Consumer>
-            {data => (
+            {data => data.role === "2" ? (
+                <Switch>
+                    <Redirect to='/manage' />
+                </Switch>
+            ) : (
         <Container>
    
             <Row>

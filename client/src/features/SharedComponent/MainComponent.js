@@ -89,15 +89,11 @@ class Main extends Component {
 				<div>
 					<Switch>
 						<Route path='/home' component={Home} />
-						<Route path='/manage' component={ManagePage} />
 						<Route path='/reservation' component={ReservationPage}/>
-						<Route path='/manage_order' component={ManageOrderController} />
-						<Route path='/manage_customer' component={ManageCustomerController} />
-						<Route path='/payment' component={Payment} />   
 						<Route path='/cancel_reservation' component={CancelTablePage} />
+						<Route path='/ordering' component={Ordering} />
 						<Route path='/change-info' component={ChangeInfo} />
 						<Route path='/forgot-pass' component={ForgotPass} />
-						<Route path='/ordering' component={Ordering} />
 						<Route path='/food-menu' component={FoodMenu} />
 						<Route path='/drink-menu' component={DrinkMenu} />
 						<Route path='/search_item' component={SearchPage} />	
@@ -105,7 +101,11 @@ class Main extends Component {
 						<Route path='/paymentcash' component={Paymentbycash} />
 						<Route path='/paymentmomo' component={MOMO} /> 
 						<Route path='/paymentbankcard' component={PaymentCard} /> 
-						{this.state.loginInfo.role === "2" ? <Redirect to='/manage' /> : <Redirect to='/home' />}
+
+						<Route path='/manage' component={ManagePage} />
+						<Route path='/manage_order' component={ManageOrderController} />
+						<Route path='/manage_customer' component={ManageCustomerController} />
+						{this.state.loginInfo.role === "2" ? <Redirect to='/manage' />  : <Redirect to='/home' />}
 					</Switch>
 				</div>
 				<Footer />

@@ -3,7 +3,8 @@ import { Container , Col, Row} from 'reactstrap';
 import './payment.css'
 import { useContext } from 'react';
 import CartContext from '../../FoodOrdering/components/Cart/CartController/CartContext';
-
+import { LoginContext } from '../../SharedComponent/LoginContext';
+import { Redirect, Switch } from 'react-router';
 
 // class PaymentMomo extends Component {
 //     render(){
@@ -33,6 +34,12 @@ const MOMO = (props) =>  {
 
   const total = cartContext.totalAmount.toFixed(0);
       return (
+        <LoginContext.Consumer>
+            {data => data.role === "2" ? (
+                <Switch>
+                    <Redirect to='/manage' />
+                </Switch>
+            ) : (
           <Container>
           <Row>
           <Col xs={4} > 
@@ -48,7 +55,8 @@ const MOMO = (props) =>  {
             </Col>
           </Row>
         </Container>
-          
+        )}
+          </LoginContext.Consumer>
       )
 }
 export default MOMO;

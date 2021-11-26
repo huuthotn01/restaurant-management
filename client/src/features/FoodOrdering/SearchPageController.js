@@ -4,6 +4,9 @@ import NavigationBar from './components/Menu/MenuView/NavigationView';
 import Cart from './components/Cart/CartView/Cart';
 import CartProvider from './components/Cart/CartController/CartProvider';
 import SearchPage from './SearchPageView';
+import { LoginContext } from '../SharedComponent/LoginContext';
+import { Redirect, Switch } from 'react-router';
+
 
 function Food_Ordering() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -17,6 +20,12 @@ function Food_Ordering() {
   };
 
   return (
+    <LoginContext.Consumer>
+    {data => data.role === "2" ? (
+      <Switch>
+        <Redirect to='/manage' />
+      </Switch>
+    ) : (
     <CartProvider>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <NavigationBar onShowCart={showCartHandler} />
@@ -24,6 +33,9 @@ function Food_Ordering() {
         <SearchPage />
       </main>
     </CartProvider>
+    )}
+    
+    </LoginContext.Consumer>
   );
 }
 

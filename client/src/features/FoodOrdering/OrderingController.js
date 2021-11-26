@@ -22,7 +22,7 @@ function Food_Ordering() {
   return (
     <LoginContext.Consumer>
     {data => ( 
-        data.role !== "2" ? <Switch><Redirect to="/" /> </Switch> :
+        data.role === "2" ? <Switch><Redirect to="/manage" /> </Switch> :
         <CartProvider>
         {cartIsShown && <Cart onClose={hideCartHandler} />}
         <NavigationBar onShowCart={showCartHandler} />

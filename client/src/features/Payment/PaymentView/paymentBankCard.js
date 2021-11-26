@@ -4,12 +4,16 @@ import './payment.css'
 import DropPayment from '../PaymentController/dropdown';
 import {TiArrowDownOutline} from 'react-icons/ti';
 import { LoginContext } from '../../SharedComponent/LoginContext';
-
+import { Redirect, Switch } from 'react-router';
 
 
 class PaymentCard extends Component {
     render(){
-         
+        if (this.context.role === "2") return (
+            <Switch>
+                <Redirect to="/manage" />
+            </Switch>
+        );
         return (
             <Container>
                 <div id="maiz">

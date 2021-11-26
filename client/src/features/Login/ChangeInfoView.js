@@ -57,6 +57,11 @@ class ChangeInfo extends React.Component {
                 <Redirect to='/home' />
             </Switch>
         );
+        if (this.context.role === "2") return (
+            <Switch>
+                <Redirect to='/manage' />
+            </Switch>
+        );
         return (
             <Container style={{marginTop: "30px"}}>
             <Tab.Container defaultActiveKey='change-info'>

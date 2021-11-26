@@ -24,7 +24,7 @@ class Header extends Component{
         return (
             <div>
                 <Navbar className="navbar-header" color="light"  expand="md"  light container>
-                    <LinkContainer to='/'>
+                    <LinkContainer to='/home'>
                     <NavbarBrand>
                     <img width="120px" height="50px" className="navbar-brand" src='assets/images/brand.png' alt="Logo"></img>
                     </NavbarBrand>
