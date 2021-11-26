@@ -51,7 +51,7 @@ class ReservationForm extends React.Component{
           code: this.state.code,
           isMember: this.context.isIn, 
           name: this.state.name,
-          phonenum: this.state.phonenum,
+          phone: this.state.phonenum,
           email: this.state.email,
           date: moment(new Date(this.state.date)).format("DD/MM/YYYY"),
           time: this.state.time,
@@ -76,7 +76,7 @@ class ReservationForm extends React.Component{
         });
         //if (response.status !== 200) console.log("Error occurred!");
       })
-      alert("Thanh toán thành công!\nThông tin đặt bàn sẽ được gửi email của quý khách!");
+      alert(this.context.lang === "vi"? "Thanh toán thành công!\nThông tin đặt bàn sẽ được gửi email của quý khách!": "Successfully payment!\nYour reservation information will be sent to your email!");
       $("#form1").trigger("reset");
     }
 
@@ -84,9 +84,9 @@ class ReservationForm extends React.Component{
       e.preventDefault();
       let hour = (this.state.time[0] -'0') * 10 + (this.state.time[1] -'0');
       if (this.state.type2 === 0 && this.state.type4 === 0 && this.state.type8 === 0 && this.state.type12 === 0)
-        alert("Vui lòng chọn số bàn!")
-      else if (hour < 8 || hour > 22)
-        alert("Nhà hàng chỉ mở cửa từ 8:00 đến 22:00 hàng ngày!");
+        alert(this.context.lang === "vi"? "Vui lòng chọn số bàn!": "Please choose the number of tables!")
+      else if (hour < 8 || hour > 21)
+        alert(this.context.lang === "vi"? "Thời gian nhận bàn trễ nhất là 21:00!": "The latest time for table reservation is 21:00!");
       else {
       this.caculateDeposit();
       this.setState({show: true});
@@ -204,7 +204,9 @@ class ReservationForm extends React.Component{
               {this.context.lang === "vi"? "vào": "at"} {this.state.time}, {moment(new Date(this.state.date)).format("DD/MM/YYYY")}, {this.context.lang === "vi"? "thời lượng sử dụng là": "duration is"} {this.state.duration} {this.context.lang === "vi"? "giờ.": "hours."}</h6>
               <h6>{this.context.lang === "vi"? "Phí đặt cọc của quý khách là": "Your deposit fee is"} {this.state.depositfee.toLocaleString('vi-VN')} VNĐ.</h6>
               <h6>{this.context.lang === "vi"? "Vui lòng thanh toán phí đặt cọc để hoàn tất đặt bàn.": "Please take payment for deposit fee to complete reservation."}</h6>
-              <img alt="" style={{marginLeft: '70px'}}width="300px" height="300px" src={`https://momosv3.apimienphi.com/api/QRCode?phone=0971083236&amount=${this.state.depositfee}& note=${this.state.depositfee.toLocaleString('vi-VN')}đ`}/>
+              <div class="d-flex justify-content-center align-items-center">
+                <img class="text-center" alt="" width="300px" height="300px" src={`https://momosv3.apimienphi.com/api/QRCode?phone=0971083236&amount=${this.state.depositfee}& note=${this.state.depositfee.toLocaleString('vi-VN')}đ`}/>
+              </div>
               </Modal.Body>
               <Modal.Footer>
                 <button type="button" class="btn unsent text-white" onClick={this.handleCancel}>
