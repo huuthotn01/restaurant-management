@@ -22,7 +22,7 @@ function Paymentbycash() {
             <img class=" img-fluid mai " src="/assets/images/404.png" alt=""/>
               </Col>
            
-              <Col xs={6} >
+              <Col xs={3} >
         <CartProvider>
             {cartIsShown && <Bill onClose={hideCartHandler} />}
             <NavigationView1 onShowCart={showCartHandler} />

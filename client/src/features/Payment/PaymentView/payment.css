@@ -92,3 +92,24 @@ button a:hover {
     font-size: 50px;
   }
 }
+
+@media all and (max-width: 500px) {
+  .themain{
+    width:
+      90%
+    ;
+    padding-left: 18px;
+  }
+    .mai{
+      width: 0%;
+    }
+    .imag{
+      width: 25px;
+    }
+    .hihi{
+      font-size: 15px;
+    }
+   
+  }
+
+ 

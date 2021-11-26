@@ -31,10 +31,10 @@ const Cart1 = (props) => {
           <span style={{ fontWeight: 'bold', fontSize: '2.1vw'}}> ID:{id}</span>
         {cartItems}
         <div style={{paddingTop: "40px"}}>
-        <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "left", float: "left"}}> 
+        <div style={{ fontWeight: 'bold', color: "orange", fontSize: '2.3vw', textAlign: "left", float: "left"}}> 
            Thành tiền
           </div>
-          <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "right"}}>
+          <div style={{ fontWeight: 'bold',color: "orange", fontSize: '2.3vw', textAlign: "right"}}>
           {totalAmount}
         </div>
         </div>

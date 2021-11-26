@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./CancelForm.css";
 import InfoModal from "./InfoModal"
-
+import { LoginContext } from '../SharedComponent/LoginContext';
 
 class CancelForm extends Component {
   
@@ -50,12 +50,12 @@ class CancelForm extends Component {
       }}
       onSubmit={this.handleSubmit} >
       <h2 style={{ textAlign: "center", color: "#EA6A12", marginTop: "30px" }}>
-        Thông tin hủy đặt bàn
+      {this.context.lang === "vi" ?"Thông tin hủy đặt bàn":"Cancellation information"}
        
       </h2>
       <div class="col-12">
         <label for="exampleText1" class="form-label">
-          Số điện thoại
+        {this.context.lang === "vi" ?"Số điện thoại":"Phone number"}
         </label>
         <input required type="text" class="form-control" id="validationCustomUsername"  value2={this.state.value2} onChange={this.handleChange2}/>
         
@@ -63,14 +63,14 @@ class CancelForm extends Component {
       </div>
       <div class="col-12">
         <label for="examplePhoneNumber" class="form-label" >
-          Mã đặt bàn
+        {this.context.lang === "vi" ?"Mã đặt bàn":"Reservation code"}
         </label>
         <input type="tel" class="form-control" id="examplePhoneNumber" value1={this.state.value1} onChange={this.handleChange1}/> 
       </div>
 
       <div class="col-12">
         <label for="exampleText" class="form-label">
-          Ghi chú
+        {this.context.lang === "vi" ?"Ghi chú":"Note"}
         </label>
         <input type="textarea" class="form-control" id="exampleText" />
       </div>
@@ -87,4 +87,5 @@ class CancelForm extends Component {
 }
 
 }
+CancelForm.contextType = LoginContext;
 export default CancelForm

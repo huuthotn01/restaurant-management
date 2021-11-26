@@ -55,7 +55,7 @@ button a:hover {
   height: 150px;
 }
 .mai{
-  height: 100%;
+  height: 70%;
   /* object-fit: contain;  */
   display: flex;
   align-items: center;
@@ -92,3 +92,5 @@ button a:hover {
     font-size: 50px;
   }
 }
+
+

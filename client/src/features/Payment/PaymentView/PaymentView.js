@@ -16,25 +16,24 @@ function Payment() {
         setCartIsShown(false);
     };
     return (
-        <Container>
-   
-            <Row>
-            <Col xs={3}> 
-            <img class=" img-fluid mai " src="/assets/images/404.png" alt=""/>
-              </Col>
+        <div class="row w-100 pt-5 ps-2">
+            <div class="d-flex justify-content-center">
+            <div class="col-2 pe-3"> 
+            <img class="img-fluid mai" src="/assets/images/404.png" alt=""/>
+              </div>
            
-              <Col xs={6} >
+              <div class="col-7 themain">
         <CartProvider>
             {cartIsShown && <Bill onClose={hideCartHandler} />}
             <NavigationView onShowCart={showCartHandler} />
         </CartProvider>  
-      </Col>
-      <Col xs={3}>  
-      <img class=" img-fluid mai " src="/assets/images/404.png" alt=""/>
-              </Col>
+      </div>
+      <div class="col-2 ps-3">  
+      <img class=" img-fluid mai" src="/assets/images/404.png" alt=""/>
+              </div>
               
-            </Row>     
-          </Container>
+            </div>   
+            </div>  
     );
 }
 export default Payment;

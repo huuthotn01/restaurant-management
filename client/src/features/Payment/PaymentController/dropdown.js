@@ -32,8 +32,8 @@ export default class DropPayment extends React.Component {
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem><span id="payment_momo" className="hihi" onClick={this.momoPayment}> Ví điện tử Momo (Momo wallet) </span><img className="imag" border-radius="50px" width="30px" height="30px" src='./assets/images/momo.jpg' alt=""></img></DropdownItem>
-          <DropdownItem><a className="hihi" href="/paymentbankcard">Thẻ ngân hàng (Bank card)</a><img width="70px" height="50px" src='./assets/images/bankcard.png' alt=""></img></DropdownItem>
-          <DropdownItem><a className="hihi" href="/paymentcash">Tiền mặt</a>&ensp;<img  width="100px" height="50px" src='./assets/images/cash.png' alt=""></img></DropdownItem> 
+          <DropdownItem><a className="hihi" href="/paymentbankcard">Thẻ ngân hàng (Bank card)</a><img className="imag" width="70px" height="50px" src='./assets/images/bankcard.png' alt=""></img></DropdownItem>
+          <DropdownItem><a className="hihi" href="/paymentcash">Tiền mặt</a>&ensp;<img className="imag" width="100px" height="50px" src='./assets/images/cash.png' alt=""></img></DropdownItem> 
         </DropdownMenu>
       </Dropdown>
     );
