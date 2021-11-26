@@ -5,6 +5,7 @@ import CartContext from '../../FoodOrdering/components/Cart/CartController/CartC
 import classes from './Bill.module.css';
 import React  from 'react';
 import random from './Id'
+import { LoginContext } from '../../SharedComponent/LoginContext';
 
 
 const Cart1 = (props) => {
@@ -27,18 +28,21 @@ const Cart1 = (props) => {
   let id = random();
 
   return (
+    <LoginContext.Consumer>
+      {data => (
       <Card>
           <span style={{ fontWeight: 'bold', fontSize: '2.1vw'}}> ID:{id}</span>
         {cartItems}
         <div style={{paddingTop: "40px"}}>
         <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "left", float: "left"}}> 
-           Thành tiền
+        {data.lang === "vi" ?"Thành tiền":"Cost"}
           </div>
           <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "right"}}>
           {totalAmount}
         </div>
         </div>
-      </Card>
+      </Card>)}
+      </LoginContext.Consumer>
   );
 
 };

@@ -7,6 +7,7 @@ import React  from 'react';
 import {  Col, Row} from 'reactstrap';
 import DropMenu from '../PaymentController/dropdown2';
 import DropPayment from '../PaymentController/dropdown';
+import { LoginContext } from '../../SharedComponent/LoginContext';
 
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
@@ -28,11 +29,13 @@ const Cart = (props) => {
 
 
   return (
+    <LoginContext.Consumer>
+      {data => ( 
       <Card>
         {cartItems}
         <div style={{paddingTop: "40px"}}>
         <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "left", float: "left"}}> 
-           Thành tiền
+        {data.lang === "vi" ?"Thành tiền":"Cost"}
           </div>
           <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "right"}}>
           {totalAmount}
@@ -46,7 +49,9 @@ const Cart = (props) => {
             <DropMenu />
             </Col>
           </Row>
-      </Card>
+      </Card>)}
+      
+      </LoginContext.Consumer>
   );
 
 };
