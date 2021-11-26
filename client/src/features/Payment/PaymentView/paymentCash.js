@@ -5,6 +5,7 @@ import Bill from '../PaymentModel/Bill';
 import CartProvider from '../../FoodOrdering/components/Cart/CartController/CartProvider';
 import { useState } from 'react';
 import NavigationView1 from './NavigationView1';
+import { LoginContext } from '../../SharedComponent/LoginContext';
 
 function Paymentbycash() {
     const [cartIsShown, setCartIsShown] = useState(false);
@@ -15,6 +16,8 @@ function Paymentbycash() {
         setCartIsShown(false);
     };
     return (
+        <LoginContext.Consumer>
+            {data => (
         <Container>
    
             <Row>
@@ -26,7 +29,7 @@ function Paymentbycash() {
         <CartProvider>
             {cartIsShown && <Bill onClose={hideCartHandler} />}
             <NavigationView1 onShowCart={showCartHandler} />
-            <h2 style={{textAlign: 'center', color: "orange",fontSize: "2vw", fontWeight: 'bold'}}>Quý khách vui lòng cầm hóa đơn điện tử ra quầy thu ngân để tính tiền</h2>
+            <h2 style={{textAlign: 'center', color: "orange",fontSize: "2vw", fontWeight: 'bold'}}>{data.lang === "vi" ?"Quý khách vui lòng cầm hóa đơn điện tử ra quầy thu ngân để tính tiền":"Please take your e-invoice to the cashier counter for payment"}</h2>
         </CartProvider>  
       </Col>
       <Col xs={3}>  
@@ -34,7 +37,8 @@ function Paymentbycash() {
               </Col>
               
             </Row>     
-          </Container>
+          </Container>)}
+          </LoginContext.Consumer>
     );
 }
 export default Paymentbycash;
