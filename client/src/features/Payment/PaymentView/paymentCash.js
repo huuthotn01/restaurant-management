@@ -23,27 +23,26 @@ function Paymentbycash() {
                     <Redirect to='/manage' />
                 </Switch>
             ) : (
-        <Container>
-   
-            <Row>
-            <Col xs={3}> 
-            <img class=" img-fluid mai " src="/assets/images/404.png" alt=""/>
-              </Col>
+                <div class="row w-100 pt-5 ps-2">
+            <div class="d-flex justify-content-center">
+            <div class="col-2 pe-3"> 
+            <img class="img-fluid mai" src="/assets/images/404.png" alt=""/>
+              </div>
            
               <div class="col-7 themain">
         <CartProvider>
             {cartIsShown && <Bill onClose={hideCartHandler} />}
             <NavigationView1 onShowCart={showCartHandler} />
-            <h2 style={{textAlign: 'center', color: "orange",fontSize: "2vw", fontWeight: 'bold'}}>{data.lang === "vi" ?"Quý khách vui lòng cầm hóa đơn điện tử ra quầy thu ngân để tính tiền":"Please take your e-invoice to the cashier counter for payment"}</h2>
+            <h2 class="pt-3" style={{textAlign: 'center', color: "orange",fontSize: "2.5vw", fontWeight: 'bold'}}>Quý khách vui lòng cầm hóa đơn điện tử ra quầy thu ngân để tính tiền</h2>
         </CartProvider>  
         </div>
       <div class="col-2 ps-3">  
       <img class=" img-fluid mai" src="/assets/images/404.png" alt=""/>
               </div>
               
-            </Row>     
-          </Container>)}
-          </LoginContext.Consumer>
+            </div>   
+            </div>  )}
+    </LoginContext.Consumer>
     );
 }
 export default Paymentbycash;
