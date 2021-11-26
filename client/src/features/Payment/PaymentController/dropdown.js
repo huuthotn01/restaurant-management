@@ -34,9 +34,9 @@ export default class DropPayment extends React.Component {
         {this.context.lang === "vi" ? "Thanh toán" : "Payment"}
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem><span id="payment_momo" className="hihi" onClick={this.momoPayment}>{this.context.lang === "vi" ? "Ví điện tử Momo" : "Momo wallet"}</span><img className="imag" border-radius="50px" width="30px" height="30px" src='./assets/images/momo.jpg' alt=""></img></DropdownItem>
-          <DropdownItem><a className="hihi" href="/paymentbankcard">{this.context.lang === "vi" ? "Thẻ ngân hàng" : "Bank card"}</a><img width="70px" height="50px" src='./assets/images/bankcard.png' alt=""></img></DropdownItem>
-          <DropdownItem><a className="hihi" href="/paymentcash">{this.context.lang === "vi" ? "Tiền mặt" : "Cash"}</a>&ensp;<img  width="100px" height="50px" src='./assets/images/cash.png' alt=""></img></DropdownItem> 
+          <DropdownItem><span id="payment_momo" className="hihi" onClick={this.momoPayment}>{this.context.lang === "vi" ? "Ví điện tử Momo" : "Momo wallet"}</span><img className="imag ps-1" border-radius="50px" width="30px" height="30px" src='./assets/images/momo.jpg' alt=""></img></DropdownItem>
+          <DropdownItem><a className="hihi" href="/paymentbankcard">{this.context.lang === "vi" ? "Thẻ ngân hàng" : "Bank card"}</a><img className="imag ps-1" width="70px" height="50px" src='./assets/images/bankcard.png' alt=""></img></DropdownItem>
+          <DropdownItem><a className="hihi" href="/paymentcash">{this.context.lang === "vi" ? "Tiền mặt" : "Cash"}</a>&ensp;<img  className="imag" width="100px" height="50px" src='./assets/images/cash.png' alt=""></img></DropdownItem> 
         </DropdownMenu>
       </Dropdown>
     );

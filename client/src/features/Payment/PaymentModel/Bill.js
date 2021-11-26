@@ -34,7 +34,7 @@ const Cart = (props) => {
       <Card>
         {cartItems}
         <div style={{paddingTop: "40px"}}>
-        <div style={{ fontWeight: 'bold', fontSize: '2.1vw', textAlign: "left", float: "left"}}> 
+        <div style={{ fontWeight: 'bold', color: "orange", fontSize: '2.9vw', textAlign: "left", float: "left"}}> 
         {data.lang === "vi" ?"Thành tiền":"Cost"}
           </div>
           <div style={{ fontWeight: 'bold', color: "orange", fontSize: '2.9vw', textAlign: "right"}}>
