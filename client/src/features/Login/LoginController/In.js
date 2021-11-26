@@ -14,7 +14,7 @@ class In extends React.Component {
 
     render() {
         return (
-            <div className='NavigationPanel' style={{width: "100%"}}>
+            <div className='NavigationButton' style={{width: "100%"}}>
                 <span className='nav-link' style={{padding: "0px"}}>
                     <Dropdown as={ButtonGroup}>
                         <Dropdown.Toggle split variant='success' style={{marginLeft: "5px", paddingTop: "0px", marginTop: "0px", paddingBottom: "0px", backgroundColor: "transparent", color: "black", borderColor: "transparent"}} >

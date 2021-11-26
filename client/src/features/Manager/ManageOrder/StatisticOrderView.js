@@ -7,6 +7,8 @@ import { FaSearch } from 'react-icons/fa';
 import { XAxis, YAxis, Tooltip, Legend, Line, LineChart, CartesianGrid, ResponsiveContainer } from 'recharts'
 import '../manager.css';
 
+import { LoginContext } from '../../SharedComponent/LoginContext'
+
 class StatisticOrder extends Component {
     constructor(props) {
         super(props);
@@ -47,7 +49,10 @@ class StatisticOrder extends Component {
         return (
             <Container>
                     <Row className="statistic-order-heading">
-                        <Col md="4" xs="12" className='statistic-order-header'> Thống kê đơn hàng </Col>
+                        <Col md="4" xs="12" className='statistic-order-header'> 
+                            {this.context.lang === "vi" && <span> Thống kê đơn hàng </span>}
+                            {this.context.lang === "en" && <span> Statistic order </span>}
+                        </Col>
                         <Col md="8" xs="12">
                         <Row>
                             <Col md="4" xs="12">
@@ -60,14 +65,20 @@ class StatisticOrder extends Component {
                             </Col>
                             <Col md="4" xs="12">
                                 <Button className="search-statistic-button" style={{marginTop: '0px'}} onClick={this.onInputTime}>
-                                    <FaSearch /> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span>
+                                    <FaSearch /> 
+                                    {this.context.lang === "vi" && <span> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span> </span>}
+                                    {this.context.lang === "en" && <span> Search </span>}
+                                    
                                 </Button>
                             </Col>
                         </Row>
                         </Col>
                     </Row>
                     <Row> 
-                        <Col className="total-money"> Tổng doanh thu: {total_money.toLocaleString('vi-VN')}đ </Col>
+                        <Col className="total-money"> 
+                            {this.context.lang === "vi" && <span> Tổng doanh thu </span>}
+                            {this.context.lang === "en" && <span> Total revenue </span>}
+                            {total_money.toLocaleString('vi-VN')}đ </Col>
                     </Row>
                     
                     <Row className="total-money-chart"> 
@@ -92,10 +103,12 @@ class StatisticOrder extends Component {
                                     #
                                 </th>
                                 <th style={{textAlign: 'center'}}>
-                                    Ngày
+                                    {this.context.lang === "vi" && <span> Ngày </span>}
+                                    {this.context.lang === "en" && <span> Date </span>}
                                 </th>
                                 <th style={{textAlign: 'center'}}>
-                                    Tổng doanh thu
+                                    {this.context.lang === "vi" && <span> Doanh thu </span>}
+                                    {this.context.lang === "en" && <span> Revenue </span>}
                                 </th>
                                 </tr>
                             </thead>
@@ -109,5 +122,7 @@ class StatisticOrder extends Component {
         );
     }
 }
+
+StatisticOrder.contextType = LoginContext
 
 export default StatisticOrder;

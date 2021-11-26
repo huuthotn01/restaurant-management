@@ -5,6 +5,8 @@ import { Container, Row, Col, Button } from "reactstrap";
 import ViewCustomerView from './ViewCustomerView';
 import AuthenticateCustomerView from './AuthenticateCustomerView';
 
+import { LoginContext } from "../../SharedComponent/LoginContext";
+
 import '../manager.css';
 
 class ManageCustomerView extends Component {
@@ -38,12 +40,15 @@ class ManageCustomerView extends Component {
                         <Row>
                             <Col xs="6" style={{paddingLeft: '20px'}}> 
                                 <Button onClick={this.onClickAuth} className="manage-button"> 
-                                    Xác <span style={{textTransform: 'lowercase'}}> thực <br className="d-sm-none" /> khách hàng </span> 
+                                    {this.context.lang === "vi" && <span> Xác <span style={{textTransform: 'lowercase'}}> thực <br className="d-sm-none" /> khách hàng </span>  </span>}
+                                    {this.context.lang === "en" && <span> Authenticate <span style={{textTransform: 'lowercase'}}> <br className="d-sm-none" /> customer </span> </span>}
                                 </Button> 
                             </Col>
                             <Col xs="6"> 
                                 <Button onClick={this.onClickView} className="manage-button"> 
-                                    Xem <span style={{textTransform: 'lowercase'}}> thông tin khách hàng </span> 
+                                    {this.context.lang === "vi" && <span> Xem <span style={{textTransform: 'lowercase'}}> thông tin khách hàng </span>   </span>}
+                                    {this.context.lang === "en" && <span> View <span style={{textTransform: 'lowercase'}}> customer infomation </span>  </span>}
+                                    
                                 </Button>
                             </Col>
                         </Row>
@@ -53,5 +58,7 @@ class ManageCustomerView extends Component {
                 </>
     }
 }
+
+ManageCustomerView.contextType = LoginContext
 
 export default ManageCustomerView;

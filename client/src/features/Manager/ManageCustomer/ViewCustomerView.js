@@ -3,6 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import { Form, FormGroup, Input, Table, Button } from "reactstrap";
 import { FaSearch } from 'react-icons/fa';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { LoginContext } from '../../SharedComponent/LoginContext'
 
 class ViewCustomerView extends Component {
     constructor(props) {
@@ -44,38 +45,56 @@ class ViewCustomerView extends Component {
                     {customer.email}
                 </td>
                 <td>
-                    {(() => {if (customer.is_authenticate) return "Đã xác thực"; else return "Chưa xác thực"})()}
+                                    {(() => {
+                                        if (this.props.model.customerOpen.is_authenticate) 
+                                            {if (this.context.lang === "vi") return "Đã xác thực"; else return "Authenticated"}
+                                        else {if (this.context.lang === "vi") return "Chưa xác thực"; else return "Hasn't Authenticate" }}
+                                    )()}
                 </td>
                 <td style={{textAlign: 'center'}}>
                     <Button className='customer-button' onClick={() => this.onChooseCus(customer.phone, true)}>
-                        Xem
+                        {this.context.lang === "vi" && <span> Xem </span>}
+                        {this.context.lang === "en" && <span> View </span>}
                     </Button>
                     <Button className='customer-button'
                             onClick={() => {this.toggleDeleteModal(customer.phone, true);}}> 
-                            Xoá 
+                            {this.context.lang === "vi" && <span> Xóa </span>}
+                            {this.context.lang === "en" && <span> Del </span>}
                     </Button>
                 </td>
                 </tr>
         )}); 
 
         let not_Found = <span></span>;
-        if (display_customers.length === 0) not_Found = <div className="not-found-search"> Không tìm thấy kết quả </div>
+        if (display_customers.length === 0) not_Found = <div className="not-found-search"> 
+            {this.context.lang === "vi" && <span> Không tìm thấy kết quả </span>}
+            {this.context.lang === "en" && <span> Not found </span>}
+        </div>
         else not_Found = <span></span>;
+
+        const input = (() => {if (this.context.lang === "vi") 
+                return "Nhập thông tin"
+                else return "Input information"})();
 
         return (
             <Container>
                     <Row className="manage-order-heading">
-                        <Col md="6" xs="12" className='manage-order-header'> Danh sách khách hàng </Col>
+                        <Col md="6" xs="12" className='manage-order-header'> 
+                            {this.context.lang === "vi" && <span> Danh sách khách hàng </span>}
+                            {this.context.lang === "en" && <span> Customer list </span>}
+                        </Col>
                         <Col> 
                         <Row>
                             <Form className="search-bar" onSubmit={e => {e.preventDefault(); this.onInputCusName();}}>
                                 <FormGroup>
-                                    <Input autoComplete="off" className="search-box" id="search" name="search-drugs" placeholder="Nhập thông tin"
+                                    <Input autoComplete="off" className="search-box" id="search" name="search-drugs" placeholder={`${input}`}
                                     innerRef={(input) => this.search_item = input} />
                                 </FormGroup>
                             </Form> 
                             <Button className="search-button" onClick={this.onInputCusName}>
-                                <FaSearch /> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span>
+                                <FaSearch /> 
+                                        {this.context.lang === "vi" && <span> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span> </span> }
+                                        {this.context.lang === "en" && <span> Search </span> }
                             </Button>
                         </Row>
                         </Col>
@@ -90,16 +109,19 @@ class ViewCustomerView extends Component {
                                     #
                                 </th>
                                 <th>
-                                    Tên khách hàng
+                                    {this.context.lang === "vi" && <span> Tên khách hàng </span>}
+                                    {this.context.lang === "en" && <span> Customer name </span>}
                                 </th>
                                 <th className="d-none d-lg-block">
                                     Email
                                 </th>
                                 <th>
-                                    Tình trạng
+                                    {this.context.lang === "vi" && <span> Tình trạng </span>}
+                                    {this.context.lang === "en" && <span> State </span>}
                                 </th>
                                 <th style={{textAlign: 'center'}}>
-                                    Hành động
+                                    {this.context.lang === "vi" && <span> Hành động </span>}
+                                    {this.context.lang === "en" && <span> Action </span>}
                                 </th>
                                 </tr>
                             </thead>
@@ -122,12 +144,17 @@ class ViewCustomerView extends Component {
                             </Row>
                             <Row>
                                 <Col md="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
-                                    <span className="auth-header"> THÔNG TIN TÀI KHOẢN </span>
+                                    <span className="auth-header"> 
+                                        {this.context.lang === "vi" && <span> THÔNG TIN TÀI KHOẢN </span>}
+                                        {this.context.lang === "en" && <span> USER INFORMATION </span>}
+                                    </span>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                <span style={{fontWeight: 'bold'}}> Ảnh đại diện: </span>
+                                {this.context.lang === "vi" && <span style={{fontWeight: 'bold'}}> Ảnh đại diện: </span>}
+                                {this.context.lang === "en" && <span style={{fontWeight: 'bold'}}> Avatar: </span>}
+                                
                                 </Col>
                             </Row>
                             <Row>
@@ -135,13 +162,15 @@ class ViewCustomerView extends Component {
                             </Row>
                             <Row> 
                                 <Col>
-                                    <span style={{fontWeight: 'bold'}}> Tên khách hàng: </span>
+                                    {this.context.lang === "vi" && <span style={{fontWeight: 'bold'}}> Tên khách hàng: </span>}
+                                    {this.context.lang === "en" && <span style={{fontWeight: 'bold'}}> Customer name: </span>}
                                     {this.props.model.customerOpen.lastname + " " + this.props.model.customerOpen.firstname} 
                                 </Col>
                             </Row>
                             <Row style={{marginTop: '8px'}}>
                                 <Col> 
-                                    <span style={{fontWeight: 'bold'}}> Số điện thoại: </span> 
+                                    {this.context.lang === "vi" && <span style={{fontWeight: 'bold'}}> Số điện thoại: </span>}
+                                    {this.context.lang === "en" && <span style={{fontWeight: 'bold'}}> Phone number: </span>}
                                     {this.props.model.customerOpen.phone}
                                 </Col>
                             </Row>
@@ -153,23 +182,37 @@ class ViewCustomerView extends Component {
                             </Row>
                             <Row style={{marginTop: '8px'}}>
                                 <Col>
-                                    <span style={{fontWeight: 'bold'}}> Tình trạng: </span>
-                                    {(() => {if (this.props.model.customerOpen.is_authenticate) return "Đã xác thực"; else return "Chưa xác thực"})()}
+                                    {this.context.lang === "vi" && <span style={{fontWeight: 'bold'}}> Tình trạng: </span>}
+                                    {this.context.lang === "en" && <span style={{fontWeight: 'bold'}}> State: </span>}
+                                    {(() => {
+                                        if (this.props.model.customerOpen.is_authenticate) 
+                                            {if (this.context.lang === "vi") return "Đã xác thực"; else return "Authenticated"}
+                                        else {if (this.context.lang === "vi") return "Chưa xác thực"; else return "Hasn't Authenticate" }}
+                                    )()}
                                 </Col>
                             </Row>
                         </Container>
                     </ModalBody>
                     </Modal>
                     <Modal centered isOpen={this.props.model.isModalDeleteOpen} toggle={this.toggleDeleteModal}>
-                    <ModalHeader> <span className="agree-header"> Bạn có chắc chắn với lựa chọn của mình ? </span> </ModalHeader>
+                    <ModalHeader>
+                        {this.context.lang === "vi" && <span className="agree-header"> Bạn có chắc chắn với lựa chọn của mình ? </span> }
+                        {this.context.lang === "en" && <span className="agree-header"> Are you sure with your choice ? </span> }
+                    </ModalHeader>
                     <ModalBody>
                         <Container>
                             <Row>
                                 <Col>
-                                    <Button className='delete-button' onClick={() => {this.onClickDeleteButton(); this.toggleDeleteModal("", false)}}> Có </Button>
+                                    <Button className='delete-button' onClick={() => {this.onClickDeleteButton(); this.toggleDeleteModal("", false)}}> 
+                                        {this.context.lang === "vi" && <span> Có </span> }
+                                        {this.context.lang === "en" && <span> Yes </span> }
+                                    </Button>
                                 </Col>
                                 <Col>
-                                    <Button className='delete-button' onClick={() => this.toggleDeleteModal("", false)}> Không </Button>
+                                    <Button className='delete-button' onClick={() => this.toggleDeleteModal("", false)}> 
+                                        {this.context.lang === "vi" && <span> Không </span> }
+                                        {this.context.lang === "en" && <span> No </span> }
+                                    </Button>
                                 </Col>
                             </Row>
                         </Container>
@@ -179,5 +222,7 @@ class ViewCustomerView extends Component {
         )
     }
 }
+
+ViewCustomerView.contextType = LoginContext;
 
 export default ViewCustomerView;

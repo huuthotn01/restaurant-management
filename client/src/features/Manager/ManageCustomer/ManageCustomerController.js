@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ManageCustomerModel from "./ManageCustomerModel";
 import ManageCustomerView from "./ManageCustomerView";
+import { LoginContext } from '../../SharedComponent/LoginContext';
+import { Redirect, Switch } from "react-router";
 
 class ManageCustomerController extends Component {
     constructor(props) {
@@ -76,14 +78,19 @@ class ManageCustomerController extends Component {
     }
 
     render() {
-        return <ManageCustomerView model = {this.state.model} changeView = {this.changeView}
+        return  <>
+                {this.context.role !== "2" && <Switch> <Redirect to="/" /> </Switch>}
+                <ManageCustomerView model = {this.state.model} changeView = {this.changeView}
                                    getNotAuthCustomerList = {this.getNotAuthCustomerList} 
                                    onToggleModalAuth = {this.onToggleModalAuth} 
                                    authCus = {this.authCus} getCustomerList = {this.getCustomerList} 
                                    onToggleViewModal = {this.onToggleViewModal} 
                                    onToggleDeleteModal = {this.onToggleDeleteModal}
                                    deleteCustomer = {this.deleteCustomer} />
+                </>
     }
 }
+
+ManageCustomerController.contextType = LoginContext;
 
 export default ManageCustomerController;

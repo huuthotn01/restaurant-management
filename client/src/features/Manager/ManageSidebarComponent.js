@@ -3,6 +3,7 @@ import { ProSidebar, Menu, MenuItem, SidebarContent, SidebarFooter, SidebarHeade
 import { FaHeart, FaGithub, FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { LoginContext } from "../SharedComponent/LoginContext"
 
 class ManageSideBar extends Component {
     constructor(props) {
@@ -37,24 +38,29 @@ class ManageSideBar extends Component {
                         }}
                         >
                         <img style={{'margin-right': '5px', 'margin-top': '-5px'}} height="52px" width="80px" src="/assets/images/MainLogo.png" alt="Sub Logo"/> 
-                        <span> Quản lý </span>
+                        {this.context.lang === "vi" && <span> Quản lý </span>}
+                        {this.context.lang === "en" && <span> Manager </span>} 
                     </div>
                 </SidebarHeader>
                 <SidebarContent>
                     <Menu iconShape="square">
                         <MenuItem icon={<FaHeart />}>
-                        Quản lý đơn hàng
+                        {this.context.lang === "vi" && <span> Quản lý đơn hàng </span>}
+                        {this.context.lang === "en" && <span> Manage order </span>} 
                         <Link to="/manage_order" />
                         </MenuItem>
                         <MenuItem icon={<FaHeart />}>
-                        Quản lý khách hàng
+                        {this.context.lang === "vi" && <span> Quản lý khách hàng </span>}
+                        {this.context.lang === "en" && <span> Manage customer </span>} 
                         <Link to="/manage_customer" />
                         </MenuItem>
                         <MenuItem icon={<FaHeart />}>
-                        Quản lý nhân viên
+                        {this.context.lang === "vi" && <span> Quản lý nhân viên </span>}
+                        {this.context.lang === "en" && <span> Manage staff </span>} 
                         </MenuItem>
                         <MenuItem icon={<FaHeart />}>
-                        Quản lý menu
+                        {this.context.lang === "vi" && <span> Quản lý thực đơn </span>}
+                        {this.context.lang === "en" && <span> Manage manu </span>}
                         </MenuItem>
                     </Menu>
                 </SidebarContent>
@@ -98,5 +104,7 @@ class ManageSideBar extends Component {
         );
     }
 }
+
+ManageSideBar.contextType = LoginContext
 
 export default ManageSideBar;

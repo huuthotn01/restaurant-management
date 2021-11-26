@@ -66,8 +66,8 @@ class Footer extends Component {
                 <br />
             </Container>
             <Modal isOpen={this.state.isModalOpen} toggle={this.onToggleModal}>
-                <ModalHeader className="footer-header">
-                    {this.context.lang === "vi" ? "Trường Đại học Bách Khoa TP. Hồ Chí Minh" : "Ho Chi Minh University of Technology"}
+                <ModalHeader>
+                   <span className="footer-header"> {this.context.lang === "vi" ? "Trường Đại học Bách Khoa TP. Hồ Chí Minh" : "Ho Chi Minh University of Technology"} </span>
                 </ModalHeader>
                 <ModalBody>
                     <Container>

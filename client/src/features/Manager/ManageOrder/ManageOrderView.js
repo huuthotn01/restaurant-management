@@ -6,6 +6,8 @@ import ManageSideBar from '../ManageSidebarComponent';
 import ViewOrder from './ViewOrderView';
 import StatisticOrder from './StatisticOrderView';
 
+import { LoginContext } from '../../SharedComponent/LoginContext';
+
 import '../manager.css';
 
 class ManageOrderView extends Component {
@@ -35,12 +37,14 @@ class ManageOrderView extends Component {
                     <Row>
                         <Col xs="6" style={{paddingLeft: '20px'}}> 
                             <Button onClick={this.onClickView} className="manage-button"> 
-                                Xem <span style={{textTransform: 'lowercase'}}> thông tin đơn hàng </span> 
+                                {this.context.lang === "vi" && <span> Xem <span style={{textTransform: 'lowercase'}}> thông tin đơn hàng </span> </span> }
+                                {this.context.lang === "en" && <span> View Order </span>} 
                             </Button> 
                         </Col>
                         <Col xs="6"> 
                             <Button onClick={this.onClickStatistic} className="manage-button"> 
-                                Thống <span style={{textTransform: 'lowercase'}}> kê <br className="d-sm-none"/> đơn hàng </span> 
+                                {this.context.lang === "vi" && <span> Thống <span style={{textTransform: 'lowercase'}}> kê <br className="d-sm-none"/> đơn hàng </span> </span> }
+                                {this.context.lang === "en" && <span> Statistic Order </span>} 
                             </Button>
                         </Col>
                     </Row>
@@ -51,5 +55,7 @@ class ManageOrderView extends Component {
         );
     }
 }
+
+ManageOrderView.contextType = LoginContext;
 
 export default ManageOrderView;

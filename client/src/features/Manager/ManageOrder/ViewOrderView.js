@@ -3,9 +3,10 @@ import { Container, Row, Col } from 'reactstrap';
 import { Form, FormGroup, Input, Button } from 'reactstrap';
 import { Table } from 'reactstrap';
 import { FaSearch } from 'react-icons/fa';
-import { Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
 import ReactToPrint from 'react-to-print';
 import Pagination from "pagination-component";
+import { LoginContext } from '../../SharedComponent/LoginContext';
 import '../manager.css';
 
 class ViewOrder extends Component {
@@ -37,7 +38,8 @@ class ViewOrder extends Component {
                     {this.props.model.orders_search.indexOf(order) + 1}
                 </th>
                 <td>
-                    Nguyễn Khoa Gia Cát
+                    {this.context.lang === "vi" && <span> Nguyễn Khoa Gia Cát </span>}
+                    {this.context.lang === "en" && <span> Nguyen Khoa Gia Cat </span>}
                 </td>
                 <td>
                     {order.orderID}
@@ -48,17 +50,21 @@ class ViewOrder extends Component {
                 <td>
                     {(order.totalPrice*23000).toLocaleString('vi-VN')}đ
                 </td>
-                <td>
+                <td style={{textAlign: 'center'}}>
                     <Button className='order-button' 
                             onClick={() => {this.toggleModal(order.orderID, true);}}> 
-                            Xem 
+                            {this.context.lang === "vi" && <span> Xem </span>}
+                            {this.context.lang === "en" && <span> View </span>}
                     </Button>
                 </td>
                 </tr>
         )}); 
 
         let not_Found = <span></span>;
-        if (display_order.length === 0) not_Found = <div className="not-found-search"> Không tìm thấy kết quả </div>
+        if (display_order.length === 0) not_Found = <div className="not-found-search"> 
+                {this.context.lang === "vi" && <span> Không tìm thấy kết quả !</span>}
+                {this.context.lang === "en" && <span> Not found ! </span>} 
+            </div>
         else not_Found = <span></span>;
         
         let total = 0;
@@ -107,20 +113,30 @@ class ViewOrder extends Component {
             textAlign: "center",
             borderRadius: "5px"
             };
+        
+        const input = (() => {if (this.context.lang === "vi") 
+                                    return "Nhập đơn hàng"
+                             else return "Input order"})();
         return (
             <Container>
                     <Row className="manage-order-heading">
-                        <Col md="6" sm="12" xs="12" className='manage-order-header'> Danh sách đơn hàng </Col>
+                        <Col md="6" sm="12" xs="12" className='manage-order-header'> 
+                            {this.context.lang === "vi" && <span> Danh sách đơn hàng </span>}
+                            {this.context.lang === "en" && <span> Order list </span>} 
+                        </Col>
                         <Col> 
                         <Row>
                             <Form className="search-bar" onSubmit={e => {e.preventDefault(); this.onInputOrderID()}}>
                                 <FormGroup>
-                                    <Input autoComplete="off" className="search-box" id="search" name="search-drugs" placeholder="Nhập đơn hàng"
+                                    <Input autoComplete="off" className="search-box" id="search" name="search-drugs" 
+                                        placeholder={`${input}`}
                                     innerRef={(input) => this.search_item = input} />
                                 </FormGroup>
                             </Form> 
                             <Button className="search-button" onClick={this.onInputOrderID}>
-                                <FaSearch /> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span>
+                                <FaSearch /> 
+                                    {this.context.lang === "vi" && <span> Tìm <span style={{textTransform: 'lowercase'}}> kiếm </span> </span>}
+                                    {this.context.lang === "en" && <span> Search </span>}                                    
                             </Button>
                         </Row>
                         </Col>
@@ -135,19 +151,24 @@ class ViewOrder extends Component {
                                     #
                                 </th>
                                 <th>
-                                    Tên khách hàng
+                                    {this.context.lang === "vi" && <span> Tên khách hàng </span>}
+                                    {this.context.lang === "en" && <span> Customer name </span>} 
                                 </th>
                                 <th>
-                                    Mã đơn hàng
+                                    {this.context.lang === "vi" && <span> Mã đơn hàng </span>}
+                                    {this.context.lang === "en" && <span> Order ID </span>} 
                                 </th>
                                 <th className="d-none d-lg-block">
-                                    Ngày tạo đơn
+                                    {this.context.lang === "vi" && <span> Ngày tạo đơn </span>}
+                                    {this.context.lang === "en" && <span> Created date </span>} 
                                 </th>
                                 <th>
-                                    Tổng tiền
+                                    {this.context.lang === "vi" && <span> Tổng cộng </span>}
+                                    {this.context.lang === "en" && <span> Total </span>} 
                                 </th>
-                                <th>
-                                    Hành động
+                                <th style={{textAlign: 'center'}}>
+                                    {this.context.lang === "vi" && <span> Hành động </span>}
+                                    {this.context.lang === "en" && <span> Action </span>} 
                                 </th>
                                 </tr>
                             </thead>
@@ -207,22 +228,29 @@ class ViewOrder extends Component {
                             </Row>
                             <Row>
                                 <Col className="order-header" xs="12" style={{textAlign: 'center', fontWeight: 'bold', fontSize: '30px'}}>
-                                    HÓA ĐƠN
+                                    {this.context.lang === "vi" && <span> HÓA ĐƠN </span>}
+                                    {this.context.lang === "en" && <span> BILL </span>} 
                                 </Col>
                             </Row>
                             <Row> 
                                 <Col xs="12">
-                                    <span style={{fontWeight: 'bold'}}> Mã đơn hàng: </span>
+                                    {this.context.lang === "vi" && <span style={{fontWeight: 'bold'}}> Mã đơn hàng: </span>}
+                                    {this.context.lang === "en" && <span style={{fontWeight: 'bold'}}> Order ID: </span>}
                                     {order.orderID} 
                                 </Col>
                             </Row>
                             <Row style={{marginTop: '8px'}}>
                                 <Col xs="12" md="6" className="order-customer-name"> 
-                                    <span style={{fontWeight: 'bold'}}> Tên khách hàng: </span> 
-                                    Nguyễn Khoa Gia Cát {order.customerName}
+                                {this.context.lang === "vi" && <span style={{fontWeight: 'bold'}}> Tên khách hàng: </span> }
+                                {this.context.lang === "en" && <span style={{fontWeight: 'bold'}}> Customer name: </span> } 
+                                {this.context.lang === "vi" && <span> Nguyễn Khoa Gia Cát </span>}
+                                {this.context.lang === "en" && <span> Nguyen Khoa Gia Cat </span>}
+                                {order.customerName}
                                 </Col>
                                 <Col xs="12" md="6">
-                                    <span style={{fontWeight: 'bold'}}>Ngày đặt hàng: </span>
+                                    {this.context.lang === "vi" && <span style={{fontWeight: 'bold'}}>Ngày đặt hàng: </span>}
+                                    {this.context.lang === "en" && <span style={{fontWeight: 'bold'}}>Created date: </span>}
+                                    
                                     {order.orderDate}
                                 </Col>
                             </Row>
@@ -235,16 +263,20 @@ class ViewOrder extends Component {
                                         #
                                     </th>
                                     <th>
-                                        Tên món ăn
+                                        {this.context.lang === "vi" && <span> Tên món ăn </span>}
+                                        {this.context.lang === "en" && <span> Food name </span>}
                                     </th>
                                     <th style={{textAlign: 'center'}}>
-                                        Đơn giá
+                                        {this.context.lang === "vi" && <span> Đơn giá </span>}
+                                        {this.context.lang === "en" && <span> Unit price </span>}
                                     </th>
                                     <th style={{textAlign: 'center'}}>
-                                        Số lượng
+                                        {this.context.lang === "vi" && <span> Số lượng </span>}
+                                        {this.context.lang === "en" && <span> Quantity </span>}
                                     </th>
                                     <th style={{textAlign: 'right'}}>
-                                        Thành tiền
+                                        {this.context.lang === "vi" && <span> Thành tiền </span>}
+                                        {this.context.lang === "en" && <span> Total </span>}
                                     </th>
                                     </tr>
                                 </thead>
@@ -254,7 +286,8 @@ class ViewOrder extends Component {
                                 <tfoot>
                                     <tr>
                                         <th colSpan="4" style={{textAlign: 'center'}}>
-                                            Tổng cộng
+                                            {this.context.lang === "vi" && <span> Tổng cộng </span>}
+                                            {this.context.lang === "en" && <span> Total </span>}
                                         </th>
                                         <th style={{textAlign: 'right'}}>
                                             {(total*23000).toLocaleString('vi-VN')}đ
@@ -269,7 +302,10 @@ class ViewOrder extends Component {
                             <Row>
                                 <Col md="3" className='ms-auto'>
                                 <ReactToPrint 
-                                    trigger={() => <Button className="print-bill-button"> In hóa đơn </Button>}
+                                    trigger={() => <Button className="print-bill-button"> 
+                                        {this.context.lang === "vi" && <span> In hóa đơn </span>}
+                                        {this.context.lang === "en" && <span> Print bill </span>}
+                                    </Button>}
                                     content={() => this.componentRef}
                                     pageStyle={pageStyle} />
                                 </Col>
@@ -281,5 +317,7 @@ class ViewOrder extends Component {
         )
     }
 }
+
+ViewOrder.contextType = LoginContext;
 
 export default ViewOrder;
