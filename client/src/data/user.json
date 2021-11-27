@@ -1,1 +1,74 @@
-[{"fname":"Nguyễn Hữu Thọ","lname":"Trần","username":"huuthotn01","password":"$2a$10$2Q7AYfUE/2Ub1ovnBMUPnultmjSjj6koOajwn259/4xu8GnkqCuva","phone":"01928364839","email":"huuthotn01@gmail.com","role":"1","avatar":"","activated":true,"authenticated":false},{"fname":"Khoa Gia Cát","lname":"Nguyễn","username":"cat01697351001","password":"$2a$10$4FS515ygDgEBMl3DEBTIYeLMZyK1TUacOp/PVe.kIUMfs6UBEYk3a","phone":"01977939564","email":"cat01697351001@gmail.com","role":"2","avatar":"","activated":true,"authenticated":false},{"fname":"Nguyễn Hữu Thọ","lname":"Trần","username":"huutho","password":"$2a$10$AY4l/hBBL/gXKyC/ZxDegeSqB/ZdXhHlhhdaK3n2L9CEwJLazr2US","phone":"02947585960","email":"huutho@gmail.com","role":"1","avatar":"","activated":true,"authenticated":false},{"fname":"Văn Xuân Vũ","lname":"Nguyễn","username":"xuanvu","password":"$2a$10$w4MNfmCqRfHtUmwtzW0vm.4MvOgMV0usIPQJWxooLdgPtIGH..asa","phone":"02847593585","email":"xuanvu@gmail.com","role":"1","avatar":"","activated":true,"authenticated":false},{"fname":"Huy Phước","lname":"Lê","username":"huyphuoc","password":"$2a$10$ANz4q3KGGqf7dm78MfIOFeA7bSCMHDSTOnlzrHG8YWLSEyAqKUfvW","phone":"0238375783857","email":"huyphuoc@gmail.com","role":"1","avatar":"","activated":true,"authenticated":false},{"fname":"Thị Thanh Mai","lname":"Cao","username":"thanhmai","password":"$2a$10$ZD6sVgTZ8fyNbxuMf0qJN.3qsuIYhvg44MzmOvPPGys5AiP.ogPGe","phone":"2893747389547","email":"thanhmai@gmail.com","role":"1","avatar":"","activated":true,"authenticated":false},{"fname":"Khoa Gia Cát","lname":"Nguyễn","username":"giacat","password":"$2a$10$SRI27CTG9Se59FQ51CgzJO92Lv6V6sSb0nYgpNC9aJ6f8FsbnHpqO","phone":"029374658395","email":"giacat@gmail.com","role":"1","avatar":"","activated":true,"authenticated":false},{"fname":"Thọ","lname":"Trần Nguyễn","username":"tho.trannguyenhuu","password":"$2a$10$Igz1424uk/v5dAAkRQ16XOgYr0ma6LxtuEjgs.vMUaBHvbqRXBdMS","phone":"","email":"tho.trannguyenhuu@hcmut.edu.vn","role":"1","avatar":"","activated":true,"authenticated":false}]
+[
+    {
+        "fname": "Nguyễn Hữu Thọ",
+        "lname": "Trần",
+        "username": "huuthotn01",
+        "password": "$2a$10$2Q7AYfUE/2Ub1ovnBMUPnultmjSjj6koOajwn259/4xu8GnkqCuva",
+        "phone": "01928364839",
+        "email": "huuthotn01@gmail.com",
+        "role": "2",
+        "avatar": "",
+        "activated": true,
+        "authenticated": false
+    },
+    {
+        "fname": "Khoa Gia Cát",
+        "lname": "Nguyễn",
+        "username": "cat01697351001",
+        "password": "$2a$10$4FS515ygDgEBMl3DEBTIYeLMZyK1TUacOp/PVe.kIUMfs6UBEYk3a",
+        "phone": "01977939564",
+        "email": "cat01697351001@gmail.com",
+        "role": "2",
+        "avatar": "",
+        "activated": true,
+        "authenticated": false
+    },
+    {
+        "fname": "Văn Xuân Vũ",
+        "lname": "Nguyễn",
+        "username": "xuanvu",
+        "password": "$2a$10$w4MNfmCqRfHtUmwtzW0vm.4MvOgMV0usIPQJWxooLdgPtIGH..asa",
+        "phone": "02847593585",
+        "email": "xuanvu@gmail.com",
+        "role": "1",
+        "avatar": "",
+        "activated": true,
+        "authenticated": true
+    },
+    {
+        "fname": "Huy Phước",
+        "lname": "Lê",
+        "username": "huyphuoc",
+        "password": "$2a$10$ANz4q3KGGqf7dm78MfIOFeA7bSCMHDSTOnlzrHG8YWLSEyAqKUfvW",
+        "phone": "0238375783857",
+        "email": "huyphuoc@gmail.com",
+        "role": "1",
+        "avatar": "",
+        "activated": true,
+        "authenticated": true
+    },
+    {
+        "fname": "Thị Thanh Mai",
+        "lname": "Cao",
+        "username": "thanhmai",
+        "password": "$2a$10$ZD6sVgTZ8fyNbxuMf0qJN.3qsuIYhvg44MzmOvPPGys5AiP.ogPGe",
+        "phone": "2893747389547",
+        "email": "thanhmai@gmail.com",
+        "role": "1",
+        "avatar": "",
+        "activated": true,
+        "authenticated": false
+    },
+    {
+        "fname": "Khoa Gia Cát",
+        "lname": "Nguyễn",
+        "username": "giacat",
+        "password": "$2a$10$SRI27CTG9Se59FQ51CgzJO92Lv6V6sSb0nYgpNC9aJ6f8FsbnHpqO",
+        "phone": "029374658395",
+        "email": "giacat@gmail.com",
+        "role": "1",
+        "avatar": "",
+        "activated": true,
+        "authenticated": false
+    }
+]
