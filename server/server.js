@@ -7,6 +7,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const send_mail = require('./send_mail/confirm-reser');
+const cors = require('cors');
 
 const one_day = 1000 * 60 * 60 * 24;
 app.use(sessions({
@@ -18,6 +19,11 @@ app.use(sessions({
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+app.use(cors());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -355,9 +361,20 @@ app.post('/logout', (req, res) => { // logout
     res.end();
 });
 
-app.post('/payment_momo', (req, res) => {
+app.all('/payment_momo', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
+app.get('/test', (req, res, next) => {
     const momo = require('./momo_payment');
-    res.end();
+    momo(req.protocol, req.get('host'), 200000, res);
+});
+
+app.post('/payment_momo', (req, res, next) => {
+    const momo = require('./momo_payment');
+    momo(req.protocol, req.get('host'), req.body.amount, res);
 });
 
 app.get('/verify', (req, res) => { // verify session

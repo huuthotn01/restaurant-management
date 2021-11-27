@@ -3,7 +3,6 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import '../PaymentView/payment.css'
 import { LoginContext } from '../../SharedComponent/LoginContext';
 
-
 export default class DropPayment extends React.Component {
   constructor(props) {
     super(props);
@@ -16,9 +15,25 @@ export default class DropPayment extends React.Component {
   }
 
   async momoPayment() {
-    await fetch('/payment_momo', {
-      method: 'POST'
+    let totalAmount = this.props.amount;
+    console.log(totalAmount);
+    let amount = {
+      amount: totalAmount
+    }
+    const response = await fetch('/payment_momo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer',
+        'Access-Control-Allow-Origin': '*',
+        'mode': 'no-cors',
+        'Origin': 'http://localhost:5000'
+      },
+      body: JSON.stringify(amount)
     });
+    const body = await response.json();
+    let link = body.link;
+    window.location.href = link;
   }
 
   toggle() {

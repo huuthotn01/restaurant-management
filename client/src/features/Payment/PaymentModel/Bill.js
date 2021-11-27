@@ -11,7 +11,7 @@ import { LoginContext } from '../../SharedComponent/LoginContext';
 
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
-
+  const amount = cartContext.totalAmount;
   const totalAmount = `${cartContext.totalAmount.toLocaleString('vi-VN')} VND`;
 
   const cartItems = (
@@ -27,7 +27,7 @@ const Cart = (props) => {
     </ul>
   );
 
-
+        console.log("Cart amount: ", cartContext.totalAmount);
   return (
     <LoginContext.Consumer>
       {data => ( 
@@ -37,13 +37,13 @@ const Cart = (props) => {
         <div style={{ fontWeight: 'bold', color: "orange", fontSize: '2.9vw', textAlign: "left", float: "left"}}> 
         {data.lang === "vi" ?"Thành tiền":"Cost"}
           </div>
-          <div style={{ fontWeight: 'bold', color: "orange", fontSize: '2.9vw', textAlign: "right"}}>
+          <div id="total_amount" style={{ fontWeight: 'bold', color: "orange", fontSize: '2.9vw', textAlign: "right"}}>
           {totalAmount}
         </div>
         </div>
         <Row >
           <Col style={{textAlign: "center"}}>
-          <DropPayment /> 
+          <DropPayment amount={amount} /> 
             </Col>
             <Col style={{textAlign: "center"}}>
             <DropMenu />
