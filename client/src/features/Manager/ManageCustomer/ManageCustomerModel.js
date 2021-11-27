@@ -116,7 +116,7 @@ class ManageCustomerModel {
 
                 data = user_data.map(user => {
                     if (user.phone.toString() === customer_phone.toString()) 
-                        user.Authenticate = true;
+                        user.authenticated = true;
                     return user;
                 })
         }

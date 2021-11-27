@@ -32,6 +32,7 @@ class ViewCustomerView extends Component {
     }
 
     render() {
+        console.log(this.props.model.customers_display)
         const display_customers = this.props.model.customers_display.map((customer) => {
             return (
                 <tr>
@@ -46,7 +47,7 @@ class ViewCustomerView extends Component {
                 </td>
                 <td>
                                     {(() => {
-                                        if (this.props.model.customerOpen.is_authenticate) 
+                                        if (customer.is_authenticate) 
                                             {if (this.context.lang === "vi") return "Đã xác thực"; else return "Authenticated"}
                                         else {if (this.context.lang === "vi") return "Chưa xác thực"; else return "Hasn't Authenticate" }}
                                     )()}

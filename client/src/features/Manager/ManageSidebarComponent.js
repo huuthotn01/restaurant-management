@@ -21,7 +21,7 @@ class ManageSideBar extends Component {
     render(){
         return(
             <>
-            <ProSidebar className="cat-manager-sidebar" breakPoint="md" 
+            <ProSidebar className="cat-manager-sidebar" breakPoint="lg" 
                         toggled={this.state.toggled} onToggle={this.onHandleToggleSidebar}>
                 <SidebarHeader>
                     <div
@@ -94,7 +94,7 @@ class ManageSideBar extends Component {
             <Container>
             <Row>
                 <Col>
-                    <Button className="d-md-none" style={{border: 'none', marginLeft: '8px'}} onClick={this.onHandleToggleSidebar}>
+                    <Button className="d-lg-none" style={{border: 'none', marginLeft: '8px'}} onClick={this.onHandleToggleSidebar}>
                         <FaBars />
                     </Button>
                 </Col>
