@@ -24,18 +24,6 @@
         "authenticated": false
     },
     {
-        "fname": "Nguyễn Hữu Thọ",
-        "lname": "Trần",
-        "username": "huutho",
-        "password": "$2a$10$AY4l/hBBL/gXKyC/ZxDegeSqB/ZdXhHlhhdaK3n2L9CEwJLazr2US",
-        "phone": "02947585960",
-        "email": "huutho@gmail.com",
-        "role": "1",
-        "avatar": "",
-        "activated": true,
-        "authenticated": false
-    },
-    {
         "fname": "Văn Xuân Vũ",
         "lname": "Nguyễn",
         "username": "xuanvu",
@@ -45,7 +33,7 @@
         "role": "1",
         "avatar": "",
         "activated": true,
-        "authenticated": false
+        "authenticated": true
     },
     {
         "fname": "Huy Phước",
@@ -57,7 +45,7 @@
         "role": "1",
         "avatar": "",
         "activated": true,
-        "authenticated": false
+        "authenticated": true
     },
     {
         "fname": "Thị Thanh Mai",
