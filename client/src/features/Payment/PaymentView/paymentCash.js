@@ -33,7 +33,7 @@ function Paymentbycash() {
         <CartProvider>
             {cartIsShown && <Bill onClose={hideCartHandler} />}
             <NavigationView1 onShowCart={showCartHandler} />
-            <h2 class="pt-3" style={{textAlign: 'center', color: "orange",fontSize: "2.5vw", fontWeight: 'bold'}}>Quý khách vui lòng cầm hóa đơn điện tử ra quầy thu ngân để tính tiền</h2>
+            <h2 class="pt-3" style={{textAlign: 'center', color: "orange",fontSize: "2vw", fontWeight: 'bold'}}>Quý khách vui lòng cầm hóa đơn điện tử ra quầy thu ngân để tính tiền</h2>
         </CartProvider>  
         </div>
       <div class="col-2 ps-3">  
