@@ -1,29 +1,48 @@
-import table_reservation_data from '../../../src/data/reservation.json'
-import table_cancel_data from '../../../src/data/canceltable.json'
+
+import { useEffect } from 'react';
 import { resetWarningCache } from 'prop-types';
 class CancelTableModel {
   //------------------------------ATTRIBUTE------------------------------------
-
+  
+  
   #table_reser = [];
   #table_cancel = [];
 
   //-------------------------------CONSTRUCTOR---------------------------------
-
+  
   constructor() {
-    this.#table_reser = table_reservation_data.map((reser) => {
-      return [
-        reser["code"],
-        reser["phone"],
-        reser["isMember"],
-        reser["date"],
-        reser["time"],
-        reser["depositfee"],
-      ];
-    });
-    this.#table_cancel = table_cancel_data.map((reser) => {
+    this.table_reservation_data = [];
+   
+    fetch('/getreservation')
+    .then(response => response.json())
+    .then(data => 
+  
+  
+      this.#table_reser = data.data.map((reser) => {
+          return [
+            reser["code"],
+            reser["phone"],
+            reser["isMember"],
+            reser["date"],
+            reser["time"],
+            reser["depositfee"],
+          ];
+        })
+    );
+
+    fetch('/getcancelreservation')
+    .then(response => response.json())
+    .then(data => this.#table_cancel = data.data.map((reser) => {
       return [reser["code"], reser["phone"]];
-    });
+    }));
+
+
+    
+        
+      
+    
   }
+  
   check_notexist(code, phone) {
     for (let i = 0; i < this.#table_reser.length; i++) {
       if (code === this.#table_reser[i][0] && phone === this.#table_reser[i][1])
