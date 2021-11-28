@@ -1,8 +1,20 @@
-import order_details_data from '../../../data/order_details_2.json';
-import orders_data from '../../../data/orders.json';
-
+import axios from 'axios';
 import Order from './Order';
 import OrderDetail from './OrderDetail';
+
+async function getOrderDetails() {
+    const response = await axios.get('/get_order_details');
+    const body = response.data.details;
+    console.log("Return body: ", body);
+    return body;
+}
+
+async function getOrder() {
+    const response = await axios.get('/get_order');
+    const body = response.data.orders;
+    console.log("Return body: ", body);
+    return body;
+}
 
 class ManageOrderModel {
 
@@ -16,7 +28,7 @@ class ManageOrderModel {
     //-------------------------------CONSTRUCTOR---------------------------------
 
     constructor() {
-    this.#order_details = order_details_data.map((order_detail) => {
+    /*this.#order_details = order_details_data.map((order_detail) => {
         return new OrderDetail(order_detail['Order Number'],order_detail['Order Date'],
                                 order_detail['Item Name'], order_detail['Quantity'],
                                 order_detail['Product Price']);
@@ -34,7 +46,32 @@ class ManageOrderModel {
     this.#orderDetailsOpen = [new OrderDetail('','','','','')];
     this.#orderOpen = new Order('','','','','');
     this.#activePage = 1;
-    this.#option = 0;
+    this.#option = 0;*/
+    }
+
+    async init() {
+        let order_details_data = await getOrderDetails();
+        let orders_data = await getOrder();
+
+        this.#order_details = order_details_data.map((order_detail) => {
+            return new OrderDetail(order_detail['Order Number'],order_detail['Order Date'],
+                                    order_detail['Item Name'], order_detail['Quantity'],
+                                    order_detail['Product Price']);
+            });
+        this.#orders = orders_data.map((order) => {
+            return new Order(order['Order Number'], order['Customer Name'], 
+                            order['Order Date'], order['Total Products'], order['Total Price']);
+            });
+        this.#orders_search = orders_data.map((order) => {
+            return new Order(order['Order Number'], order['Customer Name'], 
+                            order['Order Date'], order['Total Products'], order['Total Price']);
+            });
+        this.#Data_Statistic = [];
+        this.#isModalOpen = false;
+        this.#orderDetailsOpen = [new OrderDetail('','','','','')];
+        this.#orderOpen = new Order('','','','','');
+        this.#activePage = 1;
+        this.#option = 0;
     }
 
     //----------------------------------------GETTER--------------------------------------

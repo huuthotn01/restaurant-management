@@ -17,17 +17,6 @@ app.use(sessions({
     resave: false
 }));
 
-class Test {
-    static test = 0;
-    static updateTest() {
-        console.log("First test: ", this.test);
-        this.test += 1;
-        console.log("Second test: ", this.test);
-        setTimeout(() => {this.test += 1; console.log("Haha: ", this.test);}, 1000);
-        return this.test;
-    }
-}
-
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.use(cors());
@@ -43,7 +32,7 @@ app.post('/gg_auth', (req, res) => { // login (signin and signup) with google
     const gg_auth = require('./google_auth');
     gg_auth(req.body.tokenId).then((response) => {
         console.log("Response from gg_auth: ", response);
-        const filename = '../client/src/data/user.json';
+        const filename = './data/user.json';
         let file = fs.readFileSync(filename, {encoding: "utf8"});
         let cont = JSON.parse(file);
         let username = response["email"].split("@")[0]; // solit username from email
@@ -85,7 +74,7 @@ app.post('/gg_auth', (req, res) => { // login (signin and signup) with google
 });
 
 app.post('/addCancelTable', (request, response) => {
-    const filename = "../client/src/data/canceltable.json";
+    const filename = "./data/canceltable.json";
     var data = fs.readFileSync(filename, {encoding: "utf8"});
     var myObject = JSON.parse(data);
       
@@ -99,7 +88,7 @@ app.post('/addCancelTable', (request, response) => {
 });
 
 app.get('/getreservation', (request, response) => {
-    const filename = "../client/src/data/reservation.json";
+    const filename = "./data/reservation.json";
     var file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
     
@@ -108,7 +97,7 @@ app.get('/getreservation', (request, response) => {
     
 })
 app.get('/getcancelreservation', (request, response) => {
-    const filename = "../client/src/data/canceltable.json";
+    const filename = "./data/canceltable.json";
     var file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
     
@@ -117,21 +106,33 @@ app.get('/getcancelreservation', (request, response) => {
     
 })
 
+app.get('/get_order', (req, res) => {
+    const orders = JSON.parse(fs.readFileSync('./data/orders.json'));
+    console.log(typeof(orders));
+    res.json({orders: orders});
+});
+
+app.get('/get_order_details', (req, res) => {
+    const details = JSON.parse(fs.readFileSync('./data/order_details_2.json'));
+    console.log(typeof(details));
+    res.json({details: details});
+});
+
 app.get('/get_table', (request, response) => {
-    const filename = "../client/src/data/tables.json";
+    const filename = "./data/tables.json";
     var file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
     response.send({data: cont})
 })
 
 app.get('/get_user', (req, res) => {
-    const users = JSON.parse(fs.readFileSync('../client/src/data/user.json'));
+    const users = JSON.parse(fs.readFileSync('./data/user.json'));
     console.log(typeof(users));
     res.json({users: users})
 })
 
 app.post('/reservation', (request, response) => {
-    const filename = "../client/src/data/reservation.json";
+    const filename = "./data/reservation.json";
     var data = fs.readFileSync(filename, {encoding: "utf8"});
     var myObject = JSON.parse(data);
       
@@ -156,7 +157,7 @@ app.post('/update_user', (req, res) => {
         const data = JSON.stringify(req.body, null, 4);
         console.log(data);
     
-        fs.writeFileSync('../client/src/data/user.json', data, 'utf8');
+        fs.writeFileSync('./data/user.json', data, 'utf8');
     
         console.log(`File is written successfully!`);
     
@@ -167,7 +168,7 @@ app.post('/update_user', (req, res) => {
 
 app.post('/forgot-pass', (req, res) => { // forgot pass and resetting pass
     let info = req.body; // user data from frontend
-    const filename = '../client/src/data/user.json';
+    const filename = './data/user.json';
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
     for (let i = 0; i < cont.length; i++) {
@@ -183,7 +184,7 @@ app.post('/forgot-pass', (req, res) => { // forgot pass and resetting pass
 
 app.post('/signin', (req, res) => { // sign in by form
     let info = req.body; // user data from frontend
-    const filename = '../client/src/data/user.json';
+    const filename = './data/user.json';
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
     let email = info["email"];
@@ -217,7 +218,7 @@ app.post('/signin', (req, res) => { // sign in by form
 });
 
 app.post('/signup', (req, res) => { // signup
-    const filename = '../client/src/data/user.json';
+    const filename = './data/user.json';
     let info = req.body; // user data from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"}); // read file
     let cont = JSON.parse(file);
@@ -249,7 +250,7 @@ app.post('/signup', (req, res) => { // signup
     const md5 = require('md5');
     const act_id = md5(email);
     console.log("Act id: ", act_id);
-    const file_name = '../client/src/data/user_activation.json';
+    const file_name = './data/user_activation.json';
     let act_file = fs.readFileSync(file_name, {encoding: "utf8"});
     let activation = JSON.parse(act_file);
     let expire_day = new Date();
@@ -283,7 +284,7 @@ app.post('/signup', (req, res) => { // signup
 });
 
 app.post('/get-user-info', (req, res) => { // get user info
-    const filename = '../client/src/data/user.json';
+    const filename = './data/user.json';
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
@@ -309,7 +310,7 @@ app.post('/get-user-info', (req, res) => { // get user info
 });
 
 app.post('/change-info', (req, res) => { // update changed info
-    const filename = '../client/src/data/user.json';
+    const filename = './data/user.json';
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
@@ -370,7 +371,7 @@ app.post('/change-info', (req, res) => { // update changed info
 });
 
 app.post('/change-password', (req, res) => { // update changed password
-    const filename = '../client/src/data/user.json';
+    const filename = './data/user.json';
     let info = req.body; // user info from frontend
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file);
@@ -404,30 +405,19 @@ app.all('/payment_momo', (req, res, next) => {
     next();
 });
 
-app.get('/test', (req, res, next) => {
-    const momo = require('./momo_payment');
-    momo(req.protocol, req.get('host'), 200000, res);
-});
-
 app.post('/payment_momo', (req, res, next) => {
     const momo = require('./momo_payment');
     momo(req.protocol, req.get('host'), req.body.amount, res);
 });
 
 app.get('/verify', (req, res) => { // verify session
-    /*let test = Test.updateTest();
-    console.log("Test verify: ", test);
-    while (test !== 3);
-    console.log("OK");*/
-    let test = Test.updateTest();
-    console.log("Test verify: ", test);
     let session = req.session;
     if (session.userid === undefined) {
         console.log("Username is undefined!");
         res.send({succ: false});
         return;
     } else {
-        const filename = '../client/src/data/user.json';
+        const filename = './data/user.json';
         let file = fs.readFileSync(filename, {encoding: "utf8"});
         let cont = JSON.parse(file);
         for (let i = 0; i < cont.length; i++) {
@@ -455,7 +445,7 @@ app.get('/verify', (req, res) => { // verify session
 
 app.get('/activate/:id' , (req, res) => { // activate account
     let act_id = req.params.id;
-    const filename = '../client/src/data/user_activation.json';
+    const filename = './data/user_activation.json';
     let file = fs.readFileSync(filename, {encoding: "utf8"});
     let cont = JSON.parse(file); // info about user activation id
     let time_now = new Date();
@@ -463,7 +453,7 @@ app.get('/activate/:id' , (req, res) => { // activate account
         if (cont[i]["activation_id"] === act_id) {
             let saved_date = new Date(cont[i]["expire_day"]);
             if (saved_date >= time_now) { // check today with day created account
-                const file_name = '../client/src/data/user.json';
+                const file_name = './data/user.json';
                 let file_cont = fs.readFileSync(file_name, {encoding: "utf8"});
                 let content = JSON.parse(file_cont); // user info
                 for (let j = 0; j < content.length; j++) {
@@ -482,7 +472,7 @@ app.get('/activate/:id' , (req, res) => { // activate account
                 let deleted_username = cont[i]["username"];
                 cont.splice(i, 1);
                 fs.writeFile(filename, JSON.stringify(cont), {encoding: "utf8"}, () => {});
-                const file_name = '../client/src/data/user.json';
+                const file_name = './data/user.json';
                 let file_cont = fs.readFileSync(file_name, {encoding: "utf8"});
                 let content = JSON.parse(file_cont); // user info
                 for (let j = 0; j < content.length; j++) {
@@ -502,24 +492,15 @@ app.get('/activate/:id' , (req, res) => { // activate account
     return;
 });
 
-app.use(express.static(path.join(__dirname, '../client/build'))); // root ('/')
+app.use(express.static(path.join(__dirname, '../frontend/build'))); // root ('/')
 
 app.get('*', function(req, res) { // other routes not defined above
     console.log("Protocol: ", req.protocol);
     console.log("Host: ", req.get("host"));
     console.log("Original URL: ", req.originalUrl);
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });
 
 app.use(function(req, res, next) {
     res.status(404).send('<h1>Nothing found</h1>');
 });
-/*
-app.get('/home', function(req, res) {
-    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
-});
-
-app.use(function(req, res, next) {
-    res.status(404).send('<h1>Nothing found</h1>');
-});
-*/

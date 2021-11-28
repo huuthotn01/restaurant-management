@@ -8,8 +8,7 @@ class ManageCustomerController extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            model: new ManageCustomerModel(),
-            ok: false
+            model: new ManageCustomerModel()
         }
         this.changeView = this.changeView.bind(this);
         this.getNotAuthCustomerList = this.getNotAuthCustomerList.bind(this);
@@ -29,9 +28,6 @@ class ManageCustomerController extends Component {
         console.log("New temp: ", temp);
         this.setState({
             model: temp
-        }, () => {
-            console.log("Model: ", this.state.model);
-            this.setState({ok: true});
         });
     }
 

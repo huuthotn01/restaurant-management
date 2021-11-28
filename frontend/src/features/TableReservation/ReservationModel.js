@@ -1,5 +1,3 @@
-import tables from '../../../src/data/tables.json'
-
 class TableReservationModel {
 
     //------------------------------ATTRIBUTE------------------------------------

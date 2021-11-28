@@ -6,6 +6,7 @@ import { LoginContext } from '../SharedComponent/LoginContext';
 import { AiFillLock } from 'react-icons/ai';
 import { FaInfoCircle } from 'react-icons/fa';
 import { Switch, Redirect } from 'react-router-dom';
+import { getUserInfo } from './ChangeInfoModel';
 
 class ChangeInfo extends React.Component {
     constructor(props) {
@@ -24,19 +25,7 @@ class ChangeInfo extends React.Component {
     }
 
     async componentDidMount() {
-        let user_data = {
-            "email": this.context.email
-        }
-        const response = await fetch('/get-user-info', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer'
-            },
-            body: JSON.stringify(user_data)
-        });
-        if (response.status !== 200) console.log("Error occurred!");
-        const body = await response.json();
+        const body = await getUserInfo(this.context.email);
         if (!body.succ) {
             console.log("Error occurreddd!");
             return;

@@ -8,7 +8,8 @@ class ManageOrderController extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            model: new ManageOrderModel()
+            model: new ManageOrderModel(),
+            ok: false
         }
         this.getOrders = this.getOrders.bind(this);
         this.getOrderList = this.getOrderList.bind(this);
@@ -16,6 +17,14 @@ class ManageOrderController extends Component {
         this.onPageChange = this.onPageChange.bind(this);
         this.changeView = this.changeView.bind(this);
     }  
+
+    async componentDidMount() {
+        let temp = new ManageOrderModel();
+        await temp.init();
+        this.setState({
+            model: temp
+        });
+    }
 
     getOrders(orderID) {
         const newModel = this.state.model;
