@@ -66,7 +66,7 @@
         "password": "$2a$10$SRI27CTG9Se59FQ51CgzJO92Lv6V6sSb0nYgpNC9aJ6f8FsbnHpqO",
         "phone": "029374658395",
         "email": "giacat@gmail.com",
-        "role": "1",
+        "role": "2",
         "avatar": "",
         "activated": true,
         "authenticated": false
