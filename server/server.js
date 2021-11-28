@@ -17,6 +17,17 @@ app.use(sessions({
     resave: false
 }));
 
+class Test {
+    static test = 0;
+    static updateTest() {
+        console.log("First test: ", this.test);
+        this.test += 1;
+        console.log("Second test: ", this.test);
+        setTimeout(() => {this.test += 1; console.log("Haha: ", this.test);}, 1000);
+        return this.test;
+    }
+}
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.use(cors());
@@ -404,8 +415,13 @@ app.post('/payment_momo', (req, res, next) => {
 });
 
 app.get('/verify', (req, res) => { // verify session
+    /*let test = Test.updateTest();
+    console.log("Test verify: ", test);
+    while (test !== 3);
+    console.log("OK");*/
+    let test = Test.updateTest();
+    console.log("Test verify: ", test);
     let session = req.session;
-    console.log(req.session);
     if (session.userid === undefined) {
         console.log("Username is undefined!");
         res.send({succ: false});

@@ -8,7 +8,8 @@ class ManageCustomerController extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            model: new ManageCustomerModel()
+            model: new ManageCustomerModel(),
+            ok: false
         }
         this.changeView = this.changeView.bind(this);
         this.getNotAuthCustomerList = this.getNotAuthCustomerList.bind(this);
@@ -18,6 +19,20 @@ class ManageCustomerController extends Component {
         this.onToggleViewModal = this.onToggleViewModal.bind(this);
         this.onToggleDeleteModal = this.onToggleDeleteModal.bind(this);
         this.deleteCustomer = this.deleteCustomer.bind(this);
+    }
+
+    async componentDidMount() {
+        console.log("State: ", this.state.model);
+        let temp =  new ManageCustomerModel();
+        console.log("Temp: ", temp);
+        await temp.init();
+        console.log("New temp: ", temp);
+        this.setState({
+            model: temp
+        }, () => {
+            console.log("Model: ", this.state.model);
+            this.setState({ok: true});
+        });
     }
 
     changeView(option) {

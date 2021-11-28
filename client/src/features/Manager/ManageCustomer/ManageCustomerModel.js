@@ -10,12 +10,7 @@ async function get_data() {
     console.log("Return body: ", body);
     data = body;
     return data;
-}    
-get_data()
-.then(res => {
-    console.log("Res: ", res);
-    user_data = res;
-});
+}
 
 class ManageCustomerModel {
 
@@ -27,8 +22,19 @@ class ManageCustomerModel {
 
     //-------------------------------CONSTRUCTOR---------------------------------
     constructor() {
-        (async () => {
-            // console.log("Hihi: ", user_data);
+        /*get_data()
+        .then(res => {
+            console.log("Res: ", res);
+            user_data = res;
+            console.log("Hihi: ", user_data);
+            if (user_data === undefined) {
+                get_data()
+                .then(res => {
+                    console.log("Res: ", res);
+                    user_data = res;
+                    console.log("Hihi: ", user_data);
+                });
+            }
             this.#customers = user_data.filter(customer => {
                 return customer['role'] === "1";
             }).map(customer => {
@@ -56,7 +62,41 @@ class ManageCustomerModel {
             this.#isModalViewOpen = false;
             this.#isModalDeleteOpen = false;
             this.#customerDelete = new Customer('','','','','','','');
-        })();
+        //});*/
+    }
+
+    async init() {
+        const response = await get_data();
+        console.log("Res: ", response);
+        user_data = response;
+        console.log("Hihi: ", user_data);
+        this.#customers = user_data.filter(customer => {
+            return customer['role'] === "1";
+        }).map(customer => {
+            return new Customer(customer['fname'], customer['lname'], customer['username'], 
+                                customer['password'], customer['phone'], customer['email'], customer['authenticated']);
+        });
+
+        this.#option = 0;
+        this.#customers_not_auth = user_data.filter(customer => {
+            return customer['role'] === "1" && customer['authenticated'] === false;
+        }).map(customer => {
+            return new Customer(customer['fname'], customer['lname'], customer['username'], 
+                                customer['password'], customer['phone'], customer['email'], customer['authenticated']);
+        });;
+        this.#isModalOpenAuth = false;
+        this.#customerOpenAuth = new Customer('','','','','','','');
+
+        this.#customers_display = user_data.filter(customer => {
+            return customer['role'] === "1";
+        }).map(customer => {
+            return new Customer(customer['fname'], customer['lname'], customer['username'], 
+                                customer['password'], customer['phone'], customer['email'], customer['authenticated']);
+        });
+        this.#customerOpen = new Customer('','','','','','','');
+        this.#isModalViewOpen = false;
+        this.#isModalDeleteOpen = false;
+        this.#customerDelete = new Customer('','','','','','','');
     }
 
     //----------------------------------------GETTER--------------------------------------
