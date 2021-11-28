@@ -1,4 +1,3 @@
-import table_reservation_data from '../../../src/data/reservation.json'
 import tables from '../../../src/data/tables.json'
 
 class TableReservationModel {
@@ -12,12 +11,29 @@ class TableReservationModel {
     //-------------------------------CONSTRUCTOR---------------------------------
 
     constructor() {
-        this.#table_reser = table_reservation_data.map((reser) => {
-            return [reser['code']]
-        });
-        this.#tables = tables.map((table) => {
-            return [table['Code'], table['Type']]
-        });
+        fetch('/getreservation')
+        .then(response => response.json())
+        .then(data => 
+    
+    
+        this.#table_reser = data.data.map((reser) => {
+            return [
+                reser["code"]
+            ];
+            })
+        );
+
+        fetch('/get_table')
+        .then(response => response.json())
+        .then(data => 
+    
+    
+        this.#tables = data.data.map((table) => {
+            return [
+                table["Code"], table["Type"]
+            ];
+            })
+        );
     }
 
     //-------------------------------OTHER METHODS--------------------------------
