@@ -8,7 +8,7 @@ export default function InfoModal(props) {
   const model = new CancelTableModel();
 
   const [refund, setrefund] = useState(false);
-
+  
   const postData = (s) => {
     var data = {
       code: props.code,

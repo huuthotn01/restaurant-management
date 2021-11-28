@@ -87,6 +87,32 @@ app.post('/addCancelTable', (request, response) => {
     });
 });
 
+app.get('/getreservation', (request, response) => {
+    const filename = "../client/src/data/reservation.json";
+    var file = fs.readFileSync(filename, {encoding: "utf8"});
+    let cont = JSON.parse(file);
+    
+    response.send({data: cont})
+
+    
+})
+app.get('/getcancelreservation', (request, response) => {
+    const filename = "../client/src/data/canceltable.json";
+    var file = fs.readFileSync(filename, {encoding: "utf8"});
+    let cont = JSON.parse(file);
+    
+    response.send({data: cont})
+
+    
+})
+
+app.get('/get_table', (request, response) => {
+    const filename = "../client/src/data/tables.json";
+    var file = fs.readFileSync(filename, {encoding: "utf8"});
+    let cont = JSON.parse(file);
+    response.send({data: cont})
+})
+
 app.get('/get_user', (req, res) => {
     const users = JSON.parse(fs.readFileSync('../client/src/data/user.json'));
     console.log(typeof(users));
