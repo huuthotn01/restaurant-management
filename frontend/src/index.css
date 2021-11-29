@@ -22,7 +22,7 @@ body.modal-open {
     background-color: #FFFAF7 !important;
     font-size: 20px;
     color: black;
-    z-index: 10;
+    z-index: 19;
     width: 100%;
 }
 
